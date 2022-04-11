@@ -68,11 +68,9 @@ b. Update the certificate for Airflow.
 
 ### Prerequisite Step:
 Before installing Open Data Hub you need to copy the KFDef file from a oublic git repository.   
-<span style="color:yellow">** TODO: Change from Faisal's personal repo.**<span>
-1. Open the KFDef File from the github repository: https://github.com/masoodfaisal/odh-manifests/blob/master/kfdef/ml-workshop-limited.yaml
-2. Click the **Copy Raw Contents** button <img src="./images/setup/install-1.png" alt="drawing" width="30"/> to copy the file contents to your clipboard. 
 
-Keep this in the clipboard, you will use it shortly.
+1. Using any editor of choice, open the KFDef File from the github repository your cloned. It is located in *./src/kfdef/workshop-kfdef.yaml*.
+2. Copy the contents to the clipboard and keep it - you will use it shortly.
 
 ### Create the Workshop's Project and Install ODH
 1. Create the **ml-workshop** project:  

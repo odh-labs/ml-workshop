@@ -1,0 +1,139 @@
+apiVersion: kfdef.apps.kubeflow.org/v1
+kind: KfDef
+metadata:
+  name: opendatahub-ml-workshop
+#  namespace: opendatahub
+spec:
+  applications:
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-seldon/cluster
+      name: odhseldon
+    - kustomizeConfig:
+        overlays:
+          - custom-image
+        parameters:
+          # Note: The admin username is admin
+          - name: SUPERSET_ADMIN_PASSWORD
+            value: admin
+          - name: SUPERSET_IMAGE
+            value: quay.io/internaldatahub/superset:1.1.0-trino
+        repoRef:
+          name: manifests
+          path: superset
+      name: superset
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-radanalyticsio/spark/cluster
+      name: radanalyticsio-spark-cluster
+    - kustomizeConfig:
+        overlays:
+          - custom-image
+        parameters:
+          - name: s3_endpoint_url
+            value: "minio-ml-workshop.ml-workshop:9000"
+        repoRef:
+          name: manifests
+          path: jupyterhub/jupyterhub
+      name: jupyterhub
+    - kustomizeConfig:
+        overlays:
+          # - cuda
+          # - cuda-11.0.3
+          - additional
+          # - custom-image
+          # - custom-extensions
+        repoRef:
+          name: manifests
+          path: jupyterhub/notebook-images
+      name: notebook-images
+    - kustomizeConfig:
+        overlays:
+          - custom-image
+        parameters:
+          - name: OCP_APPS_URI
+          # Change the line below to match your cluster URI. Using the URI from your OpenShift cluster,
+          # copy everything from .apps onwards and replace the value below.
+            value: .apps.rosa-5a98.ibhp.p1.openshiftapps.com
+        repoRef:
+          name: manifests
+          path: ml-workshop-airflow2
+      name: airflow2
+    - kustomizeConfig:
+        overlays:
+          - custom-image
+          - ml-workshop
+        parameters:
+          - name: s3_endpoint_url
+            value: >-
+              minio-ml-workshop.ml-workshop:9000
+          - name: s3_credentials_secret
+            value: s3-credentials
+          - name: s3_endpoint_url_prefix
+            value: "http://"
+        repoRef:
+          name: manifests
+          path: trino
+      name: trino
+    # - kustomizeConfig:
+    #     repoRef:
+    #       name: manifests
+    #       path: ml-workshop-custom-images
+    #   name: ml-workshop-images
+    - kustomizeConfig:
+        overlay:
+          - custom-image
+        repoRef:
+          name: manifests
+          path: ml-workshop-mlflow
+      name: ml-workshop-mlflow
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-minio
+      name: minio
+    # add kafka  
+    - kustomizeConfig:
+        parameters:
+          - name: namespace
+            value: openshift-operators
+        repoRef:
+          name: manifests
+          path: kafka/cluster
+      name: strimzi-operator
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: kafka/kafka
+      name: kafka-cluster
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-kafka-populator
+      name: kafka-populator      
+  repos:
+    - name: kf-manifests
+      uri: https://github.com/kubeflow/manifests/archive/v1.2-branch.tar.gz
+    - name: manifests
+      uri: https://github.com/masoodfaisal/odh-manifests/tarball/disconnected-install
+  version: disconnected-install
+
+
+
+#    - kustomizeConfig:
+#        repoRef:
+#          name: manifests
+#          path: odhargo/cluster
+#      name: odhargo-cluster
+#    - kustomizeConfig:
+#        repoRef:
+#          name: manifests
+#          path: odhargo/odhargo
+#      name: odhargo
+#    - kustomizeConfig:
+#        repoRef:
+#          name: manifests
+#          path: odh-dashboard
+#      name: odh-dashboard
