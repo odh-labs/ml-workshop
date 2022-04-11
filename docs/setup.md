@@ -1,210 +1,300 @@
-# Install the workshop tools
+# Open Data Hub Workshop Setup Instructions
+
 ## Prerequisites
-You'll need
-- an OpenShift cluster - with admin rights. You can create one by following the instructions [here](http:/try.openshift.com)
+You'll need:
+- An OpenShift 4.8 cluster - with admin rights. You can create one by following the instructions [here](http:/try.openshift.com), or via RHPDS (Red Hat staff only).
 - the OpenShift command line interface, _oc_ available [here](https://docs.openshift.com/container-platform/4.6/cli_reference/openshift_cli/getting-started-cli.html)
 
-## Installation procedure
+
+## Workshop Structure
+
 
 There are two versions of this workshop you can choose to use:
 - an FSI Use Case
 - a Telco use case
 Both are functionally identical - but use different product data examples, applicable to the chosen use case. At various part of the workshop, you use different files approapiate to your chosen use case.
 
+**<span style="color:yellow">REVISIT: This only has the FSI data files.<span>**
+
+## Download the Workshop Files
+
 If you are running this as a workshop, it is recommended you fork this repo as there are changes you can make to your instance of the repo, that will simplify the experience for the students. See section _Updating Tool URLs_ below.
 
-Do the following:
-- Clone this repo (or a fork thereof if you are a facilitator for students) and change directory into the root dir, _ml-workshop_.  Create a variable *REPO_HOME*_ for this directory
+Using the example below:   
+1. Clone (or fork) this repo.
+2. Change directory into the root dir, *_*ml-workshop*_*.  
+3. Create a variable *REPO_HOME*_ for this directory
+
+*<span style="color:yellow">REVISIT: Change to a non-personal repo, and clone based on a tag/branch:  
+git clone -b tag --single-branch https:// github.com/bryonbaker/ml-workshop<span>*
+
 ```
-git clone https://github.com/masoodfaisal/ml-workshop
+git clone https://github.com/bryonbaker/ml-workshop
 cd ml-workshop
 export REPO_HOME=`pwd`
 ```
-- On the OpenShift console, choose the _Copy Login Command_ as shown and paste the _oc login ..._ command it gives to a terminal.
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/29-copy-login-command.png)
 
-- Create a new project on the terminal
+## Install the Open Data Hub Operator
+
+1. Log on to OpenShift as a Cluster Administrator. (For RHPDS this is opentlc-mgr.)
+2. Select the Administrator perspective
+3. Install the Open Data Hub operator. Click **Operators > Operator Hub**  
+   OpenShift displays the operator catalogue.  
+4. Click the *Filter by keybord* text box and type *open data hub*  
+   OpenShift displays the *Open Data Hub Operator* tile.
+5. Click the tile  
+   OpenShift displays a Commmunity Operator warning dialog box.
+6. Click **Continue**  
+   OpenShift displays the operator details.
+7. Click **Install**   
+   OpenShift prompts for the operator configuration details.   
+   <img src="./images/install-2.png" alt="drawing" width="500"/>  
+8. Accept all defaults and click **Install*  
+   OpenShift installs the operator and displays a diaglog box once complete.  
+   <img src="./images/install-3.png" alt="drawing" width="500"/>
+9. Click **View Operator**  
+    OpenShift displays the operator details.   
+   <img src="./images/install-4.png" alt="drawing" width="500"/>  
+
+The Open Data Hub Operator is now installed. Proceed to create the workshop project and install Open Data Hub
+
+## Project Creation & ODH Installation Steps
+We will now create the workshop's project and install Open Data Hub into the project.  
+Before we do this we need to copy the Open Data Hub KfDef file that will instruct the operator which tools to install and how to configure them.
+
+Later in these steps you will also need to:  
+a. Edit the KfDef file you create in OpenShift with the URL of your cluster. Pay careful attention to those steps or Airflow will not run.  
+b. Update the certificate for Airflow.
+
+### Prerequisite Step:
+Before installing Open Data Hub you need to copy the KFDef file from a oublic git repository.   
+<span style="color:yellow">** TODO: Change from Faisal's personal repo.**<span>
+1. Open the KFDef File from the github repository: https://github.com/masoodfaisal/odh-manifests/blob/master/kfdef/ml-workshop-limited.yaml
+2. Click the **Copy Raw Contents** button <img src="./images/install-1.png" alt="drawing" width="30"/> to copy the file contents to your clipboard. 
+
+Keep this in the clipboard, you will use it shortly.
+
+### Create the Workshop's Project and Install ODH
+1. Create the **ml-workshop** project:  
+   1.1 Click **Home > Projects**  
+   1.2 Click the **Create Project** button on the top right of the screen  
+   1.3 Click the **Name** text box and type  **ml-workshop**  
+   1.4 Click **Create**  
+   OpenShift creates the project.  
+   <img src="./images/install-5.png" alt="drawing" width="300"/>  
+2. Delete the Limit Range for the project  
+   2.1 Click **Administration > LimitRanges**  
+   2.2 Click the hambuger button for the **ml-workshop-core-resource-limits**.   
+   <img src="./images/install-11.png" alt="drawing" width="400"/>  
+   2.3 Click **Delete LimitRange**  
+   OpenShift removes the LImitRange for the project.
+2. Install Open Data Hub  
+   2.1 Click **Operators > Installed Operators**  
+   OpenShift displays all the operators currently installed.  
+
+   <span style="color:yellow">**Note that the ml-workshop project is unselected and **All Projects** is selected. You must make ml-workshop the active project.**<span>  
+
+   2.2 Click the **Projects** drop-down list and click **ml-workshop**  
+   <img src="./images/install-6.png" alt="drawing" width="300"/>  
+   2.3 Click **Open Data Hub Operator**.  
+   OpenShift displays the operator's details.  
+   <img src="./images/install-6.png" alt="drawing" width="300"/>  
+   2.4 Click **Open Data Hub** in the operator toolbar.  
+   OpenShift displays the operand details - of which there are none.   
+   <img src="./images/install-7.png" alt="drawing" width="300"/>  
+   2.5 Click the **Create KfDef** button.  
+   2.6 Click the **YAML View** radio button  
+   OpenShift displays the KfDef YAML editor.  
+   <img src="./images/install-8.png" alt="drawing" width="300"/>  
+   2.7 Replace the entire YAML file with the KfDef YAML you copied to your clipboard in the *Prerequisits* step above.  
+   This KfDef file will tell OpenShift how to install and configure ODH.  
+   Before you save the KfDef you must edit one line of code.  
+   2.8 Locate the **airflow2** overlay in the code  
+   <img src="./images/install-9.png" alt="drawing" width="400"/>  
+   Around line 57 you will see a **value** field that contains part of the URL to your OpenShift clister.  
+   2.9 Replace the value with the the URI of **your** cluster from the *.apps* through to the *.com* as follows:   
 ```
-oc new-project ml-workshop  
-```
+       - kustomizeConfig:
+        overlays:
+          - custom-image
+        parameters:
+          - name: OCP_APPS_URI
+            # TODO: Change this uri before applying the KfDef
+            value: .apps.cluster-9482.9482.sandbox744.opentlc.com
+        repoRef:
+          name: manifests
+          path: ml-workshop-airflow2
+```  
+  2.10 Click **Create**  
+       OpenShift creates the KfDef and proceeeds to deploy ODH.  
+  2.11 Click **Workloads > Pods** to observe the deployment progress.  
+      <img src="./images/install-10.png" alt="drawing" width="400"/>  
+      Be aweare this may take seveeralk minutes to complete.
 
-- On GUI, select click project ml-workshop to select it
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/30-select-ml-workshop-project.png)
-
-- Before installation, you may need to get your OpenShift cluster administrator to adjust your limit ranges - or delete if this a test cluster without resource pressures. This is because, there are some moderate resource requirements associated with this workshop, e.g. Jenkins alone requires 4 vCPU and 4 Gi memory and there are other resource hungry elements as well. These are set here:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/29-resource-limits.png)
-
-- Next, install Open Data Hub Operator on the Operator Hub screen. Filter on _Open Data Hub_ and go with all the defaults. It will install in the openshift-operators namespace (this takes several minutes)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-2-operatorhub-odh.png)
-
-
-At this point, on GUI go to Installed Operators and wait until the _Open Data Hub_ related operator is installed.
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeededXXXXXXXXXX.png)
-
-
-Now it's time to install the Jenkins Operator - our CICD engine. Click project ml-workshop to select it (it will have de-selected in the last step).
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-1-operatorhub-jen-1-v2.png)
-
-
-From here, go with all the defaults, Clicking Install and again click on Install on the next screen.(this can take several minutes)
-
-Now we'll install the tools that we'll use today, many of which are in the Open Data Hub. We've created a convenient manifest containing everything you need. You just need to apply is as follows:
-
-```
-oc project ml-workshop  
-oc apply -f https://raw.githubusercontent.com/masoodfaisal/odh-manifests/master/kfdef/kfctl_openshift_ml_workshop.yaml
-```
-
-There is a known bug whereby two operator groups get created when operators are created in quick succession. 
-
-So you need to do this check, maybe 30 seconds after the previous _oc apply_:
-```
-oc project ml-workshop  
-oc get og
-```
-If it returns two entries, as shown, delete one as shown by running: 
-```
-oc ml-workshop-XXXXX
-(substituting your value for XXXXX)
-```
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-two-operator-groups-delete-one.png)
-
-
-After a few minutes, on GUI go back to _Installed Operators_ and wait until these Open Data Hub and Jenkins operators are installed as shown. If any are still in _Pending Update_ state after 5 mins, delete them and they should install within 5-10 mins.
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/1-5-operatorhub-install-succeeded-incl--spark-seldon.png)
-
-
-Now it's time to test each of the tools installed. Each of the tools we use should have an OpenShift Route created
-## Test Routes
-Then on the GUI, open the menu item _Networking->Routes_ and you'll see some routes including these and others:
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/32-routes.png)
-
-If _ml-modeldb-webapp_ is missing, run the following:
-```
-oc project ml-workshop  
-oc expose svc modeldb-webapp
-```
-Test each route as follows:
-
-- jenkins-ml-jenkins: login with your OpenShift credentials
-- jupyterhub: 
-The first thing we need to do, before we login, is install a custom Jupyter image that contains required libraries for the three data-science focused workshops. Then we label it so it appears in the Jupyter Spawn Image dropdown. For more on that, see [Adding custom notebook images](https://opendatahub.io/docs/administration/installation-customization/add-custom-image.html)
-
-
-Now delete the _jupyterhub-XXXXXX_ pod and then login with your OpenShift credentials. On the Spawner page, the Jupyter Spawn Image dropdown should contain an entry called _ml-workshop_
-
-- minio-ml-workshop-ui: login with credentials _minio / minio123_
-- ml-modeldb-webapp: no credentials needed
-- odh-dashboard: not required for the workshop
-- superset: login with credentials _admin / admin_
-
-## Import assets
-
-### Jenkins
-
-Login to Jenkins as described previously and choose New Item as shown.
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/33-jenkins-new-item.png)
-
-Name it _deploy-model_, select _Pipeline_ as shown and click *OK*:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/34-new-item-deploy-model.png)
-
-Now go ahead and click _This project is parameterized_ and add the 2 String parameters _namespace_ (with default ml-workshop) and *experiment_id* as shown:
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/35-pipeline-param.png)
-
-Don't save it yet.
-
-Scroll down to the _Pipeline_ section. Inside the _Script_ box, you need to paste in a _Jenkinsfile_.
-
-
-Copy the contents of this [Jenkinsfile](https://raw.githubusercontent.com/masoodfaisal/ml-workshop/main/jenkins-pipeline/model/Jenkinsfile) and click *Save*:
-
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-add-jenkinsfile.png)
-
-
-Next, you need to ensure the Jenkins Service IPs are set. 
-- Inside Jenkins, navigate to _Jenkins -> Manage Jenkins_
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-manage-1.png)
-
-- Scroll down to _Manage Nodes and Clouds_
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-manage-2.png)
-
-- Choose _Configure Clouds_
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-manage-3.png)
-
-- Click _Kubernetes Cloud Details_
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-manage-4.png)
-
-- Scroll down to _Jenkins URL_ and _Jenkins Tunnel_. They should look like this (Jenkins URL starting with _http_ and with port 8080, Jenkins Tunnel just an IP and port 50000)
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-manage-5.png)
-
-- If not, open a new tab and go to Networking -> Services, filter on _Jenkins_ and get the 2 IPs and slot them into the previous section (_Jenkins URL_ and _Jenkins Tunnel_) remembering to begin _Jenkins URL_ with a _http_ and save there.
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/36-jenkins-services.png)
-
+## Installation Complete
+The installation phase of Open Data Hub is now complete. Next you will configure the workshop environment.
 
 --------------------------------------------------------------------------------------------------------
 
+# Workshop Configuration
 
-# Adding users to the workshop
-We provide a sample 30 user setup: _user1_.._user30_ each with the password _openshift_
-These have beeen populated to the file _users.htpasswd_ in this directory.
-First we create a secret with those users and their password:
+### Adding users to the workshop
+If you are running ODH for a a workshop then you need to configure the users. If you are using the environment as a demo then you can jump forward to the **Configure Tools** section.
+
+1. In a terminal window, type the following commands:
 ```
-cd $REPO_HOME/docs
-oc create secret generic htpass-secret --from-file=htpasswd=users.htpasswd -n openshift-config
-```
-We've created a custom resource that sets up this htpasswd mechanism on OpenShift - which we apply as follows:
-```
-oc apply -f htpasswd.cr
+cd $REPO_HOME/scripts
+./setup-users.sh
 ```
 
-If you need to give the users access to their own namespace(project), say _userX-project_. We also need to give Jenkins (used for CICD) access to each user's project.
-That can be done as follows:
-```
-for i in {1..30}
-do
-    oc new-project user$i-project
-    oc adm policy add-role-to-user admin user$i -n user$i-project
-    oc adm policy add-role-to-user admin user$i -n ml-workshop
-    oc create sa seldon-manager -n user${i}-project
-    oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:user${i}-project:seldon-manager -n user${i}-project
-    oc adm policy add-role-to-user admin system:serviceaccount:ml-workshop:jenkins-ml-jenkins -n user$i-project
-done
-oc adm policy add-cluster-role-to-user admin user29
-```
-Note also I added admin access for one of my users, user29.
+
+<span style="color:yellow">**Note: User configuration will invalidate any other logins like opentlc-mgr**.  
+For cluster-admin access you should now use **user29**.<span>
 
 If you need to create users with different credentials consult [this blog](https://medium.com/kubelancer-private-limited/create-users-on-openshift-4-dc5cfdf85661) - on which these instructions are based.
 
+The password for all users is **openshift**.
 
 --------------------------------------------------------------------------------------------------------
 
+## Configure the S3 Storage
 
-# Updating Tool URLs
-As mentioned above, if you are running this as a workshop, it is recommended you fork this repo.  The reason is, after you install the tools, your OpenShift Service IP addresses for various tools will be different for each installation. It is recommended for simplicity, that you update yours with your cluster's values, so your students don't have to.
-If you are forking the repo, you'll need to update the docs (all .md files in this directory) and replace all instances of https://github.com/masoodfaisal/ml-workshop with https://github.com/**YOUR_REPO**/ml-workshop
+### Upload Files to the rawdata Bucket
 
-You need to find **your** IP addresses for  
-a) the Minio object storage Service which we'll refer to as MINIO_ADDRESS, and 
+In this section we will upload the files that will be used for feature engineering. The files are located in the **data-files** directory in the ml-workshop git project you cloned earlier.
 
-b) the Verta.ai model repository Service which we'll refer to as VERTA_ADDRESS.
+1. Open the OpenShift console in your browser.
+2. Click: **Networking > Routes**  
 
-MINIO_ADDRESS and VERTA_ADDRESS are retrieved by navigating to Networking -> Services and locate the IP of their respective Services (verta being named _ml-modeldb-webapp_):
-![](https://github.com/masoodfaisal/ml-workshop/blob/main/docs/images/38-service_ips.png)
+   <img src="./images/openshift-routes.png" alt="drawing" width="500"/>  
 
-MINIO_ADDRESS uses port 9000 and needs to be substituted in one file */notebook/Merge_Data.ipynb*. Open that file and search for _:9000_. Replace that with your MINIO_ADDRESS.
+3. Scroll down to find *minio-ml-workshop-ui*. 
+4. Click the Minio url under **Location** heading  
+OpenShift opens a new browser tab and launches the Minio console and diaplays the login screen.   
+   <img src="./images/minio-1.png" alt="drawing" width="500"/>
 
-VERTA_ADDRESS uses port 3000 needs to be substituted in two files */notebook/Model_Experiments.ipynb* and */notebook/Train_Model.ipynb*. Open each of those files and search for _:3000_. Replace that value in each file with your VERTA_ADDRESS.
+5. Enter the following credentials:  
+* Username: **minio**
+* Password: **minio123**
+6. Click **Login**  
+Minio displays the main console and all of the existing S3 buckets.  
+   <img src="./images/minio-2.png" alt="drawing" width="400"/>
 
-Save each of the three files and commit to your fork of this repository.
+7. Scroll down to find the *rawdata* bucket.
+8. Click **Browse**.  
+Minio displays the bucket contents.  
 
+You will now upload two folders (**customers** and **products**) to the *rawdata* bucket.
+
+### Upload the *customers* data
+
+9. Click: **Upload Files > Upload Folder**  
+
+   <img src="./images/minio-2-1.png" alt="drawing" width="400"/>  
+
+Minio prompts for the folder to upload.
+
+10. Navigate to the data files directory within the git repository
+  ```
+  $REPO_HOME/data-files
+  ```
+11. Click the **customers** folder.   
+   <img src="./images/minio-3.png" alt="drawing" width="400"/> 
+
+11. Click: **Upload**.  
+Minio uploads the folder and all file contents to the *raw data* S3 bucket.
+
+12. Click the **Clean Complete Objects** button <img src="./images/minio-4.png" alt="drawing" width="30"/> to reveal the hidden upload controls. 
 
 --------------------------------------------------------------------------------------------------------
 
+## Configure Superset
 
-Finally, navigate to OpenShift Routes and open the route _minio-ml-workshop-ui_. Login with credentials minio / minio123. Open the _rawdata_ bucket under Object Browser. Then upload the CSV file *Customer-Churn_P1.csv* available here (a different repo):
+Now you need to set up Superset to talk to our S3 and Kafka raw data via Trino - exposing the data via SQL.
 
-[https://github.com/tnscorcoran/ml-workshop-fsi/tree/main/data](https://github.com/tnscorcoran/ml-workshop-fsi/tree/main/data)
+1. Open the OpenShift console in your browser tab.  
+   <img src="./images/openshift-routes.png" alt="openshift-rountes.png" width="400"/>  
 
-i.e. Download from here to your laptop and upload to the _rawdata_ bucket.
+2. Click the url for *superset*  
+   OpenShift opens a new browser tab and displays the Superset login page.   
+   <img src="./images/superset-1.png" alt="superset-1.png" width="400"/>  
+
+5. Enter the following credentials:   
+* Username: **admin**   
+* Password: **admin**   
+6. Click **SIGN IN**  
+   Superset diaplays the main console.  
+   <img src="./images/superset-2.png" alt="superset-2.png" width="400"/>  
+
+7. Click: **Data > Databases**  
+   Superset displays a list of configured databases.  
+   <img src="./images/superset-3.png" alt="superset-4.png" width="400"/>  
+
+8. Click: the **"+ DATABASE"** button  
+   Superset prompts for the database connection details
+   <img src="./images/superset-4.png" alt="superset-4.png" width="400"/>  
+
+9. Click the **Supported Databases** drop-down list
+10. Scroll down to the entry **Trino** and click it.
+11. Copy and paste the following text into the **SQL Alchemy URI** text box:
+```
+trino://admin@trino-service:8080
+```
+12. Click **Test Connection**.  
+If all steps have been performed correctly, Superset displays the message **Connection looks good!**.
+   <img src="./images/superset-5.png" alt="superset-5.png" width="400"/>  
+
+13. Click the **Advanced** tab in the **Edit Database** form.  
+Superset prompts for the advanced database configuration.   
+   <img src="./images/superset-6.png" alt="superset-6.png" width="300"/>  
+
+14. Click **SQL Lab**.
+15. Complete the form as illustrated in the following figure:  
+   <img src="./images/superset-7.png" alt="superset-7.png" width="300"/>  
+16. Click **CONNECT** (or **FINISH** if you have done this step previously)
+17. Click **SQL Lab Settings > Saved Queries** in the main toolbar.   
+   <img src="./images/superset-8.png" alt="superset-8.png" width="300"/>  
+
+18. Click the **+ QUERY** button.
+
+<span style="color:yellow">*NOTE: **DO NOT SAVE THE QUERY**. We don't save this as it only needs to be run once per workshop*</span>
+
+19. Copy and paste the query editor:   
+      ```
+      CREATE TABLE hive.default.customers (
+      customerId varchar,
+      gender varchar,
+      seniorCitizen varchar,
+      partner varchar,
+      dependents varchar,
+      tenure varchar
+      )
+      WITH (format = 'CSV',
+      skip_header_line_count = 1,
+      EXTERNAL_LOCATION='s3a://rawdata/customers'
+      )
+      ```
+
+20. Click **Run**.  
+   Superset displays *Result - true* as shown.  
+   <img src="./images/superset-9.png" alt="superset-9.png" width="400"/>  
+
+21. Replace the SQL command with:  
+      ```
+      SELECT customers.gender, customers.seniorcitizen, customers.partner, customers.dependents, customers.tenure, products.*  
+      from hive.default.customers customers,
+      customerchurn.default.data products
+      where cast(customers.customerId as VARCHAR) = cast(products.customerId as VARCHAR)
+      ```   
+   Run the query as shown. You should see a resultset spanning personal and product consumption customer data.  
+   <img src="./images/superset-10.png" alt="superset-10.png" width="400"/>  
+
+22. Click the *SAVE AS* button <img src="./images/superset-11.png" alt="superset-11.png" width="50"/>.   
+Superset displays the Save As dialog box.
+23. Click the **Name** text box. Replace the text with: **Kafka-CSV-Join**
+24. Click the SAVE button.   
+    Superset saves the query.
+
+# Setup Complete
+
+You are now done with setup!
