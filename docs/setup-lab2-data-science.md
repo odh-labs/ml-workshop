@@ -121,26 +121,13 @@ Minio displays a list of folders in the _data_ bucket. The folder-name format is
 ![alt_text](setup-lab2-data-science-images/ds-minio-data-bucket.png "image_tooltip")
 
 
-
-
 1. Scroll through the list of folders and locate the folder with your username \
 **Note**: There will be many folders there - be sure to identify the one containing **your username.**
 6. Click the folder that corresponds to your username. \
 Minio displays the file(s) you created in the Data Engineering lab
+![alt_text](setup-lab2-data-science-images/ds-minio-user-folder.png "image_tooltip")
 
-
-
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image5.png "image_tooltip")
-
-
-
-
-7. Click the file with name starting with “part”:
-
-
+1. Click the file with name starting with “part”:
 
 <p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
