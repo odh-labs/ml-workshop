@@ -48,13 +48,13 @@ export REPO_HOME=`pwd`
    OpenShift displays the operator details.
 7. Click **Install**   
    OpenShift prompts for the operator configuration details.   
-   <img src="./images/install-2.png" alt="drawing" width="500"/>  
+   <img src="./images/setup/install-2.png" alt="drawing" width="500"/>  
 8. Accept all defaults and click **Install*  
    OpenShift installs the operator and displays a diaglog box once complete.  
-   <img src="./images/install-3.png" alt="drawing" width="500"/>
+   <img src="./images/setup/install-3.png" alt="drawing" width="500"/>
 9. Click **View Operator**  
     OpenShift displays the operator details.   
-   <img src="./images/install-4.png" alt="drawing" width="500"/>  
+   <img src="./images/setup/install-4.png" alt="drawing" width="500"/>  
 
 The Open Data Hub Operator is now installed. Proceed to create the workshop project and install Open Data Hub
 
@@ -70,7 +70,7 @@ b. Update the certificate for Airflow.
 Before installing Open Data Hub you need to copy the KFDef file from a oublic git repository.   
 <span style="color:yellow">** TODO: Change from Faisal's personal repo.**<span>
 1. Open the KFDef File from the github repository: https://github.com/masoodfaisal/odh-manifests/blob/master/kfdef/ml-workshop-limited.yaml
-2. Click the **Copy Raw Contents** button <img src="./images/install-1.png" alt="drawing" width="30"/> to copy the file contents to your clipboard. 
+2. Click the **Copy Raw Contents** button <img src="./images/setup/install-1.png" alt="drawing" width="30"/> to copy the file contents to your clipboard. 
 
 Keep this in the clipboard, you will use it shortly.
 
@@ -81,11 +81,11 @@ Keep this in the clipboard, you will use it shortly.
    1.3 Click the **Name** text box and type  **ml-workshop**  
    1.4 Click **Create**  
    OpenShift creates the project.  
-   <img src="./images/install-5.png" alt="drawing" width="300"/>  
+   <img src="./images/setup/install-5.png" alt="drawing" width="300"/>  
 2. Delete the Limit Range for the project  
    2.1 Click **Administration > LimitRanges**  
    2.2 Click the hambuger button for the **ml-workshop-core-resource-limits**.   
-   <img src="./images/install-11.png" alt="drawing" width="400"/>  
+   <img src="./images/setup/install-11.png" alt="drawing" width="400"/>  
    2.3 Click **Delete LimitRange**  
    OpenShift removes the LImitRange for the project.
 2. Install Open Data Hub  
@@ -95,22 +95,22 @@ Keep this in the clipboard, you will use it shortly.
    <span style="color:yellow">**Note that the ml-workshop project is unselected and **All Projects** is selected. You must make ml-workshop the active project.**<span>  
 
    2.2 Click the **Projects** drop-down list and click **ml-workshop**  
-   <img src="./images/install-6.png" alt="drawing" width="300"/>  
+   <img src="./images/setup/install-6.png" alt="drawing" width="300"/>  
    2.3 Click **Open Data Hub Operator**.  
    OpenShift displays the operator's details.  
-   <img src="./images/install-6.png" alt="drawing" width="300"/>  
+   <img src="./images/setup/install-6.png" alt="drawing" width="300"/>  
    2.4 Click **Open Data Hub** in the operator toolbar.  
    OpenShift displays the operand details - of which there are none.   
-   <img src="./images/install-7.png" alt="drawing" width="300"/>  
+   <img src="./images/setup/install-7.png" alt="drawing" width="300"/>  
    2.5 Click the **Create KfDef** button.  
    2.6 Click the **YAML View** radio button  
    OpenShift displays the KfDef YAML editor.  
-   <img src="./images/install-8.png" alt="drawing" width="300"/>  
+   <img src="./images/setup/install-8.png" alt="drawing" width="300"/>  
    2.7 Replace the entire YAML file with the KfDef YAML you copied to your clipboard in the *Prerequisits* step above.  
    This KfDef file will tell OpenShift how to install and configure ODH.  
    Before you save the KfDef you must edit one line of code.  
    2.8 Locate the **airflow2** overlay in the code  
-   <img src="./images/install-9.png" alt="drawing" width="400"/>  
+   <img src="./images/setup/install-9.png" alt="drawing" width="400"/>  
    Around line 57 you will see a **value** field that contains part of the URL to your OpenShift clister.  
    2.9 Replace the value with the the URI of **your** cluster from the *.apps* through to the *.com* as follows:   
 ```
@@ -128,7 +128,7 @@ Keep this in the clipboard, you will use it shortly.
   2.10 Click **Create**  
        OpenShift creates the KfDef and proceeeds to deploy ODH.  
   2.11 Click **Workloads > Pods** to observe the deployment progress.  
-      <img src="./images/install-10.png" alt="drawing" width="400"/>  
+      <img src="./images/setup/install-10.png" alt="drawing" width="400"/>  
       Be aweare this may take seveeralk minutes to complete.
 
 ## Installation Complete
@@ -166,19 +166,19 @@ In this section we will upload the files that will be used for feature engineeri
 1. Open the OpenShift console in your browser.
 2. Click: **Networking > Routes**  
 
-   <img src="./images/openshift-routes.png" alt="drawing" width="500"/>  
+   <img src="./images/setup/openshift-routes.png" alt="drawing" width="500"/>  
 
 3. Scroll down to find *minio-ml-workshop-ui*. 
 4. Click the Minio url under **Location** heading  
 OpenShift opens a new browser tab and launches the Minio console and diaplays the login screen.   
-   <img src="./images/minio-1.png" alt="drawing" width="500"/>
+   <img src="./images/setup/minio-1.png" alt="drawing" width="500"/>
 
 5. Enter the following credentials:  
 * Username: **minio**
 * Password: **minio123**
 6. Click **Login**  
 Minio displays the main console and all of the existing S3 buckets.  
-   <img src="./images/minio-2.png" alt="drawing" width="400"/>
+   <img src="./images/setup/minio-2.png" alt="drawing" width="400"/>
 
 7. Scroll down to find the *rawdata* bucket.
 8. Click **Browse**.  
@@ -190,7 +190,7 @@ You will now upload two folders (**customers** and **products**) to the *rawdata
 
 9. Click: **Upload Files > Upload Folder**  
 
-   <img src="./images/minio-2-1.png" alt="drawing" width="400"/>  
+   <img src="./images/setup/minio-2-1.png" alt="drawing" width="400"/>  
 
 Minio prompts for the folder to upload.
 
@@ -199,12 +199,12 @@ Minio prompts for the folder to upload.
   $REPO_HOME/data-files
   ```
 11. Click the **customers** folder.   
-   <img src="./images/minio-3.png" alt="drawing" width="400"/> 
+   <img src="./images/setup/minio-3.png" alt="drawing" width="400"/> 
 
 11. Click: **Upload**.  
 Minio uploads the folder and all file contents to the *raw data* S3 bucket.
 
-12. Click the **Clean Complete Objects** button <img src="./images/minio-4.png" alt="drawing" width="30"/> to reveal the hidden upload controls. 
+12. Click the **Clean Complete Objects** button <img src="./images/setup/minio-4.png" alt="drawing" width="30"/> to reveal the hidden upload controls. 
 
 --------------------------------------------------------------------------------------------------------
 
@@ -213,26 +213,26 @@ Minio uploads the folder and all file contents to the *raw data* S3 bucket.
 Now you need to set up Superset to talk to our S3 and Kafka raw data via Trino - exposing the data via SQL.
 
 1. Open the OpenShift console in your browser tab.  
-   <img src="./images/openshift-routes.png" alt="openshift-rountes.png" width="400"/>  
+   <img src="./images/setup/openshift-routes.png" alt="openshift-rountes.png" width="400"/>  
 
 2. Click the url for *superset*  
    OpenShift opens a new browser tab and displays the Superset login page.   
-   <img src="./images/superset-1.png" alt="superset-1.png" width="400"/>  
+   <img src="./images/setup/superset-1.png" alt="superset-1.png" width="400"/>  
 
 5. Enter the following credentials:   
 * Username: **admin**   
 * Password: **admin**   
 6. Click **SIGN IN**  
    Superset diaplays the main console.  
-   <img src="./images/superset-2.png" alt="superset-2.png" width="400"/>  
+   <img src="./images/setup/superset-2.png" alt="superset-2.png" width="400"/>  
 
 7. Click: **Data > Databases**  
    Superset displays a list of configured databases.  
-   <img src="./images/superset-3.png" alt="superset-4.png" width="400"/>  
+   <img src="./images/setup/superset-3.png" alt="superset-4.png" width="400"/>  
 
 8. Click: the **"+ DATABASE"** button  
    Superset prompts for the database connection details
-   <img src="./images/superset-4.png" alt="superset-4.png" width="400"/>  
+   <img src="./images/setup/superset-4.png" alt="superset-4.png" width="400"/>  
 
 9. Click the **Supported Databases** drop-down list
 10. Scroll down to the entry **Trino** and click it.
@@ -242,18 +242,18 @@ trino://admin@trino-service:8080
 ```
 12. Click **Test Connection**.  
 If all steps have been performed correctly, Superset displays the message **Connection looks good!**.
-   <img src="./images/superset-5.png" alt="superset-5.png" width="400"/>  
+   <img src="./images/setup/superset-5.png" alt="superset-5.png" width="400"/>  
 
 13. Click the **Advanced** tab in the **Edit Database** form.  
 Superset prompts for the advanced database configuration.   
-   <img src="./images/superset-6.png" alt="superset-6.png" width="300"/>  
+   <img src="./images/setup/superset-6.png" alt="superset-6.png" width="300"/>  
 
 14. Click **SQL Lab**.
 15. Complete the form as illustrated in the following figure:  
-   <img src="./images/superset-7.png" alt="superset-7.png" width="300"/>  
+   <img src="./images/setup/superset-7.png" alt="superset-7.png" width="300"/>  
 16. Click **CONNECT** (or **FINISH** if you have done this step previously)
 17. Click **SQL Lab Settings > Saved Queries** in the main toolbar.   
-   <img src="./images/superset-8.png" alt="superset-8.png" width="300"/>  
+   <img src="./images/setup/superset-8.png" alt="superset-8.png" width="300"/>  
 
 18. Click the **+ QUERY** button.
 
@@ -277,7 +277,7 @@ Superset prompts for the advanced database configuration.
 
 20. Click **Run**.  
    Superset displays *Result - true* as shown.  
-   <img src="./images/superset-9.png" alt="superset-9.png" width="400"/>  
+   <img src="./images/setup/superset-9.png" alt="superset-9.png" width="400"/>  
 
 21. Replace the SQL command with:  
       ```
@@ -287,9 +287,9 @@ Superset prompts for the advanced database configuration.
       where cast(customers.customerId as VARCHAR) = cast(products.customerId as VARCHAR)
       ```   
    Run the query as shown. You should see a resultset spanning personal and product consumption customer data.  
-   <img src="./images/superset-10.png" alt="superset-10.png" width="400"/>  
+   <img src="./images/setup/superset-10.png" alt="superset-10.png" width="400"/>  
 
-22. Click the *SAVE AS* button <img src="./images/superset-11.png" alt="superset-11.png" width="50"/>.   
+22. Click the *SAVE AS* button <img src="./images/setup/superset-11.png" alt="superset-11.png" width="50"/>.   
 Superset displays the Save As dialog box.
 23. Click the **Name** text box. Replace the text with: **Kafka-CSV-Join**
 24. Click the SAVE button.   
