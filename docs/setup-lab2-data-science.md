@@ -125,14 +125,11 @@ Minio displays a list of folders in the _data_ bucket. The folder-name format is
 **Note**: There will be many folders there - be sure to identify the one containing **your username.**
 6. Click the folder that corresponds to your username. \
 Minio displays the file(s) you created in the Data Engineering lab
+
 ![alt_text](setup-lab2-data-science-images/ds-minio-user-folder.png "image_tooltip")
 
 1. Click the file with name starting with “part”:
-
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image6.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-minio-user-bucket-part.png "image_tooltip")
 
 
 Minio displays a panel containing the details of the file you created in the Data Engineering lab. 
@@ -147,7 +144,7 @@ Minio displays a panel containing the details of the file you created in the Dat
 
 
 
-8. Highlight the filename path as shown below and copy the text to the clipboard. E.g. <code>[part-00000-f53c1282-b53d-4b86-9f8d-](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)1b2eded4d09d[-c000.csv](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)</code>
+1. Highlight the filename path as shown below and copy the text to the clipboard. E.g. <code>[part-00000-f53c1282-b53d-4b86-9f8d-](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)1b2eded4d09d[-c000.csv](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)</code>
 
 
 
