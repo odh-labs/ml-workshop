@@ -1,236 +1,756 @@
-# Lab 4 - Data Analytics
+<!-- Copy and paste the converted output. -->
 
-## Introduction
+<!-----
 
-One of the first things your data analysts and data engineers will need
-to do is analyse the raw data, with a view to preparing and transforming
-it to a state that will be consumable by AI/ML model algorithms.
+You have some errors, warnings, or alerts. If you are using reckless mode, turn it off to see inline alerts.
+* ERRORs: 0
+* WARNINGs: 0
+* ALERTS: 42
 
-In this lab, we're going to use a powerful toolset combining
+Conversion time: 16.999 seconds.
 
--   An in-memory data analytics engine called Trino. Trino provides high speed access to many different on-premises and cloud based data sources. These include relational and no-SQL databases, object stores over S3 interfaces, Streaming data from Kafka and many more. Trino abstracts the actual underlying data store implementation and provides a uniform ANSI SQL interface, to access its many supported data stores.
 
--   A visualization tool called Superset, which will use Trino as the backing data source.
+Using this Markdown file:
 
-The combination of these two tools will provide powerful data analytics
-capabilities, critical at this stage in the workflow.
+1. Paste this output into your source file.
+2. See the notes and action items below regarding this conversion run.
+3. Check the rendered output (headings, lists, code blocks, tables) for proper
+   formatting and use a linkchecker before you publish this page.
 
-This diagram illustrates what we're implementing:
+Conversion notes:
 
-![](setup-data-analytics-images/image19.png){width="5.234375546806649in"
-height="2.9534230096237972in"}
+* Docs to Markdown version 1.0β33
+* Mon Apr 11 2022 15:47:32 GMT-0700 (PDT)
+* Source doc: AI/ML on OpenShift Workshop - V2 - Lab 2 - Data Science
+* This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
 
-You can see Trino is an SQL exposing abstraction in front of actual data
-located in Kafka and S3 Object storage. No data is moved - rather Trino
-provides a high speed parallel access mechanism for Kafka and S3
-allowing Superset to easily display charts and dashboards.
+----->
 
-To save time, the workshop administrators have already wired up the SQL
-exposing engine Trino to two backing datasets:
 
-1.  To a CSV file over an S3 interface. This CSV file is located in an underlying Object storage implementation called Minio. The file contains demographic type data on our customer data set, data such as gender, whether they have dependents and other demographic features.
+<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 42.</p>
+<ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
 
-2.  To Streaming data located in an Apache Kafka store on the OpenShift cluster. This dataset contains product consumption for the same customers as are in the CSV file. Each record is labelled indicating whether that customer churned or not.
+<p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
+<a href="#gdcalert2">alert2</a>
+<a href="#gdcalert3">alert3</a>
+<a href="#gdcalert4">alert4</a>
+<a href="#gdcalert5">alert5</a>
+<a href="#gdcalert6">alert6</a>
+<a href="#gdcalert7">alert7</a>
+<a href="#gdcalert8">alert8</a>
+<a href="#gdcalert9">alert9</a>
+<a href="#gdcalert10">alert10</a>
+<a href="#gdcalert11">alert11</a>
+<a href="#gdcalert12">alert12</a>
+<a href="#gdcalert13">alert13</a>
+<a href="#gdcalert14">alert14</a>
+<a href="#gdcalert15">alert15</a>
+<a href="#gdcalert16">alert16</a>
+<a href="#gdcalert17">alert17</a>
+<a href="#gdcalert18">alert18</a>
+<a href="#gdcalert19">alert19</a>
+<a href="#gdcalert20">alert20</a>
+<a href="#gdcalert21">alert21</a>
+<a href="#gdcalert22">alert22</a>
+<a href="#gdcalert23">alert23</a>
+<a href="#gdcalert24">alert24</a>
+<a href="#gdcalert25">alert25</a>
+<a href="#gdcalert26">alert26</a>
+<a href="#gdcalert27">alert27</a>
+<a href="#gdcalert28">alert28</a>
+<a href="#gdcalert29">alert29</a>
+<a href="#gdcalert30">alert30</a>
+<a href="#gdcalert31">alert31</a>
+<a href="#gdcalert32">alert32</a>
+<a href="#gdcalert33">alert33</a>
+<a href="#gdcalert34">alert34</a>
+<a href="#gdcalert35">alert35</a>
+<a href="#gdcalert36">alert36</a>
+<a href="#gdcalert37">alert37</a>
+<a href="#gdcalert38">alert38</a>
+<a href="#gdcalert39">alert39</a>
+<a href="#gdcalert40">alert40</a>
+<a href="#gdcalert41">alert41</a>
+<a href="#gdcalert42">alert42</a>
 
-In Superset, using Trino, we\'ve created two logical SQL tables
-corresponding to underlying data sets as well as a query joining them on
-customer id.
+<p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
-## Instructions for the Trino backed Superset workshop
 
-Login to OpenShift using the credentials your administrator gave you.
-Ensure your workshop project ml-workshop is selected.
+Lab 2 - Data Science
 
-The first thing you will do is login to Superset.\
+**Introduction** 
+
+Next, we feature three Jupyter notebooks the data scientist uses, pulling the prepared CSV data that the data engineer pushed to S3 object storage in the previous lab:
+
+
+
+1. They first visualise the data - to understand patterns in the data and whether there are any errors they need to fix before experimenting and training their models.
+2. They then experiment with different algorithms, parameters and hyperparameters. They push each experiment to the model repository, Verta. This repository contains all of the data and the actual model binaries should they wish to
+    1. Compare different experiments
+    2. Return to and retrieve any experiment they ran
+    3. Share their experiments with others. In this way, we’re allowing silos between different actors in the workflow
+3. They then choose one of their experiments, which they wish to proceed with and push to production - in the next part of the workflow, the ML OPs phase
+
+This diagram illustrates the workflow we’re implementing - the Data Science part of the overall AI/ML workflow:
+
+
+
+<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/ds-churn-diagram-data-scientist.png "image_tooltip")
+
+
+**Instructions to access your prepared data file from the previous lab**
+
+You need to access the prepared CSV data file you created and pushed to S3 object storage, in the previous lab under the Data Engineer persona.
+
+Login to OpenShift using the credentials your administrator gave you. Ensure your workshop project ml-workshop is selected.
+
+The first thing you need to do is retrieve the path and file pertaining to <span style="text-decoration:underline;">your username</span> - which you as a data engineer created previously.  \
 Choose the **Administration perspective**
 
-1.  Navigate to **Networking \> Routes**.
 
-2.  Filter on the word Superset and open that route, by clicking on the URL as shown.
 
-![](setup-data-analytics-images//image15.png){width="6.0in"
-height="2.4305555555555554in"}
+1. Navigate to **Networking > Routes**. 
+2. Filter on _minio_ - and open the _minio-ml-workshop-ui_ route as shown. \
 
-3.  Enter credentials ***admin / admin***.
 
-![](setup-data-analytics-images//image14.png){width="6.0in"
-height="2.0972222222222223in"}
+<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-4.  Choose menu **Data \> Databases**. Edit the ***trino*** Database. As this is a shared service between all participants, and the setup has already been done by your instructor, we'll just show you the steps we took to connect Superset to Trino & from there to underlying data.
 
-![](setup-data-analytics-images//image16.png){width="6.0in"
-height="1.7638888888888888in"}
+![alt_text](setup-lab2-data-science-images/image2.png "image_tooltip")
 
-> Notice we simply added the URI ***trino://admin@trino-service:8080/***
-> to connect to Trino as shown. 
+3. Enter the username and password minio / minio123 
 
-Test the Connection.
+    
 
-![](setup-data-analytics-images//image22.png){width="4.421875546806649in"
-height="1.8920527121609798in"}
+<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-5.  Move to the SQL LAB SETTINGS tab and notice we needed full access by selecting the checkboxes.
 
-![](setup-data-analytics-images//image1.png){width="6.0in"
-height="3.0277777777777777in"}
+![alt_text](setup-lab2-data-science-images/image3.png "image_tooltip")
 
-6.  In Superset, choose **SQL LAB \> Saved Queries**. Edit the query ***Kafka-CSV-Join*** as shown (though your query may be named differently)
 
-![](setup-data-analytics-images//image12.png){width="6.817708880139983in"
-height="1.8275601487314086in"}
+4. Scroll down to the **data** bucket, and click the **Browse**. \
+Minio displays a list of folders in the _data_ bucket. The folder-name format is: “_full_data_csv-&lt;your username>_” E.g. For user29 the folder is: _full_data_csv-user29_
 
-Earlier the workshop admin created a virtual '***table'*** (hive.default.customer1) that uses the CSV data in our Minio S3 Object store as it's actual data - located in the bucket ***rawdata***.
 
-Earlier we also created a second virtual '***table'*** backed by our Kafka streaming data. In our case this is the customer product consumption data.\
 
-Now Trino allows us to create a SQL Join across data that resides in S3 Object storage and Kafka as follows:
-```sql
-SELECT  kafkaData.*, s3Data.*
-FROM    customerchurn.default.data kafkaData,
-        hive.default.customer1 s3Data
-WHERE   cast(kafkaData.customerId as VARCHAR) = s3Data.customerId
-```
-Very cool!
+<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-7.  **Run** the Query. Notice the result set spanning data covering S3 and Kafka, joined on *customerId.* Click **Explore**
 
-![](setup-data-analytics-images//image6.png){width="5.684896106736658in"
-height="3.769574584426947in"}
+![alt_text](setup-lab2-data-science-images/image4.png "image_tooltip")
 
-8.  Select **Save As New** Give it a name appending your username to ***Kafka-CSV-Join***. In my case, with user29: ***Kafka-CSV-Join-user29***. Then **Save & Explore**:
 
-![](setup-data-analytics-images//image21.png){width="5.558170384951881in"
-height="2.406742125984252in"}
 
-> You may see an error saving the dataset. Ignore it (this is a small
-> bug) - it probably saved successfully.
 
-9.  Move to **Data \> DataSets**, find [your]{.underline} new dataset - then click it to open it:
+5. Scroll through the list of folders and locate the folder with your username \
+**Note**: There will be many folders there - be sure to identify the one containing **your username.**
+6. Click the folder that corresponds to your username. \
+Minio displays the file(s) you created in the Data Engineering lab
 
-![](setup-data-analytics-images//image11.png){width="6.0in"
-height="1.8333333333333333in"}
 
-10. By default ***Table*** Visualisation Type is selected
 
-![](setup-data-analytics-images//image18.png){width="6.0in"
-height="4.402777777777778in"}
+<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-Click **Table**. You have a large number of Visualization Types to choose from. Click **Bar Chart**:
 
-![](setup-data-analytics-images//image24.png){width="5.171875546806649in"
-height="2.5230850831146108in"}
+![alt_text](setup-lab2-data-science-images/image5.png "image_tooltip")
 
-You can now start visualising and understanding your data. First we\'ll create a bar chart representation of the entire dataset, representing the count of the different categories of *Primary Channel*:
 
-- *Branch*
 
-- *Mobile and*
 
-- *No* primary channel.
+7. Click the file with name starting with “part”:
 
-Click **Last Week** under **TIME RANGE**. On the popup, click the **Range Type** dropdown, select **No Filter** and then **Apply**.
 
-![](setup-data-analytics-images//image25.png){width="3.9114588801399823in"
-height="3.239048556430446in"}
 
-Select ***Count*** under ***Metrics*** and select *PrimaryChannel* under ***Series***.
+<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-Name the chart ***Count-PrimaryChannel-userXX*** (in my case***Count-PrimaryChannel-user29***) and click **Save**.
 
-![](setup-data-analytics-images//image3.png){width="4.734375546806649in"
-height="2.9589840332458444in"}
+![alt_text](setup-lab2-data-science-images/image6.png "image_tooltip")
 
-This will cause the query to run - and you will be presented with this bar chart - showing the breakdown of the resultset by Primary Channel, Branch, Mobile or None.
 
-![](setup-data-analytics-images//image10.png){width="6.0in"
-height="4.194444444444445in"}
+Minio displays a panel containing the details of the file you created in the Data Engineering lab. 
 
-11. Now we\'ll create a Pie Chart - and add another dimension - *account type*.
 
-On your open Bar Chart screen, click **Bar Chart**. On the popup click **Pie Chart**.
 
-![](setup-data-analytics-images//image7.png){width="6.0in"
-height="4.319444444444445in"}
+<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image7.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-Now make the following changes:
 
--   On the **Group By** dropdown, add ***accounttype*** to already present **primarychannel**
+![alt_text](setup-lab2-data-science-images/image7.png "image_tooltip")
 
--   Name the chart ***Count-ChannelByAccountType-userXX*** (in my case ***Count-ChannelByAccountType-user29***) and click **Save**.
 
--   Go with the defaults on the popup. Click **Save As** then **Save**
 
-![](setup-data-analytics-images//image23.png){width="2.921593394575678in" height="1.6742979002624672in"}
 
-This will cause the following pie chart to display - grouping *Primary Channel* by *Account Type*
+8. Highlight the filename path as shown below and copy the text to the clipboard. E.g. <code>[part-00000-f53c1282-b53d-4b86-9f8d-](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)1b2eded4d09d[-c000.csv](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)</code>
 
-![](setup-data-analytics-images//image2.png){width="6.0in"
-height="4.208333333333333in"}
 
-12. Next, we're going to showcase another unusual though informative visualization - the Sunburst Chart. It allows you to visualise splits of your data with varying degrees of granularity - within the same chart. On your open Pie Chart screen, click **Pie Chart** then on the popup, scroll down and click **Sunburst Chart** as shown:
 
-![](setup-data-analytics-images//image29.png){width="6.0in"
-height="3.5972222222222223in"}
+<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image8.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-Make the following changes
 
--   Name the chart ***CreditRating-Distribution-userXX*** (in my case ***CreditRating-Distribution-user29***)
+![alt_text](setup-lab2-data-science-images/image8.png "image_tooltip")
 
--   On the **Hierarchy** dropdown, select
 
-    -   **creditrating**
 
-    -   **accounttype**
 
-    -   **hascreditcard**
+9. Copy this text to the Clipboard (E.g. Ctrl-C or Command-C) \
+You need to copy this somewhere safe because we will refer to it throughout this section as **YOUR_CSV_FILE.**  \
 
-        -   **debitcard**
+10. Open any editor you choose and paste this into a text editor so you can use it later. E.g. Sublime Text or Microsoft Word.
 
--   click **Save**
+You file path should now look similar to this:
 
-as shown:
 
-![](setup-data-analytics-images//image27.png){width="6.0in"
-height="3.9305555555555554in"}
 
-Confirm by clicking **Save As** then **Save**
+<p id="gdcalert9" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image9.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert10">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
 
-![](setup-data-analytics-images//image26.png){width="6.0in"
-height="3.4583333333333335in"}
 
-A chart similar to the following will appear.
+![alt_text](setup-lab2-data-science-images/image9.png "image_tooltip")
 
-![](setup-data-analytics-images//image5.png){width="6.0in"
-height="3.8472222222222223in"}
 
-If you hover over the inner circle, the breakdown according to the first hierarchical element is shown, in my case *medium* credit rating.
+As mentioned we'll refer to this long filename string as **YOUR_CSV_FILE** - which later you’ll paste into the hyper_parameters.py  source file**.**
 
-You can see, you can also further refine, by hovering out towards over the outer circle - giving a very fine grained breakdown - according to the 4 hierarchies:
+**Part 1: Visualise Data**
 
-![](setup-data-analytics-images//image20.png){width="4.213542213473316in"
-height="2.392062554680665in"}
+Now to our Data Science focused Jupyter notebooks. As we did with Minio, we will find the url for Jupyterhub within the routes of the OPenShift console.
 
-Any of these datasets can be easily exported to JSON or CSV - as shown below. Then fed for example to an AI model training use case.
 
-![](setup-data-analytics-images//image28.png){width="6.0in"
-height="3.361111111111111in"}
 
-13. Finally we're going to show you how to create a dashboard - to which we can add previously saved charts. Choose Dashboards -\> Add Dashboard as shown:
+1. Open the browser tab with the OpenShift console.
+2. Open the **Administrator perspective**.
+3. Click **Networking > Routes**. 
+4. Type **Jupyterhub** in the **Filter** text box.
 
-![](setup-data-analytics-images//image9.png){width="6.0in"
-height="0.9027777777777778in"}
+OpenShift reduces the list of routes as you type the filter.
 
-Name it and choose the Charts tab:
 
-![](setup-data-analytics-images//image8.png){width="6.0in"
-height="1.2361111111111112in"}
 
-You can simply drag your charts from the right over to the display panel
-on the left as shown. You can also make them dynamic by choosing a
-refresh interval. Very cool!
+5. Click the Jupyterhub link in the **Location** column of the **Routes** display. \
 
-![](setup-data-analytics-images//image4.png){width="6.0in"
-height="2.6527777777777777in"}
 
-Feel free to continue to experiment with different ways of accessing and
-visualising the underlying data.
+<p id="gdcalert10" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image10.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert11">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image10.png "image_tooltip")
+
+
+Because you shutdown your Jupyter server at the end of the last workshop, you’ll again be presented with the Jupyter screen where you choose the base image to work with. As we’re now assuming the role of a data scientist, do the following:
+
+JupyterHub displays the Start Notebook Server page.
+
+
+
+<p id="gdcalert11" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image11.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert12">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image11.png "image_tooltip")
+
+
+
+
+6. Click **SciKit v1.10 - Elyra Notebook Image**
+7. Select **Large**
+8. Click **Start Server**.
+
+**Warning:** Please select the correct notebook image, otherwise the lab will not work.
+
+Jupyterhub starts the notebook server for the Data Scientist.
+
+
+
+<p id="gdcalert12" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image12.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert13">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image12.png "image_tooltip")
+
+
+After a few minutes the notebook will have started and the Jupyter notebook will be displayed.
+
+
+
+<p id="gdcalert13" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image13.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert14">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image13.png "image_tooltip")
+
+
+Observe:
+
+
+
+* The same _ml-workshop-improved_ folder we previously pulled down from our GitHub repository \
+git clone [https://github.com/bryonbaker/ml-workshop-improved](https://github.com/bryonbaker/ml-workshop-improved) 
+
+**Before we get going, you need to make some small changes to the code.**
+
+
+
+* Navigate to ​​**ml-workshop-improved/notebook **and open **hyper_parameters.py**
+* Locate line of code with **minioFilename** and paste the file name you saved earlier (**YOUR_CSV_FILE**) in this lab into the code as illustrated below. Note, your file name will be unique to you
+
+
+
+<p id="gdcalert14" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image14.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert15">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image14.png "image_tooltip")
+
+
+
+
+9. Click** File > Save to **save the file.
+
+Now to run your first notebook, double click the file **Visulaise_Model.ipynb** as shown  \
+(The name is a little misleading - it’s really there to visualise the <span style="text-decoration:underline;">data</span> not the <span style="text-decoration:underline;">model.</span>)
+
+
+
+<p id="gdcalert15" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image15.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert16">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image15.png "image_tooltip")
+
+
+
+
+10. Scroll up to the top of the notebook
+11. Click in cell **[1]**.
+
+You will now step through the notebook one cell at a time.
+
+
+
+12. Type **[Shift] + [Return]** to step through each cell in the notebook.
+
+Now, as previously, select the first cell and walk through each cell executing you go by clicking SHIFT + RETURN.
+
+
+
+<p id="gdcalert16" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image16.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert17">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image16.png "image_tooltip")
+
+
+
+
+1. Import our desired Python libraries. (notice we don’t need to do any **_pip install_**s - our administrator has bundled all of our required libraries into this base container image - which we selected earlier the _MLWorkShop Notebook Image_)
+2. _watermark_ outputs the versions of various components, libraries, operating system attributes etc.
+3. Here we connect to our S3 object store, Minio, using the URL and credentials shown
+
+
+
+<p id="gdcalert17" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image17.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert18">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image17.png "image_tooltip")
+
+
+
+
+1. In this cell we also output the first 5 lines of the file - so the data scientist can get a quick view of the data.
+2. We output the dimensions of the data in rows and columns (features)
+3. Here we output various data around the columns (features) including their types, names etc
+4. Using _describe(), _we output various statistical data associated with the entire dataset, max, mean etc. values for numeric columns.
+
+
+
+<p id="gdcalert18" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image18.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert19">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image18.png "image_tooltip")
+
+
+
+
+1. We output the sum of rows with null values with nulls - to assess data for errors, e.g null for _charges_ indicates an error.
+2. Here we output the total count of the **_labeled _**column, Churn. We need a decent spread, and we have it - with just over 2 to 1.
+3. Here we make a simple conversion from Yes and  No to 1 and 0, to facilitate plotting.
+
+
+
+<p id="gdcalert19" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image19.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert20">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image19.png "image_tooltip")
+
+
+
+
+1. This cell visually outputs churn count by various features in the data set
+
+
+
+<p id="gdcalert20" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image20.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert21">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image20.png "image_tooltip")
+
+
+
+
+1. Replace spaces with numpy NAN values
+2. Output sum of NAN and None values
+3. Convert to numeric
+4. Fill NANs with the mean
+5. Here we output a box plot - a useful visualization of 2 dimensions by the labeled column _Churn_
+
+**Part 2: Experiment with Models**
+
+At this point, as a data scientist, we have a good understanding of the data. Now it's time to start experimenting with different models, parameters and hyper parameters.
+
+As we experiment, we want our notebook to create an experiment id for every experiment (which is guaranteed to be unique within our team, as it uses user id and timestamp as a basis). 
+
+This experiment id is then used as an identifier when we push our experiment metadata and binaries to our model repository, Verta. In this way, we retrieve and repeat any experiment we have done, as well as share this experiment with other team members, breaking down silos between teams and individuals in AI//ML workflows.
+
+
+
+1. Using the File Explorer, open the **Model_Experiments.ipynb** notebook. \
+Jupyterhub opens the code windows.
+
+
+
+<p id="gdcalert21" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image21.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert22">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image21.png "image_tooltip")
+
+
+Next, just as you did in the previous lab you will step through the code one cell at a time. **Note there are 3 changes you’ll need to make to your cells - which we’ll highlight below.**
+
+
+
+2. Scroll up to the top of the notebook
+3. Click in cell **[1]**.
+
+You will now step through the notebook one cell at a time.
+
+
+
+4. Type **[Shift] + [Return]** to step through each cell in the notebook.
+
+
+
+<p id="gdcalert22" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image22.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert23">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image22.png "image_tooltip")
+
+
+
+
+1. Do imports - more applicable when we want to use _Ray_.
+2. More imports of libraries we need
+3. See _watermark _description of this cell above in - **_first Data Science workshop - Visualisation_**
+
+
+
+<p id="gdcalert23" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image23.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert24">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image23.png "image_tooltip")
+
+
+
+
+1. Here we pull in the user-specific parameters you added earlier to **hyper_parameters.py **for use in the file.
+2. Here we add some simple integration code - to allow the data scientist 
+    1. Retrieve the CSV file prepared earlier data engineer, from Minio S3 object storage
+    2. Participate their work in the workflow. \
+The HOST line on top and 4 lines using ml-flow is all they need to  push all of their experiments to our model registry** Ml Flow**
+3. Here we retrieve the CSV we prepared in the Data Engineer lab earlier and output the first 5 lines of the file - so the data scientist can get a quick view of the data.
+
+Run all the way down to cell 17, _Feature Engineering Pipeline_, as all cells until then are discussed above  in - **_first Data Science workshop - Visualisation_**
+
+
+
+<p id="gdcalert24" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image24.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert25">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image24.png "image_tooltip")
+
+
+
+
+1. Here we use an Ordinal Encoder to convert simple binary values to a numeric representation. Output the data after applying the Ordinal Encoder.
+2. Here we use a One Hot Encoder to convert multi valued features to a numeric representation. Output the data after applying the One Hot Encoder.
+3. Here we split our data set into a training and a testing set, and discard unwanted columns customer id and our labeled column Churn.  
+4. Further data set refinement.
+
+ \
+ \
+
+
+<p id="gdcalert25" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image25.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert26">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image25.png "image_tooltip")
+ \
+
+
+
+
+1. Create a DecisionTreeClassifier with these hyper parameters
+2. User GridSearch to output the best model / hyper parameters from the combinations supplied to its _fit_ method.
+3. Print out those best model parameters
+4. Use K-Folds cross-validator to split data into train/test sets. Create a dictionary of hyperparameter candidates, train the model using a DecisionTreeClassifier. Print and store hyperparameters and accuracy in Verta and tag using 'DecisionTreeClassifier''. The **_store_** method lushes this metadata to Verta, which you’ll see below.
+
+
+
+<p id="gdcalert26" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image26.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert27">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image26.png "image_tooltip")
+
+
+
+
+1. Modify the 3rd line substituting your username in place of user29.  \
+Then we create a Random Forest Classifier with these hyper parameters. 
+2. This cell and cell 27 are equivalents of the previous Decision Tree classifier cells.
+
+**Part 3: Visualise the Model Experiments.**
+
+Let’s use our model registry **Ml-Flow** to analyse compare the model performance. 
+
+
+
+1. Open the OpenShift console tab in your browser.
+2. Select the **Administrator Perspective**.
+3. Click **Networking > Routes**.
+4. Type **_mlflow_** in the Filter text box. \
+OpenShift will display the link to the **_Ml Flow_** tool.
+
+
+
+<p id="gdcalert27" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image27.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert28">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image27.png "image_tooltip")
+
+
+
+
+5. Click the hyperlink in the **Location** column \
+OpenShift will launch the **Ml-Flow** console in a new browser tab. \
+ \
+ \
+ \
+ \
+ \
+ \
+ \
+ \
+ \
+ \
+ \
+ \
+
+6. After logging in with your OpenShift credentials, you’ll be presented with a screen like this - showing all users’ experiments. \
+
+
+<p id="gdcalert28" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image28.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert29">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image28.png "image_tooltip")
+ \
+
+7. Filter on CustomerChurn-**userXX** , replacing **userXX ** with your username in my case CustomerChurn-user30 - so you only see your own experiments. 
+
+    
+
+<p id="gdcalert29" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image29.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert30">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image29.png "image_tooltip")
+
+
+8. Click on the link under Start Time - to drill into one. You can see that out of the box, just by adding the simple **_mlflow_** based integration code you added earlier to your notebook, out of the box, you get a fantastic amount of useful information. Including
+    1. every experiment gets an id - which s useful for sharing and traceability purposes later
+    2. your parameters are recorded as shown:
+
+
+
+<p id="gdcalert30" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image30.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert31">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image30.png "image_tooltip")
+
+
+Scroll down and you see you get more - parameters, metrics, tags and artifacts associated with the experiment’s model output - binaries, yaml, json etc..
+
+You also get the option to register the model - if you want to push it to production for example. Later on, you’ll do this.
+
+
+
+<p id="gdcalert31" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image31.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert32">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image31.png "image_tooltip")
+
+
+Ml Flow is a very powerful capability for the following reasons. Every experiment that is ever run:
+
+
+
+* can be easily pushed to this repo
+* gets a unique ID - that can be traced throughout the workflow and its metadata, parameters etc, examined here at any time
+* each experiment can be easily retrieved and repeated here by **_the same_** data scientist
+* each experiment can be easily shared then retrieved and repeated here by **_other_** data scientists
+
+**Part 4: Train the Model**
+
+Now following examination of our experiments In Ml Flow, let’s assume for performance reasons, as a data scientist, you’ve decided to proceed with the Decision Tree Classifier experiment and push that model to production.
+
+
+
+1. Go back to Jupyter Hub and ensure you’re in **ml-workshop-improved/notebook**
+2. Open the **_Train_Model.ipynb Jupyter _**notebook.
+
+
+
+<p id="gdcalert32" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image32.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert33">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image32.png "image_tooltip")
+
+
+You have already encountered most of the cells here in the 2 previous notebooks. Therefore, we will just it describe at a high level here - then you can run the notebook yourself.
+
+
+
+* Assume the data scientist did the two experiments you ran previously in the **_Model_Experiments.ipynb_** notebook. (in reality, they would probably run a lot more than two)
+* After examining both experiments in Jupyter and Ml Flow, they decide they want to proceed with DecisionTreeClassifier - for whatever reason.
+* So in this notebook, **_​​Train_Model.ipynb_** they use the DecisionTreeClassifier algorithm and all of the same parameters/hyper parameters they used previously, then train the model in the same way, and again push it to Ml Flow - this time with the model binaries (CustomerChurnPredictor.sav, CustomerChurnOrdinalEncoder.pkl, CustomerChurnOneHotEncoder.pkl) so they can be pushed to production later.
+
+Now run the **_Train_Model.ipynb Jupyter _**notebook - cell by cell by continually hitting **SHIFT + ENTER**, on by choosing menu item** Kernel > Restart Kernel and Run all Cells**
+
+**Part 6: Register the chosen Model**
+
+Go back to ML Flow - as described above in section **Part 3: Visualise the Model Experiments** 
+
+Find your latest experiment as described above. This will be the one associated with the **_Train_Model.ipynb _**experiment.(it needs to be this one - as the 2 encoder binaries are pushed to the repo).
+
+Verify this by navigating down to Artifacts as described above in  **Part 3: Visualise the Model Experiments.** Make sure the 2 encoders are there. If not, you probably selected the wrong experiment on the previous page. Make sure you have chosen the most recent.
+
+
+
+<p id="gdcalert33" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image33.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert34">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image33.png "image_tooltip")
+
+
+Now we need to register a Model in ML Flow - to which we add our chosen experiment - for later deployment to production. 
+
+Leave this tab open and open  ML Flow again - this time in a separate tab. Choose **Models** and **Create  Model**:
+
+
+
+<p id="gdcalert34" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image34.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert35">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image34.png "image_tooltip")
+
+
+Name your model your _username-model**, **_i.e.**  uXX** and click **Create**
+
+
+
+<p id="gdcalert35" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image35.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert36">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image35.png "image_tooltip")
+
+
+Close this tab and go back to your other open Ml Flow tab. Click **Register Model**
+
+
+
+<p id="gdcalert36" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image36.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert37">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image36.png "image_tooltip")
+
+
+Choose your newly registered model and click **Register**:
+
+
+
+<p id="gdcalert37" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image37.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert38">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image37.png "image_tooltip")
+
+
+You can see a new model is created with version 1. Each time you register a new model under this model name, its version is incremented. 
+
+We’re now ready to run an Airflow deployment pipeline to deploy this chosen model to a higher environment like Test or even Production.
+
+Move back to Jupyter Hub, navigate to **ml-workshop-improved/airflow/deploy_model/ocp/** and open **deploy_model.pipeline**. ocp_deploy.py should already be there on the canvas as shown:
+
+
+
+<p id="gdcalert38" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image38.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert39">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image38.png "image_tooltip")
+
+
+Right click on the **ocp_deploy.py** pipeline element and choose **Properties**.Ensure your selections look like the screenshot below. Pay particular attention to MODEL_NAME - you’ll need to change it to:
+
+MODEL_NAME=**userXX-model**
+
+i.e. the model name you created in the previous step, in my case **.**
+
+As this is the first version, you should not need to change your MODEL_VERSION yet, but change it running a subsequent time
+
+This is how it should look:
+
+ 
+
+<p id="gdcalert39" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image39.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert40">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image39.png "image_tooltip")
+
+
+Save your work by clicking on the **Save** button
+
+<p id="gdcalert40" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image40.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert41">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image40.png "image_tooltip")
+
+
+**Run Pipeline**
+
+You can now run your pipeline. Click the Play button as shown. A useful naming convention is to enter a name in a format beginning with your username - followed by the month and day and the count of runs that day. This sends each run to the bottom of the list on the Airflow GUI.
+
+something like **userXX**-**MMDD**-01-deploy-model, in my case **_user30-0223-10-deploy-model_**. Also choose your Airflow Runtime and Runner as shown:
+
+<p id="gdcalert41" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image41.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert42">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image41.png "image_tooltip")
+
+
+After 2 informational popups, your pipeline will kick off.
+
+Now it’s time to view your pipeline in our workflow scheduler Airflow.
+
+The same way you did previously with the Data Engineer pipeline, in a browser, open your **Airflow Route URL.** After logging in with your OpenShift credentials. click DAGs and again filter on your username - and you’ll see something like this:
+
+
+
+<p id="gdcalert42" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image42.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert43">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+
+
+![alt_text](setup-lab2-data-science-images/image42.png "image_tooltip")
+
+
+You should see your pipeline runs - including the deploy model one you just kicked off. Browse around as before - check logs, see how it can be used to schedule this job periodically etc.
+
+When the colour has turned dark green - as it will if all goes well, you’re done! Otherwise, let an administrator know!
+
+Now move to the next lab **_AI/ML on OpenShift Workshop - V2 - Lab 3 - ML OPs & Inference._**
