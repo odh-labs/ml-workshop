@@ -111,7 +111,7 @@ Before installing Open Data Hub you need to copy the KFDef file from a oublic gi
    <img src="./images/setup/install-9.png" alt="drawing" width="400"/>  
    Around line 57 you will see a **value** field that contains part of the URL to your OpenShift clister.  
    2.9 Replace the value with the the URI of **your** cluster from the *.apps* through to the *.com* as follows:   
-```
+```yaml
        - kustomizeConfig:
         overlays:
           - custom-image
