@@ -112,16 +112,10 @@ Choose the **Administration perspective**
 ![alt_text](setup-lab2-data-science-images/ds-routes-minio.png "image_tooltip")
 
 3. Enter the username and password minio / minio123 
-
-    
-
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![alt_text](setup-lab2-data-science-images/ds-minio-buckets.png "image_tooltip")
 
 
-![alt_text](setup-lab2-data-science-images/image3.png "image_tooltip")
-
-
-4. Scroll down to the **data** bucket, and click the **Browse**. \
+1. Scroll down to the **data** bucket, and click the **Browse**. \
 Minio displays a list of folders in the _data_ bucket. The folder-name format is: “_full_data_csv-&lt;your username>_” E.g. For user29 the folder is: _full_data_csv-user29_
 
 
