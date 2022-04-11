@@ -117,8 +117,10 @@ Before installing Open Data Hub you need to copy the KFDef file from a oublic gi
           - custom-image
         parameters:
           - name: OCP_APPS_URI
-            # TODO: Change this uri before applying the KfDef
-            value: .apps.cluster-9482.9482.sandbox744.opentlc.com
+            # Change the line below to match your cluster URI. 
+            # Using the URI from your OpenShift cluster, copy everything from .apps onwards
+            # and replace the value below.
+            value: .apps.rosa-5a98.ibhp.p1.openshiftapps.com
         repoRef:
           name: manifests
           path: ml-workshop-airflow2
