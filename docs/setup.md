@@ -25,11 +25,11 @@ Using the example below:
 2. Change directory into the root dir, *_*ml-workshop*_*.  
 3. Create a variable *REPO_HOME*_ for this directory
 
-*<span style="color:yellow">REVISIT: Change to a non-personal repo, and clone based on a tag/branch:  
-git clone -b tag --single-branch https:// github.com/bryonbaker/ml-workshop<span>*
+*<span style="color:yellow">REVISIT: Change to use a clone based on a tag/branch: 
+git clone -b tag --single-branch https://github.com/odh-labs/ml-workshop.git<span>*
 
 ```
-git clone https://github.com/bryonbaker/ml-workshop
+git clone https://github.com/odh-labs/ml-workshop.git
 cd ml-workshop
 export REPO_HOME=`pwd`
 ```
