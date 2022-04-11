@@ -1,6 +1,6 @@
-Lab 4 - Data Analytics
+# Lab 4 - Data Analytics
 
-**Introduction**
+## Introduction
 
 One of the first things your data analysts and data engineers will need
 to do is analyse the raw data, with a view to preparing and transforming
@@ -36,7 +36,7 @@ In Superset, using Trino, we\'ve created two logical SQL tables
 corresponding to underlying data sets as well as a query joining them on
 customer id.
 
-**Instructions for the Trino backed Superset workshop**
+## Instructions for the Trino backed Superset workshop
 
 Login to OpenShift using the credentials your administrator gave you.
 Ensure your workshop project ml-workshop is selected.
