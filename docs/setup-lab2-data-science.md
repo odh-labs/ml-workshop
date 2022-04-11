@@ -76,7 +76,7 @@ Conversion notes:
 <p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
 
 
-Lab 2 - Data Science
+# Lab 2 - Data Science #
 
 **Introduction** 
 
@@ -91,12 +91,7 @@ Next, we feature three Jupyter notebooks the data scientist uses, pulling the pr
     3. Share their experiments with others. In this way, we’re allowing silos between different actors in the workflow
 3. They then choose one of their experiments, which they wish to proceed with and push to production - in the next part of the workflow, the ML OPs phase
 
-This diagram illustrates the workflow we’re implementing - the Data Science part of the overall AI/ML workflow:
-
-
-
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
+This diagram illustrates the section we’re implementing - the Data Science part of the overall AI/ML workflow:
 
 ![alt_text](setup-lab2-data-science-images/ds-churn-diagram-data-scientist.png "image_tooltip")
 
@@ -113,13 +108,8 @@ Choose the **Administration perspective**
 
 
 1. Navigate to **Networking > Routes**. 
-2. Filter on _minio_ - and open the _minio-ml-workshop-ui_ route as shown. \
-
-
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image2.png "image_tooltip")
+2. Filter on _minio_ - and open the _minio-ml-workshop-ui_ route as shown. 
+![alt_text](setup-lab2-data-science-images/ds-routes-minio.png "image_tooltip")
 
 3. Enter the username and password minio / minio123 
 
