@@ -134,12 +134,7 @@ Minio displays the file(s) you created in the Data Engineering lab
 
 Minio displays a panel containing the details of the file you created in the Data Engineering lab. 
 
-
-
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image7.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image7.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-minio-data-bucket-filename.png "image_tooltip")
 
 
 
