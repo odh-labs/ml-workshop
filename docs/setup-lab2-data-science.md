@@ -85,7 +85,7 @@ Next, we feature three Jupyter notebooks the data scientist uses, pulling the pr
 
 
 - They first visualise the data - to understand patterns in the data and whether there are any errors they need to fix before experimenting and training their models.
-- They then experiment with different algorithms, parameters and hyperparameters. They push each experiment to the model repository, Verta. This repository contains all of the data and the actual model binaries should they wish to
+- They then experiment with different algorithms, parameters and hyperparameters. They push each experiment to the model repository, ML FLow. This repository contains all of the data and the actual model binaries should they wish to
     1. Compare different experiments
     2. Return to and retrieve any experiment they ran
     3. Share their experiments with others. In this way, we’re allowing silos between different actors in the workflow
@@ -276,7 +276,7 @@ At this point, as a data scientist, we have a good understanding of the data. No
 
 As we experiment, we want our notebook to create an experiment id for every experiment (which is guaranteed to be unique within our team, as it uses user id and timestamp as a basis). 
 
-This experiment id is then used as an identifier when we push our experiment metadata and binaries to our model repository, Verta. In this way, we retrieve and repeat any experiment we have done, as well as share this experiment with other team members, breaking down silos between teams and individuals in AI//ML workflows.
+This experiment id is then used as an identifier when we push our experiment metadata and binaries to our model repository, ML Flow. In this way, we retrieve and repeat any experiment we have done, as well as share this experiment with other team members, breaking down silos between teams and individuals in AI//ML workflows.
 
 
 1. Using the File Explorer, open the **Model_Experiments.ipynb** notebook. 
@@ -305,79 +305,47 @@ You will now step through the notebook one cell at a time.
 
 1. Do imports - more applicable when we want to use _Ray_.
 2. More imports of libraries we need
-3. See _watermark _description of this cell above in - **_first Data Science workshop - Visualisation_**
+3. See _watermark_ description of this cell above in - **_first Data Science workshop - Visualisation_**
 
-
-
-<p id="gdcalert23" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image23.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert24">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image23.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-model-experiments-3.png "image_tooltip")
 
 
 
 
-1. Here we pull in the user-specific parameters you added earlier to **hyper_parameters.py **for use in the file.
-2. Here we add some simple integration code - to allow the data scientist 
+4. Here we pull in the user-specific parameters you added earlier to **parameters.py** for use in the file.
+5. Here we add some simple integration code - to allow the data scientist 
     1. Retrieve the CSV file prepared earlier data engineer, from Minio S3 object storage
     2. Participate their work in the workflow. \
 The HOST line on top and 4 lines using ml-flow is all they need to  push all of their experiments to our model registry** Ml Flow**
-3. Here we retrieve the CSV we prepared in the Data Engineer lab earlier and output the first 5 lines of the file - so the data scientist can get a quick view of the data.
+6. Here we retrieve the CSV we prepared in the Data Engineer lab earlier and output the first 5 lines of the file - so the data scientist can get a quick view of the data.
 
 Run all the way down to cell 17, _Feature Engineering Pipeline_, as all cells until then are discussed above  in - **_first Data Science workshop - Visualisation_**
 
+![alt_text](setup-lab2-data-science-images/ds-model-experiments-4.png "image_tooltip")
 
+17. Here we use an Ordinal Encoder to convert simple binary values to a numeric representation. Output the data after applying the Ordinal Encoder.
+18. Here we use a One Hot Encoder to convert multi valued features to a numeric representation. Output the data after applying the One Hot Encoder.
+19. Here we split our data set into a training and a testing set, and discard unwanted columns customer id and our labeled column Churn.  
+20. Further data set refinement.
 
-<p id="gdcalert24" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image24.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert25">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+![alt_text](setup-lab2-data-science-images/ds-model-experiments-5.png "image_tooltip")
+ 
+21. Create a DecisionTreeClassifier with these hyper parameters
+22. User GridSearch to output the best model / hyper parameters from the combinations supplied to its _fit_ method.
+23. Print out those best model parameters
+24. Use K-Folds cross-validator to split data into train/test sets. Create a dictionary of hyperparameter candidates, train the model using a DecisionTreeClassifier. Print and store hyperparameters and accuracy in ML Flow and tag using 'DecisionTreeClassifier''. The **_store_** method push this metadata to ML Flow, which you’ll see below.
 
-
-![alt_text](setup-lab2-data-science-images/image24.png "image_tooltip")
-
-
-
-
-1. Here we use an Ordinal Encoder to convert simple binary values to a numeric representation. Output the data after applying the Ordinal Encoder.
-2. Here we use a One Hot Encoder to convert multi valued features to a numeric representation. Output the data after applying the One Hot Encoder.
-3. Here we split our data set into a training and a testing set, and discard unwanted columns customer id and our labeled column Churn.  
-4. Further data set refinement.
-
- \
- \
-
-
-<p id="gdcalert25" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image25.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert26">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image25.png "image_tooltip")
- \
+![alt_text](setup-lab2-data-science-images/ds-model-experiments-6.png "image_tooltip")
 
 
 
-
-1. Create a DecisionTreeClassifier with these hyper parameters
-2. User GridSearch to output the best model / hyper parameters from the combinations supplied to its _fit_ method.
-3. Print out those best model parameters
-4. Use K-Folds cross-validator to split data into train/test sets. Create a dictionary of hyperparameter candidates, train the model using a DecisionTreeClassifier. Print and store hyperparameters and accuracy in Verta and tag using 'DecisionTreeClassifier''. The **_store_** method lushes this metadata to Verta, which you’ll see below.
-
-
-
-<p id="gdcalert26" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image26.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert27">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image26.png "image_tooltip")
-
-
-
-
-1. Modify the 3rd line substituting your username in place of user29.  \
+25. Modify the 3rd line substituting your username in place of user29.
 Then we create a Random Forest Classifier with these hyper parameters. 
-2. This cell and cell 27 are equivalents of the previous Decision Tree classifier cells.
+26. This cell and cell 27 are equivalents of the previous Decision Tree classifier cells.
 
-**Part 3: Visualise the Model Experiments.**
+## Part 3: Visualise the Model Experiments. ##
 
 Let’s use our model registry **Ml-Flow** to analyse compare the model performance. 
-
-
 
 1. Open the OpenShift console tab in your browser.
 2. Select the **Administrator Perspective**.
@@ -385,73 +353,32 @@ Let’s use our model registry **Ml-Flow** to analyse compare the model performa
 4. Type **_mlflow_** in the Filter text box. \
 OpenShift will display the link to the **_Ml Flow_** tool.
 
+![alt_text](setup-lab2-data-science-images/ds-routes-mlflow.png "image_tooltip")
+
+1. Click the hyperlink in the **Location** column \
+OpenShift will launch the **Ml-Flow** console in a new browser tab. 
+
+2. After logging in with your OpenShift credentials, you’ll be presented with a screen like this - showing all users’ experiments. 
+
+![alt_text](setup-lab2-data-science-images/ds-mlflow-1.png "image_tooltip")
 
 
-<p id="gdcalert27" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image27.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert28">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+3. Filter on CustomerChurn-**userXX** , replacing **userXX ** with your username in my case CustomerChurn-user30 - so you only see your own experiments. 
+
+![alt_text](setup-lab2-data-science-images/ds-mlflow-2.png "image_tooltip")
 
 
-![alt_text](setup-lab2-data-science-images/image27.png "image_tooltip")
-
-
-
-
-5. Click the hyperlink in the **Location** column \
-OpenShift will launch the **Ml-Flow** console in a new browser tab. \
- \
- \
- \
- \
- \
- \
- \
- \
- \
- \
- \
- \
-
-6. After logging in with your OpenShift credentials, you’ll be presented with a screen like this - showing all users’ experiments. \
-
-
-<p id="gdcalert28" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image28.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert29">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image28.png "image_tooltip")
- \
-
-7. Filter on CustomerChurn-**userXX** , replacing **userXX ** with your username in my case CustomerChurn-user30 - so you only see your own experiments. 
-
-    
-
-<p id="gdcalert29" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image29.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert30">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image29.png "image_tooltip")
-
-
-8. Click on the link under Start Time - to drill into one. You can see that out of the box, just by adding the simple **_mlflow_** based integration code you added earlier to your notebook, out of the box, you get a fantastic amount of useful information. Including
+4. Click on the link under Start Time - to drill into one. You can see that out of the box, just by adding the simple **_mlflow_** based integration code you added earlier to your notebook, out of the box, you get a fantastic amount of useful information. Including
     1. every experiment gets an id - which s useful for sharing and traceability purposes later
     2. your parameters are recorded as shown:
 
-
-
-<p id="gdcalert30" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image30.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert31">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image30.png "image_tooltip")
-
+![alt_text](setup-lab2-data-science-images/ds-mlflow-3.png "image_tooltip")
 
 Scroll down and you see you get more - parameters, metrics, tags and artifacts associated with the experiment’s model output - binaries, yaml, json etc..
 
 You also get the option to register the model - if you want to push it to production for example. Later on, you’ll do this.
 
-
-
-<p id="gdcalert31" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image31.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert32">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image31.png "image_tooltip")
-
+![alt_text](setup-lab2-data-science-images/ds-mlflow-4.png "image_tooltip")
 
 Ml Flow is a very powerful capability for the following reasons. Every experiment that is ever run:
 
@@ -462,25 +389,18 @@ Ml Flow is a very powerful capability for the following reasons. Every experimen
 * each experiment can be easily retrieved and repeated here by **_the same_** data scientist
 * each experiment can be easily shared then retrieved and repeated here by **_other_** data scientists
 
-**Part 4: Train the Model**
+## Part 4: Train the Model ##
 
 Now following examination of our experiments In Ml Flow, let’s assume for performance reasons, as a data scientist, you’ve decided to proceed with the Decision Tree Classifier experiment and push that model to production.
-
 
 
 1. Go back to Jupyter Hub and ensure you’re in **ml-workshop-improved/notebook**
 2. Open the **_Train_Model.ipynb Jupyter _**notebook.
 
-
-
-<p id="gdcalert32" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image32.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert33">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image32.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-train-model-1.png "image_tooltip")
 
 
 You have already encountered most of the cells here in the 2 previous notebooks. Therefore, we will just it describe at a high level here - then you can run the notebook yourself.
-
 
 
 * Assume the data scientist did the two experiments you ran previously in the **_Model_Experiments.ipynb_** notebook. (in reality, they would probably run a lot more than two)
@@ -489,13 +409,13 @@ You have already encountered most of the cells here in the 2 previous notebooks.
 
 Now run the **_Train_Model.ipynb Jupyter _**notebook - cell by cell by continually hitting **SHIFT + ENTER**, on by choosing menu item** Kernel > Restart Kernel and Run all Cells**
 
-**Part 6: Register the chosen Model**
+## Part 5: Register the chosen Model ##
 
 Go back to ML Flow - as described above in section **Part 3: Visualise the Model Experiments** 
 
 Find your latest experiment as described above. This will be the one associated with the **_Train_Model.ipynb _**experiment.(it needs to be this one - as the 2 encoder binaries are pushed to the repo).
 
-Verify this by navigating down to Artifacts as described above in  **Part 3: Visualise the Model Experiments.** Make sure the 2 encoders are there. If not, you probably selected the wrong experiment on the previous page. Make sure you have chosen the most recent.
+Verify this by navigating down to Artifacts as described above in  _Part 3: Visualise the Model Experiments._ Make sure the 2 encoders are there. If not, you probably selected the wrong experiment on the previous page. Make sure you have chosen the most recent.
 
 
 
