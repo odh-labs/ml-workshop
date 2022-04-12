@@ -1,4 +1,4 @@
-def get_hyper_paras():
+def get_params():
     # ##########################################################################
     #
     # PLACE YOUR STUDENT CONFIGURATION INFORMATION IN THIS SECTION OF THE CODE
