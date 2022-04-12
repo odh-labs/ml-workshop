@@ -192,28 +192,15 @@ JupyterHub displays the Start Notebook Server page.
 
 Jupyterhub starts the notebook server for the Data Scientist.
 
-
-
-<p id="gdcalert12" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image12.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert13">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image12.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-jhub-starting.png "image_tooltip")
 
 
 After a few minutes the notebook will have started and the Jupyter notebook will be displayed.
 
-
-
-<p id="gdcalert13" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image13.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert14">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image13.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-jhub-default-file-view.png "image_tooltip")
 
 
 Observe:
-
-
-
 * The same _ml-workshop-improved_ folder we previously pulled down from our GitHub repository \
 git clone [https://github.com/bryonbaker/ml-workshop-improved](https://github.com/bryonbaker/ml-workshop-improved) 
 
@@ -221,36 +208,25 @@ git clone [https://github.com/bryonbaker/ml-workshop-improved](https://github.co
 
 
 
-* Navigate to ​​**ml-workshop-improved/notebook **and open **hyper_parameters.py**
+* Navigate to ​​**ml-workshop-improved/notebook** and open **parameters.py**
 * Locate line of code with **minioFilename** and paste the file name you saved earlier (**YOUR_CSV_FILE**) in this lab into the code as illustrated below. Note, your file name will be unique to you
 
+![alt_text](setup-lab2-data-science-images/ds-parameters-file-miniofilename.png "image_tooltip")
 
 
-<p id="gdcalert14" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image14.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert15">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+- Click **File + Save** to save the file.
 
+Now to run your first notebook, double click the file **Visulaise_Data.ipynb** as shown
 
-![alt_text](setup-lab2-data-science-images/image14.png "image_tooltip")
+# TODO screenshot has wrong filename #
 
-
-
-
-9. Click** File > Save to **save the file.
-
-Now to run your first notebook, double click the file **Visulaise_Model.ipynb** as shown  \
-(The name is a little misleading - it’s really there to visualise the <span style="text-decoration:underline;">data</span> not the <span style="text-decoration:underline;">model.</span>)
-
-
-
-<p id="gdcalert15" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image15.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert16">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image15.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-visualise-data-1.png "image_tooltip")
 
 
 
 
-10. Scroll up to the top of the notebook
-11. Click in cell **[1]**.
+1.  Scroll up to the top of the notebook
+2.  Click in cell **[1]**.
 
 You will now step through the notebook one cell at a time.
 
@@ -260,78 +236,41 @@ You will now step through the notebook one cell at a time.
 
 Now, as previously, select the first cell and walk through each cell executing you go by clicking SHIFT + RETURN.
 
-
-
-<p id="gdcalert16" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image16.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert17">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image16.png "image_tooltip")
-
-
-
+![alt_text](setup-lab2-data-science-images/ds-visualise-data-2.png "image_tooltip")
 
 1. Import our desired Python libraries. (notice we don’t need to do any **_pip install_**s - our administrator has bundled all of our required libraries into this base container image - which we selected earlier the _MLWorkShop Notebook Image_)
 2. _watermark_ outputs the versions of various components, libraries, operating system attributes etc.
 3. Here we connect to our S3 object store, Minio, using the URL and credentials shown
+![alt_text](setup-lab2-data-science-images/ds-visualise-data-3.png "image_tooltip")
+
+4. In this cell we also output the first 5 lines of the file - so the data scientist can get a quick view of the data.
+5. We output the dimensions of the data in rows and columns (features)
+6. Here we output various data around the columns (features) including their types, names etc
+7. Using _describe(), _we output various statistical data associated with the entire dataset, max, mean etc. values for numeric columns.
+
+![alt_text](setup-lab2-data-science-images/ds-visualise-data-4.png "image_tooltip")
+
+8. We output the sum of rows with null values with nulls - to assess data for errors, e.g null for _charges_ indicates an error.
+9. Here we output the total count of the **_labeled _**column, Churn. We need a decent spread, and we have it - with just over 2 to 1.
+10. Here we make a simple conversion from Yes and  No to 1 and 0, to facilitate plotting.
+
+![alt_text](setup-lab2-data-science-images/ds-visualise-data-5.png "image_tooltip")
 
 
-
-<p id="gdcalert17" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image17.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert18">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image17.png "image_tooltip")
-
-
-
-
-1. In this cell we also output the first 5 lines of the file - so the data scientist can get a quick view of the data.
-2. We output the dimensions of the data in rows and columns (features)
-3. Here we output various data around the columns (features) including their types, names etc
-4. Using _describe(), _we output various statistical data associated with the entire dataset, max, mean etc. values for numeric columns.
-
-
-
-<p id="gdcalert18" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image18.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert19">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image18.png "image_tooltip")
-
-
-
-
-1. We output the sum of rows with null values with nulls - to assess data for errors, e.g null for _charges_ indicates an error.
-2. Here we output the total count of the **_labeled _**column, Churn. We need a decent spread, and we have it - with just over 2 to 1.
-3. Here we make a simple conversion from Yes and  No to 1 and 0, to facilitate plotting.
-
-
-
-<p id="gdcalert19" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image19.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert20">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image19.png "image_tooltip")
+11.  This cell visually outputs churn count by various features in the data set
+    
+![alt_text](setup-lab2-data-science-images/ds-visualise-data-6.png "image_tooltip")
 
 
 
 
-1. This cell visually outputs churn count by various features in the data set
+12. Replace spaces with numpy NAN values
+13. Output sum of NAN and None values
+14. Convert to numeric
+15. Fill NANs with the mean
+16. Here we output a box plot - a useful visualization of 2 dimensions by the labeled column _Churn_
 
-
-
-<p id="gdcalert20" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image20.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert21">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image20.png "image_tooltip")
-
-
-
-
-1. Replace spaces with numpy NAN values
-2. Output sum of NAN and None values
-3. Convert to numeric
-4. Fill NANs with the mean
-5. Here we output a box plot - a useful visualization of 2 dimensions by the labeled column _Churn_
-
-**Part 2: Experiment with Models**
+## Part 2: Experiment with Models ## 
 
 At this point, as a data scientist, we have a good understanding of the data. Now it's time to start experimenting with different models, parameters and hyper parameters.
 
@@ -340,24 +279,18 @@ As we experiment, we want our notebook to create an experiment id for every expe
 This experiment id is then used as an identifier when we push our experiment metadata and binaries to our model repository, Verta. In this way, we retrieve and repeat any experiment we have done, as well as share this experiment with other team members, breaking down silos between teams and individuals in AI//ML workflows.
 
 
-
-1. Using the File Explorer, open the **Model_Experiments.ipynb** notebook. \
+1. Using the File Explorer, open the **Model_Experiments.ipynb** notebook. 
 Jupyterhub opens the code windows.
 
 
-
-<p id="gdcalert21" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image21.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert22">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image21.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-model-experiments-1.png "image_tooltip")
 
 
 Next, just as you did in the previous lab you will step through the code one cell at a time. **Note there are 3 changes you’ll need to make to your cells - which we’ll highlight below.**
 
 
-
-2. Scroll up to the top of the notebook
-3. Click in cell **[1]**.
+1. Scroll up to the top of the notebook
+2. Click in cell **[1]**.
 
 You will now step through the notebook one cell at a time.
 
@@ -365,12 +298,7 @@ You will now step through the notebook one cell at a time.
 
 4. Type **[Shift] + [Return]** to step through each cell in the notebook.
 
-
-
-<p id="gdcalert22" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image22.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert23">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image22.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-model-experiments-2.png "image_tooltip")
 
 
 
