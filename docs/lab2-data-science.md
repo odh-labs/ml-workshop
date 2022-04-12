@@ -62,14 +62,12 @@ Our workflow has created this file - and as such allows eaiser collaboration and
 Now to our Data Science focused Jupyter notebooks. As we did with Minio, we will find the url for Jupyterhub within the routes of the OpenShift console.
 
 
-
 1. Open the browser tab with the OpenShift console.
 2. Open the **Administrator perspective**.
 3. Click **Networking > Routes**. 
 4. Type **Jupyterhub** in the **Filter** text box.
 
 OpenShift reduces the list of routes as you type the filter.
-
 
 
 5. Click the Jupyterhub link in the **Location** column of the **Routes** display. 
@@ -103,7 +101,7 @@ Observe:
 * The same _ml-workshop_ folder we previously pulled down from our GitHub repository \
 git clone [https://github.com/odh-labs/ml-workshop](https://github.com/odh-labs/ml-workshop) 
 
-Now to run your first notebook, double click the file **Visulaise_Data.ipynb** as shown
+Now to run your first data science notebook, navigate to ml-workshop/src/notebooks/ and open Visualise_Data.ipynb
 
 <img src="./images/lab2-data-science/ds-visualise-data-1.png " alt="drawing" width="500"/> 
 
