@@ -1,80 +1,3 @@
-<!-- Copy and paste the converted output. -->
-
-<!-----
-
-You have some errors, warnings, or alerts. If you are using reckless mode, turn it off to see inline alerts.
-* ERRORs: 0
-* WARNINGs: 0
-* ALERTS: 42
-
-Conversion time: 16.999 seconds.
-
-
-Using this Markdown file:
-
-1. Paste this output into your source file.
-2. See the notes and action items below regarding this conversion run.
-3. Check the rendered output (headings, lists, code blocks, tables) for proper
-   formatting and use a linkchecker before you publish this page.
-
-Conversion notes:
-
-* Docs to Markdown version 1.0β33
-* Mon Apr 11 2022 15:47:32 GMT-0700 (PDT)
-* Source doc: AI/ML on OpenShift Workshop - V2 - Lab 2 - Data Science
-* This document has images: check for >>>>>  gd2md-html alert:  inline image link in generated source and store images to your server. NOTE: Images in exported zip file from Google Docs may not appear in  the same order as they do in your doc. Please check the images!
-
------>
-
-
-<p style="color: red; font-weight: bold">>>>>>  gd2md-html alert:  ERRORs: 0; WARNINGs: 0; ALERTS: 42.</p>
-<ul style="color: red; font-weight: bold"><li>See top comment block for details on ERRORs and WARNINGs. <li>In the converted Markdown or HTML, search for inline alerts that start with >>>>>  gd2md-html alert:  for specific instances that need correction.</ul>
-
-<p style="color: red; font-weight: bold">Links to alert messages:</p><a href="#gdcalert1">alert1</a>
-<a href="#gdcalert2">alert2</a>
-<a href="#gdcalert3">alert3</a>
-<a href="#gdcalert4">alert4</a>
-<a href="#gdcalert5">alert5</a>
-<a href="#gdcalert6">alert6</a>
-<a href="#gdcalert7">alert7</a>
-<a href="#gdcalert8">alert8</a>
-<a href="#gdcalert9">alert9</a>
-<a href="#gdcalert10">alert10</a>
-<a href="#gdcalert11">alert11</a>
-<a href="#gdcalert12">alert12</a>
-<a href="#gdcalert13">alert13</a>
-<a href="#gdcalert14">alert14</a>
-<a href="#gdcalert15">alert15</a>
-<a href="#gdcalert16">alert16</a>
-<a href="#gdcalert17">alert17</a>
-<a href="#gdcalert18">alert18</a>
-<a href="#gdcalert19">alert19</a>
-<a href="#gdcalert20">alert20</a>
-<a href="#gdcalert21">alert21</a>
-<a href="#gdcalert22">alert22</a>
-<a href="#gdcalert23">alert23</a>
-<a href="#gdcalert24">alert24</a>
-<a href="#gdcalert25">alert25</a>
-<a href="#gdcalert26">alert26</a>
-<a href="#gdcalert27">alert27</a>
-<a href="#gdcalert28">alert28</a>
-<a href="#gdcalert29">alert29</a>
-<a href="#gdcalert30">alert30</a>
-<a href="#gdcalert31">alert31</a>
-<a href="#gdcalert32">alert32</a>
-<a href="#gdcalert33">alert33</a>
-<a href="#gdcalert34">alert34</a>
-<a href="#gdcalert35">alert35</a>
-<a href="#gdcalert36">alert36</a>
-<a href="#gdcalert37">alert37</a>
-<a href="#gdcalert38">alert38</a>
-<a href="#gdcalert39">alert39</a>
-<a href="#gdcalert40">alert40</a>
-<a href="#gdcalert41">alert41</a>
-<a href="#gdcalert42">alert42</a>
-
-<p style="color: red; font-weight: bold">>>>>> PLEASE check and correct alert issues and delete this message and the inline alerts.<hr></p>
-
 
 # Lab 2 - Data Science #
 
@@ -417,54 +340,27 @@ Find your latest experiment as described above. This will be the one associated 
 
 Verify this by navigating down to Artifacts as described above in  _Part 3: Visualise the Model Experiments._ Make sure the 2 encoders are there. If not, you probably selected the wrong experiment on the previous page. Make sure you have chosen the most recent.
 
-
-
-<p id="gdcalert33" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image33.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert34">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image33.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-register-model-1.png "image_tooltip")
 
 
 Now we need to register a Model in ML Flow - to which we add our chosen experiment - for later deployment to production. 
 
 Leave this tab open and open  ML Flow again - this time in a separate tab. Choose **Models** and **Create  Model**:
 
-
-
-<p id="gdcalert34" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image34.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert35">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image34.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-register-model-2.png "image_tooltip")
 
 
 Name your model your _username-model**, **_i.e.**  uXX** and click **Create**
 
-
-
-<p id="gdcalert35" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image35.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert36">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image35.png "image_tooltip")
-
+![alt_text](setup-lab2-data-science-images/ds-register-model-3.png "image_tooltip")
 
 Close this tab and go back to your other open Ml Flow tab. Click **Register Model**
 
-
-
-<p id="gdcalert36" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image36.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert37">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image36.png "image_tooltip")
-
+![alt_text](setup-lab2-data-science-images/ds-register-model-4.png "image_tooltip")
 
 Choose your newly registered model and click **Register**:
 
-
-
-<p id="gdcalert37" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image37.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert38">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image37.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-register-model-5.png "image_tooltip")
 
 
 You can see a new model is created with version 1. Each time you register a new model under this model name, its version is incremented. 
@@ -473,12 +369,7 @@ We’re now ready to run an Airflow deployment pipeline to deploy this chosen mo
 
 Move back to Jupyter Hub, navigate to **ml-workshop-improved/airflow/deploy_model/ocp/** and open **deploy_model.pipeline**. ocp_deploy.py should already be there on the canvas as shown:
 
-
-
-<p id="gdcalert38" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image38.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert39">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image38.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-model-pipeline-1.png "image_tooltip")
 
 
 Right click on the **ocp_deploy.py** pipeline element and choose **Properties**.Ensure your selections look like the screenshot below. Pay particular attention to MODEL_NAME - you’ll need to change it to:
@@ -491,47 +382,29 @@ As this is the first version, you should not need to change your MODEL_VERSION y
 
 This is how it should look:
 
- 
-
-<p id="gdcalert39" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image39.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert40">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image39.png "image_tooltip")
-
+![alt_text](setup-lab2-data-science-images/ds-model-pipeline-2.png "image_tooltip")
 
 Save your work by clicking on the **Save** button
 
-<p id="gdcalert40" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image40.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert41">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image40.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-model-pipeline-3.png "image_tooltip")
 
 
 **Run Pipeline**
 
 You can now run your pipeline. Click the Play button as shown. A useful naming convention is to enter a name in a format beginning with your username - followed by the month and day and the count of runs that day. This sends each run to the bottom of the list on the Airflow GUI.
 
-something like **userXX**-**MMDD**-01-deploy-model, in my case **_user30-0223-10-deploy-model_**. Also choose your Airflow Runtime and Runner as shown:
+Name it something like **userXX**-**MMDD**-01-deploy-model, in my case **_user30-0223-10-deploy-model_**. Also choose your Airflow Runtime and Runner as shown:
 
-<p id="gdcalert41" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image41.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert42">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image41.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-model-pipeline-4.png "image_tooltip")
 
 
 After 2 informational popups, your pipeline will kick off.
 
 Now it’s time to view your pipeline in our workflow scheduler Airflow.
 
-The same way you did previously with the Data Engineer pipeline, in a browser, open your **Airflow Route URL.** After logging in with your OpenShift credentials. click DAGs and again filter on your username - and you’ll see something like this:
+The same way you did previously with the Data Engineer pipeline, in a browser, open your **Airflow Route URL.** After logging in with your OpenShift credentials. Click DAGs and again filter on your username - and you’ll see something like this:
 
-
-
-<p id="gdcalert42" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image42.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert43">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image42.png "image_tooltip")
-
+![alt_text](setup-lab2-data-science-images/ds-airflow-1.png "image_tooltip")
 
 You should see your pipeline runs - including the deploy model one you just kicked off. Browse around as before - check logs, see how it can be used to schedule this job periodically etc.
 
