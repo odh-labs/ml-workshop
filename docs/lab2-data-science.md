@@ -127,20 +127,7 @@ Observe:
 * The same _ml-workshop_ folder we previously pulled down from our GitHub repository \
 git clone [https://github.com/odh-labs/ml-workshop](https://github.com/odh-labs/ml-workshop) 
 
-**Before we get going, you need to make some small changes to the code.**
-
-
-* Navigate to ​​**ml-workshop-improved/notebook** and open **parameters.py**
-* Locate line of code with **minioFilename** and paste the file name you saved earlier (**YOUR_CSV_FILE**) in this lab into the code as illustrated below. Note, your file name will be unique to you
-
-<img src="./images/lab2-data-science/ds-parameters-file-miniofilename.png " alt="drawing" width="500"/> 
-
-
-- Click **File + Save** to save the file.
-
 Now to run your first notebook, double click the file **Visulaise_Data.ipynb** as shown
-
-# TODO screenshot has wrong filename #
 
 <img src="./images/lab2-data-science/ds-visualise-data-1.png " alt="drawing" width="500"/> 
 
