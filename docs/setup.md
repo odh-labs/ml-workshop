@@ -159,7 +159,7 @@ The password for all users is **openshift**.
 
 ## Configure the S3 Storage
 
-### Upload Files to the rawdata Bucket
+### Upload File to the rawdata Bucket
 
 In this section we will upload the files that will be used for feature engineering. The files are located in the **data-files** directory in the ml-workshop git project you cloned earlier.
 
@@ -184,7 +184,7 @@ Minio displays the main console and all of the existing S3 buckets.
 8. Click **Browse**.  
 Minio displays the bucket contents.  
 
-You will now upload two folders (**customers** and **products**) to the *rawdata* bucket.
+You will now upload a folder (**customers**) to the *rawdata* bucket.
 
 ### Upload the *customers* data
 
