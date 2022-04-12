@@ -28,13 +28,13 @@ def get_params():
     return user_id, PROJECT_NAME, EXPERIMENT_NAME, experiment_name, s3BucketFullPath
 
 
-def download_csv_files(minioClient, s3FolderPath):
+def download_csv_files(minio_client, s3_folder_path):
     # not tested code
     # it will get all the files from the user bucket
-    csv_files = minioClient.list_objects("data", recursive=True, prefix=f"/{s3FolderPath}")
+    csv_files = minio_client.list_objects("data", recursive=True, prefix=f"/{s3_folder_path}")
     for csv_object in csv_files:
         print(csv_object)
         csv_object_name = csv_object.object_name
         if csv_object_name.endswith('csv'):
             # minioClient.fget_object('data', csv_object_name, csv_object_name.split("/")[-1])
-            minioClient.fget_object('data', csv_object_name, "/tmp/data.csv")
+            minio_client.fget_object('data', csv_object_name, "/tmp/data.csv")
