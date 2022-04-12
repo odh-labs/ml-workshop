@@ -24,7 +24,7 @@ these stages are executed:
 
 -   Deploy Model
 
-![](setup-mlops-images/image3.png){width="6.0in"
+![alt_text](images/lab3-mlops/image3.png){width="6.0in"
 height="2.0555555555555554in"}
 
 During this phase, we also utilise the model serving component Seldon,
@@ -49,7 +49,7 @@ You are now ready to test the API to your model.
 
 4.  Filter on your username and append *model*, i.e. **userXX-model** ,in my case **user30-model** as shown below.
 
-![](setup-mlops-images/image2.png){width="6.932292213473316in"
+![alt_text](images/lab3-mlops/image2.png){width="6.932292213473316in"
 height="2.539433508311461in"}
 
 The URL under the Locations column is the URL our pipeline has created
@@ -67,7 +67,7 @@ access a free web version here:
 Open Postman, and create a new Workspace and add a new Collection and
 then a new Request to it. Populate is as follows:
 
-![](setup-mlops-images/image1.png){width="7.057292213473316in"
+![alt_text](images/lab3-mlops/image1.png){width="7.057292213473316in"
 height="2.413692038495188in"}
 
 1.  Choose the POST method
@@ -90,7 +90,7 @@ height="2.413692038495188in"}
 
 Here you see a sample response.
 
-![](setup-mlops-images/image6.png){width="6.0in"
+![alt_text](images/lab3-mlops/image6.png){width="6.0in"
 height="3.6944444444444446in"}
 
 Observe the response - comprising two fields:
