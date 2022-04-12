@@ -84,12 +84,12 @@ Next, we feature three Jupyter notebooks the data scientist uses, pulling the pr
 
 
 
-1. They first visualise the data - to understand patterns in the data and whether there are any errors they need to fix before experimenting and training their models.
-2. They then experiment with different algorithms, parameters and hyperparameters. They push each experiment to the model repository, Verta. This repository contains all of the data and the actual model binaries should they wish to
+- They first visualise the data - to understand patterns in the data and whether there are any errors they need to fix before experimenting and training their models.
+- They then experiment with different algorithms, parameters and hyperparameters. They push each experiment to the model repository, Verta. This repository contains all of the data and the actual model binaries should they wish to
     1. Compare different experiments
     2. Return to and retrieve any experiment they ran
     3. Share their experiments with others. In this way, we’re allowing silos between different actors in the workflow
-3. They then choose one of their experiments, which they wish to proceed with and push to production - in the next part of the workflow, the ML OPs phase
+- They then choose one of their experiments, which they wish to proceed with and push to production - in the next part of the workflow, the ML OPs phase
 
 This diagram illustrates the section we’re implementing - the Data Science part of the overall AI/ML workflow:
 
@@ -107,28 +107,28 @@ Choose the **Administration perspective**
 
 
 
-1. Navigate to **Networking > Routes**. 
-2. Filter on _minio_ - and open the _minio-ml-workshop-ui_ route as shown. 
+- Navigate to **Networking > Routes**. 
+- Filter on _minio_ - and open the _minio-ml-workshop-ui_ route as shown. 
 ![alt_text](setup-lab2-data-science-images/ds-routes-minio.png "image_tooltip")
 
-3. Enter the username and password minio / minio123 
+- Enter the username and password minio / minio123 
 ![alt_text](setup-lab2-data-science-images/ds-minio-buckets.png "image_tooltip")
 
 
-1. Scroll down to the **data** bucket, and click the **Browse**. \
+- Scroll down to the **data** bucket, and click the **Browse**. \
 Minio displays a list of folders in the _data_ bucket. The folder-name format is: “_full_data_csv-&lt;your username>_” E.g. For user29 the folder is: _full_data_csv-user29_
 
 ![alt_text](setup-lab2-data-science-images/ds-minio-data-bucket.png "image_tooltip")
 
 
-1. Scroll through the list of folders and locate the folder with your username \
+- Scroll through the list of folders and locate the folder with your username \
 **Note**: There will be many folders there - be sure to identify the one containing **your username.**
-6. Click the folder that corresponds to your username. \
+- Click the folder that corresponds to your username. \
 Minio displays the file(s) you created in the Data Engineering lab
 
 ![alt_text](setup-lab2-data-science-images/ds-minio-user-folder.png "image_tooltip")
 
-1. Click the file with name starting with “part”:
+- Click the file with name starting with “part”:
 ![alt_text](setup-lab2-data-science-images/ds-minio-user-bucket-part.png "image_tooltip")
 
 
@@ -139,38 +139,28 @@ Minio displays a panel containing the details of the file you created in the Dat
 
 
 
-1. Highlight the filename path as shown below and copy the text to the clipboard. E.g. <code>[part-00000-f53c1282-b53d-4b86-9f8d-](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)1b2eded4d09d[-c000.csv](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)</code>
+- Highlight the filename path as shown below and copy the text to the clipboard. E.g. <code>[part-00000-f53c1282-b53d-4b86-9f8d-](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)1b2eded4d09d[-c000.csv](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)</code>
 
-
-
-<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image8.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image8.png "image_tooltip")
+![alt_text](setup-lab2-data-science-images/ds-minio-data-bucket-filename-highlight.png "image_tooltip")
 
 
 
 
-9. Copy this text to the Clipboard (E.g. Ctrl-C or Command-C) \
+- Copy this text to the Clipboard (E.g. Ctrl-C or Command-C) \
 You need to copy this somewhere safe because we will refer to it throughout this section as **YOUR_CSV_FILE.**  \
 
-10. Open any editor you choose and paste this into a text editor so you can use it later. E.g. Sublime Text or Microsoft Word.
+- Open any editor you choose and paste this into a text editor so you can use it later. E.g. Sublime Text or Microsoft Word.
 
 You file path should now look similar to this:
 
+![alt_text](setup-lab2-data-science-images/ds-sublime-text.png "image_tooltip")
 
 
-<p id="gdcalert9" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image9.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert10">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
+As mentioned we'll refer to this long filename string as **YOUR_CSV_FILE** - which later you’ll paste into the parameters.py source file
 
+## Part 1: Visualise Data ##
 
-![alt_text](setup-lab2-data-science-images/image9.png "image_tooltip")
-
-
-As mentioned we'll refer to this long filename string as **YOUR_CSV_FILE** - which later you’ll paste into the hyper_parameters.py  source file**.**
-
-**Part 1: Visualise Data**
-
-Now to our Data Science focused Jupyter notebooks. As we did with Minio, we will find the url for Jupyterhub within the routes of the OPenShift console.
+Now to our Data Science focused Jupyter notebooks. As we did with Minio, we will find the url for Jupyterhub within the routes of the OpenShift console.
 
 
 
@@ -183,32 +173,20 @@ OpenShift reduces the list of routes as you type the filter.
 
 
 
-5. Click the Jupyterhub link in the **Location** column of the **Routes** display. \
-
-
-<p id="gdcalert10" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image10.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert11">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image10.png "image_tooltip")
+5. Click the Jupyterhub link in the **Location** column of the **Routes** display. 
+   
+![alt_text](setup-lab2-data-science-images/ds-routes-j-hub.png "image_tooltip")
 
 
 Because you shutdown your Jupyter server at the end of the last workshop, you’ll again be presented with the Jupyter screen where you choose the base image to work with. As we’re now assuming the role of a data scientist, do the following:
 
 JupyterHub displays the Start Notebook Server page.
 
+![alt_text](setup-lab2-data-science-images/ds-jhub-spawn.png "image_tooltip")
 
-
-<p id="gdcalert11" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image11.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert12">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](setup-lab2-data-science-images/image11.png "image_tooltip")
-
-
-
-
-6. Click **SciKit v1.10 - Elyra Notebook Image**
-7. Select **Large**
-8. Click **Start Server**.
+1. Click **SciKit v1.10 - Elyra Notebook Image**
+2. Select **Large**
+3. Click **Start Server**.
 
 **Warning:** Please select the correct notebook image, otherwise the lab will not work.
 
