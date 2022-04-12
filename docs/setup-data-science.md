@@ -11,12 +11,12 @@ Next, we feature three Jupyter notebooks the data scientist uses, pulling the pr
 - They then experiment with different algorithms, parameters and hyperparameters. They push each experiment to the model repository, ML FLow. This repository contains all of the data and the actual model binaries should they wish to
     1. Compare different experiments
     2. Return to and retrieve any experiment they ran
-    3. Share their experiments with others. In this way, we’re allowing silos between different actors in the workflow
-- They then choose one of their experiments, which they wish to proceed with and push to production - in the next part of the workflow, the ML OPs phase
+    3. Share their experiments with others. In this way, we’re breaking down silos between different actors in the workflow
+- They then choose one of their experiments, which they wish to push to production (in the next part of the workflow, the ML OPs phase)
 
 This diagram illustrates the section we’re implementing - the Data Science part of the overall AI/ML workflow:
 
-![alt_text](setup-lab2-data-science-images/ds-churn-diagram-data-scientist.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-churn-diagram-data-scientist.png "image_tooltip")
 
 
 **Instructions to access your prepared data file from the previous lab**
@@ -32,16 +32,16 @@ Choose the **Administration perspective**
 
 - Navigate to **Networking > Routes**. 
 - Filter on _minio_ - and open the _minio-ml-workshop-ui_ route as shown. 
-![alt_text](setup-lab2-data-science-images/ds-routes-minio.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-routes-minio.png "image_tooltip")
 
 - Enter the username and password minio / minio123 
-![alt_text](setup-lab2-data-science-images/ds-minio-buckets.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-minio-buckets.png "image_tooltip")
 
 
 - Scroll down to the **data** bucket, and click the **Browse**. \
 Minio displays a list of folders in the _data_ bucket. The folder-name format is: “_full_data_csv-&lt;your username>_” E.g. For user29 the folder is: _full_data_csv-user29_
 
-![alt_text](setup-lab2-data-science-images/ds-minio-data-bucket.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-minio-data-bucket.png "image_tooltip")
 
 
 - Scroll through the list of folders and locate the folder with your username \
@@ -49,22 +49,22 @@ Minio displays a list of folders in the _data_ bucket. The folder-name format is
 - Click the folder that corresponds to your username. \
 Minio displays the file(s) you created in the Data Engineering lab
 
-![alt_text](setup-lab2-data-science-images/ds-minio-user-folder.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-minio-user-folder.png "image_tooltip")
 
 - Click the file with name starting with “part”:
-![alt_text](setup-lab2-data-science-images/ds-minio-user-bucket-part.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-minio-user-bucket-part.png "image_tooltip")
 
 
 Minio displays a panel containing the details of the file you created in the Data Engineering lab. 
 
-![alt_text](setup-lab2-data-science-images/ds-minio-data-bucket-filename.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-minio-data-bucket-filename.png "image_tooltip")
 
 
 
 
 - Highlight the filename path as shown below and copy the text to the clipboard. E.g. <code>[part-00000-f53c1282-b53d-4b86-9f8d-](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)1b2eded4d09d[-c000.csv](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)</code>
 
-![alt_text](setup-lab2-data-science-images/ds-minio-data-bucket-filename-highlight.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-minio-data-bucket-filename-highlight.png "image_tooltip")
 
 
 
@@ -76,7 +76,7 @@ You need to copy this somewhere safe because we will refer to it throughout this
 
 You file path should now look similar to this:
 
-![alt_text](setup-lab2-data-science-images/ds-sublime-text.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-sublime-text.png "image_tooltip")
 
 
 As mentioned we'll refer to this long filename string as **YOUR_CSV_FILE** - which later you’ll paste into the parameters.py source file
@@ -98,14 +98,14 @@ OpenShift reduces the list of routes as you type the filter.
 
 5. Click the Jupyterhub link in the **Location** column of the **Routes** display. 
    
-![alt_text](setup-lab2-data-science-images/ds-routes-j-hub.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-routes-j-hub.png "image_tooltip")
 
 
 Because you shutdown your Jupyter server at the end of the last workshop, you’ll again be presented with the Jupyter screen where you choose the base image to work with. As we’re now assuming the role of a data scientist, do the following:
 
 JupyterHub displays the Start Notebook Server page.
 
-![alt_text](setup-lab2-data-science-images/ds-jhub-spawn.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-jhub-spawn.png "image_tooltip")
 
 1. Click **SciKit v1.10 - Elyra Notebook Image**
 2. Select **Large**
@@ -115,12 +115,12 @@ JupyterHub displays the Start Notebook Server page.
 
 Jupyterhub starts the notebook server for the Data Scientist.
 
-![alt_text](setup-lab2-data-science-images/ds-jhub-starting.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-jhub-starting.png "image_tooltip")
 
 
 After a few minutes the notebook will have started and the Jupyter notebook will be displayed.
 
-![alt_text](setup-lab2-data-science-images/ds-jhub-default-file-view.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-jhub-default-file-view.png "image_tooltip")
 
 
 Observe:
@@ -134,7 +134,7 @@ git clone [https://github.com/bryonbaker/ml-workshop-improved](https://github.co
 * Navigate to ​​**ml-workshop-improved/notebook** and open **parameters.py**
 * Locate line of code with **minioFilename** and paste the file name you saved earlier (**YOUR_CSV_FILE**) in this lab into the code as illustrated below. Note, your file name will be unique to you
 
-![alt_text](setup-lab2-data-science-images/ds-parameters-file-miniofilename.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-parameters-file-miniofilename.png "image_tooltip")
 
 
 - Click **File + Save** to save the file.
@@ -143,7 +143,7 @@ Now to run your first notebook, double click the file **Visulaise_Data.ipynb** a
 
 # TODO screenshot has wrong filename #
 
-![alt_text](setup-lab2-data-science-images/ds-visualise-data-1.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-visualise-data-1.png "image_tooltip")
 
 
 
@@ -159,30 +159,30 @@ You will now step through the notebook one cell at a time.
 
 Now, as previously, select the first cell and walk through each cell executing you go by clicking SHIFT + RETURN.
 
-![alt_text](setup-lab2-data-science-images/ds-visualise-data-2.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-visualise-data-2.png "image_tooltip")
 
 1. Import our desired Python libraries. (notice we don’t need to do any **_pip install_**s - our administrator has bundled all of our required libraries into this base container image - which we selected earlier the _MLWorkShop Notebook Image_)
 2. _watermark_ outputs the versions of various components, libraries, operating system attributes etc.
 3. Here we connect to our S3 object store, Minio, using the URL and credentials shown
-![alt_text](setup-lab2-data-science-images/ds-visualise-data-3.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-visualise-data-3.png "image_tooltip")
 
 4. In this cell we also output the first 5 lines of the file - so the data scientist can get a quick view of the data.
 5. We output the dimensions of the data in rows and columns (features)
 6. Here we output various data around the columns (features) including their types, names etc
 7. Using _describe(), _we output various statistical data associated with the entire dataset, max, mean etc. values for numeric columns.
 
-![alt_text](setup-lab2-data-science-images/ds-visualise-data-4.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-visualise-data-4.png "image_tooltip")
 
 8. We output the sum of rows with null values with nulls - to assess data for errors, e.g null for _charges_ indicates an error.
 9. Here we output the total count of the **_labeled _**column, Churn. We need a decent spread, and we have it - with just over 2 to 1.
 10. Here we make a simple conversion from Yes and  No to 1 and 0, to facilitate plotting.
 
-![alt_text](setup-lab2-data-science-images/ds-visualise-data-5.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-visualise-data-5.png "image_tooltip")
 
 
 11.  This cell visually outputs churn count by various features in the data set
     
-![alt_text](setup-lab2-data-science-images/ds-visualise-data-6.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-visualise-data-6.png "image_tooltip")
 
 
 
@@ -206,7 +206,7 @@ This experiment id is then used as an identifier when we push our experiment met
 Jupyterhub opens the code windows.
 
 
-![alt_text](setup-lab2-data-science-images/ds-model-experiments-1.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-model-experiments-1.png "image_tooltip")
 
 
 Next, just as you did in the previous lab you will step through the code one cell at a time. **Note there are 3 changes you’ll need to make to your cells - which we’ll highlight below.**
@@ -221,7 +221,7 @@ You will now step through the notebook one cell at a time.
 
 4. Type **[Shift] + [Return]** to step through each cell in the notebook.
 
-![alt_text](setup-lab2-data-science-images/ds-model-experiments-2.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-model-experiments-2.png "image_tooltip")
 
 
 
@@ -230,7 +230,7 @@ You will now step through the notebook one cell at a time.
 2. More imports of libraries we need
 3. See _watermark_ description of this cell above in - **_first Data Science workshop - Visualisation_**
 
-![alt_text](setup-lab2-data-science-images/ds-model-experiments-3.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-model-experiments-3.png "image_tooltip")
 
 
 
@@ -244,21 +244,21 @@ The HOST line on top and 4 lines using ml-flow is all they need to  push all of 
 
 Run all the way down to cell 17, _Feature Engineering Pipeline_, as all cells until then are discussed above  in - **_first Data Science workshop - Visualisation_**
 
-![alt_text](setup-lab2-data-science-images/ds-model-experiments-4.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-model-experiments-4.png "image_tooltip")
 
 17. Here we use an Ordinal Encoder to convert simple binary values to a numeric representation. Output the data after applying the Ordinal Encoder.
 18. Here we use a One Hot Encoder to convert multi valued features to a numeric representation. Output the data after applying the One Hot Encoder.
 19. Here we split our data set into a training and a testing set, and discard unwanted columns customer id and our labeled column Churn.  
 20. Further data set refinement.
 
-![alt_text](setup-lab2-data-science-images/ds-model-experiments-5.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-model-experiments-5.png "image_tooltip")
  
 21. Create a DecisionTreeClassifier with these hyper parameters
 22. User GridSearch to output the best model / hyper parameters from the combinations supplied to its _fit_ method.
 23. Print out those best model parameters
 24. Use K-Folds cross-validator to split data into train/test sets. Create a dictionary of hyperparameter candidates, train the model using a DecisionTreeClassifier. Print and store hyperparameters and accuracy in ML Flow and tag using 'DecisionTreeClassifier''. The **_store_** method push this metadata to ML Flow, which you’ll see below.
 
-![alt_text](setup-lab2-data-science-images/ds-model-experiments-6.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-model-experiments-6.png "image_tooltip")
 
 
 
@@ -276,32 +276,32 @@ Let’s use our model registry **Ml-Flow** to analyse compare the model performa
 4. Type **_mlflow_** in the Filter text box. \
 OpenShift will display the link to the **_Ml Flow_** tool.
 
-![alt_text](setup-lab2-data-science-images/ds-routes-mlflow.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-routes-mlflow.png "image_tooltip")
 
 1. Click the hyperlink in the **Location** column \
 OpenShift will launch the **Ml-Flow** console in a new browser tab. 
 
 2. After logging in with your OpenShift credentials, you’ll be presented with a screen like this - showing all users’ experiments. 
 
-![alt_text](setup-lab2-data-science-images/ds-mlflow-1.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-mlflow-1.png "image_tooltip")
 
 
 3. Filter on CustomerChurn-**userXX** , replacing **userXX ** with your username in my case CustomerChurn-user30 - so you only see your own experiments. 
 
-![alt_text](setup-lab2-data-science-images/ds-mlflow-2.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-mlflow-2.png "image_tooltip")
 
 
 4. Click on the link under Start Time - to drill into one. You can see that out of the box, just by adding the simple **_mlflow_** based integration code you added earlier to your notebook, out of the box, you get a fantastic amount of useful information. Including
     1. every experiment gets an id - which s useful for sharing and traceability purposes later
     2. your parameters are recorded as shown:
 
-![alt_text](setup-lab2-data-science-images/ds-mlflow-3.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-mlflow-3.png "image_tooltip")
 
 Scroll down and you see you get more - parameters, metrics, tags and artifacts associated with the experiment’s model output - binaries, yaml, json etc..
 
 You also get the option to register the model - if you want to push it to production for example. Later on, you’ll do this.
 
-![alt_text](setup-lab2-data-science-images/ds-mlflow-4.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-mlflow-4.png "image_tooltip")
 
 Ml Flow is a very powerful capability for the following reasons. Every experiment that is ever run:
 
@@ -320,7 +320,7 @@ Now following examination of our experiments In Ml Flow, let’s assume for perf
 1. Go back to Jupyter Hub and ensure you’re in **ml-workshop-improved/notebook**
 2. Open the **_Train_Model.ipynb Jupyter _**notebook.
 
-![alt_text](setup-lab2-data-science-images/ds-train-model-1.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-train-model-1.png "image_tooltip")
 
 
 You have already encountered most of the cells here in the 2 previous notebooks. Therefore, we will just it describe at a high level here - then you can run the notebook yourself.
@@ -340,27 +340,27 @@ Find your latest experiment as described above. This will be the one associated 
 
 Verify this by navigating down to Artifacts as described above in  _Part 3: Visualise the Model Experiments._ Make sure the 2 encoders are there. If not, you probably selected the wrong experiment on the previous page. Make sure you have chosen the most recent.
 
-![alt_text](setup-lab2-data-science-images/ds-register-model-1.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-register-model-1.png "image_tooltip")
 
 
 Now we need to register a Model in ML Flow - to which we add our chosen experiment - for later deployment to production. 
 
 Leave this tab open and open  ML Flow again - this time in a separate tab. Choose **Models** and **Create  Model**:
 
-![alt_text](setup-lab2-data-science-images/ds-register-model-2.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-register-model-2.png "image_tooltip")
 
 
 Name your model your _username-model**, **_i.e.**  uXX** and click **Create**
 
-![alt_text](setup-lab2-data-science-images/ds-register-model-3.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-register-model-3.png "image_tooltip")
 
 Close this tab and go back to your other open Ml Flow tab. Click **Register Model**
 
-![alt_text](setup-lab2-data-science-images/ds-register-model-4.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-register-model-4.png "image_tooltip")
 
 Choose your newly registered model and click **Register**:
 
-![alt_text](setup-lab2-data-science-images/ds-register-model-5.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-register-model-5.png "image_tooltip")
 
 
 You can see a new model is created with version 1. Each time you register a new model under this model name, its version is incremented. 
@@ -369,7 +369,7 @@ We’re now ready to run an Airflow deployment pipeline to deploy this chosen mo
 
 Move back to Jupyter Hub, navigate to **ml-workshop-improved/airflow/deploy_model/ocp/** and open **deploy_model.pipeline**. ocp_deploy.py should already be there on the canvas as shown:
 
-![alt_text](setup-lab2-data-science-images/ds-model-pipeline-1.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-model-pipeline-1.png "image_tooltip")
 
 
 Right click on the **ocp_deploy.py** pipeline element and choose **Properties**.Ensure your selections look like the screenshot below. Pay particular attention to MODEL_NAME - you’ll need to change it to:
@@ -382,11 +382,11 @@ As this is the first version, you should not need to change your MODEL_VERSION y
 
 This is how it should look:
 
-![alt_text](setup-lab2-data-science-images/ds-model-pipeline-2.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-model-pipeline-2.png "image_tooltip")
 
 Save your work by clicking on the **Save** button
 
-![alt_text](setup-lab2-data-science-images/ds-model-pipeline-3.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-model-pipeline-3.png "image_tooltip")
 
 
 **Run Pipeline**
@@ -395,7 +395,7 @@ You can now run your pipeline. Click the Play button as shown. A useful naming c
 
 Name it something like **userXX**-**MMDD**-01-deploy-model, in my case **_user30-0223-10-deploy-model_**. Also choose your Airflow Runtime and Runner as shown:
 
-![alt_text](setup-lab2-data-science-images/ds-model-pipeline-4.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-model-pipeline-4.png "image_tooltip")
 
 
 After 2 informational popups, your pipeline will kick off.
@@ -404,7 +404,7 @@ Now it’s time to view your pipeline in our workflow scheduler Airflow.
 
 The same way you did previously with the Data Engineer pipeline, in a browser, open your **Airflow Route URL.** After logging in with your OpenShift credentials. Click DAGs and again filter on your username - and you’ll see something like this:
 
-![alt_text](setup-lab2-data-science-images/ds-airflow-1.png "image_tooltip")
+![alt_text](setup-data-science-images/ds-airflow-1.png "image_tooltip")
 
 You should see your pipeline runs - including the deploy model one you just kicked off. Browse around as before - check logs, see how it can be used to schedule this job periodically etc.
 
