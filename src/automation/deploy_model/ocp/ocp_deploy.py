@@ -22,9 +22,6 @@ os.environ['AWS_ACCESS_KEY_ID']='minio'
 os.environ['AWS_SECRET_ACCESS_KEY']='minio123'
 os.environ['AWS_REGION']='us-east-1'
 os.environ['AWS_BUCKET_NAME']='mlflow'
-# os.environ['MODEL_NAME'] = 'rossdemo'
-# os.environ['MODEL_VERSION'] = '1'
-# os.environ['OPENSHIFT_CLIENT_PYTHON_DEFAULT_OC_PATH'] = '/tmp/oc'
 
 HOST = "http://mlflow:5500"
 
@@ -118,8 +115,6 @@ with oc.api_server(server):
             for k, v in oc.selector([f"bc/{build_name}"]).logs(tail=500).items():
                 print('Build Log: {}\n{}\n\n'.format(k, v))
 
-            #seldon_deploy = oc.selector(f"SeldonDeployment/{build_name}").count_existing()
-            #experiment_id = mlflow.get_run(run_id).info.experiment_id
 
             template_data = {"experiment_id": run_id, "model_name": model_name, "image_name": build_name, "project": project}
             applied_template = Template(open("SeldonDeploy.yaml").read())
