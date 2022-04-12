@@ -124,8 +124,8 @@ After a few minutes the notebook will have started and the Jupyter notebook will
 
 
 Observe:
-* The same _ml-workshop-improved_ folder we previously pulled down from our GitHub repository \
-git clone [https://github.com/bryonbaker/ml-workshop-improved](https://github.com/bryonbaker/ml-workshop-improved) 
+* The same _ml-workshop_ folder we previously pulled down from our GitHub repository \
+git clone [https://github.com/odh-labs/ml-workshop](https://github.com/odh-labs/ml-workshop) 
 
 **Before we get going, you need to make some small changes to the code.**
 
