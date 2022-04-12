@@ -4,7 +4,7 @@ def get_params():
     # PLACE YOUR STUDENT CONFIGURATION INFORMATION IN THIS SECTION OF THE CODE
     #
     user_id = "user123"
-    minioFilename = "your.csv"
+    # minioFilename = "your.csv"
     # ##########################################################################
     
     # ##########################################################################    
