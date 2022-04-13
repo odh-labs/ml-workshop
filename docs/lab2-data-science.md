@@ -120,9 +120,9 @@ Now, as previously, select the first cell and walk through each cell executing y
 <img src="./images/lab2-data-science/ds-visualise-data-2.png " alt="drawing" width="500"/> 
 
 1. **_pip install_** extra libraries not in our base container image
-2. Import our desired Python libraries. (notice we don’t need to **_pip install_** any libraries - our administrator has bundled all of our required libraries into this base container image - which we selected earlier the _MLWorkShop Notebook Image_)
+2. Import our desired Python libraries.
 3. _watermark_ outputs the versions of various components, libraries, operating system attributes etc.
-4. Here we connect to our S3 object store, Minio, using the URL and credentials shown
+4. Here we load our lab parameters - in particular our username and CSV file prepared earlier when we assumed the role of _data engineer_.
 
 <img src="./images/lab2-data-science/ds-visualise-data-3.png " alt="drawing" width="500"/> 
 
