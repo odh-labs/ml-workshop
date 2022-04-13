@@ -141,27 +141,12 @@ Now, as previously, select the first cell and walk through each cell executing y
 14.  Here we swap NaNs for spaces.
 15.  Detect missing values for our features  
 
-
-
-
-
-
 <img src="./images/lab2-data-science/ds-visualise-data-5.png " alt="drawing" width="500"/> 
 
-
-1.   This cell visually outputs churn count by various features in the data set
+16.  Convert to numeric.
+17.  Fill NANs with the mean
+18.  Here we output a box plot - a useful visualization of 2 dimensions by the labeled column _Churn_
     
-<img src="./images/lab2-data-science/ds-visualise-data-6.png " alt="drawing" width="500"/> 
-
-
-
-
-1.  Replace spaces with numpy NAN values
-2.  Output sum of NAN and None values
-3.  Convert to numeric
-4.  Fill NANs with the mean
-5.  Here we output a box plot - a useful visualization of 2 dimensions by the labeled column _Churn_
-
 ## Part 2: Experiment with Models ## 
 
 At this point, as a data scientist, we have a good understanding of the data. Now it's time to start experimenting with different models, parameters and hyper parameters.
