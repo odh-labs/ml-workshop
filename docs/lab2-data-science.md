@@ -126,32 +126,34 @@ Now, as previously, select the first cell and walk through each cell executing y
 
 <img src="./images/lab2-data-science/ds-visualise-data-3.png " alt="drawing" width="500"/> 
 
-4. In this cell we also output the first 5 lines of the file - so the data scientist can get a quick view of the data.
-5. We output the dimensions of the data in rows and columns (features)
-6. Here we output various data around the columns (features) including their types, names etc
-7. Using _describe(), _we output various statistical data associated with the entire dataset, max, mean etc. values for numeric columns.
+5. Return our S3 Object store details for retrieval of the CSV file prepared earlier.
+6. In this cell we read in the CSV file then output the first 5 lines of the file - so the data scientist can get a quick view of the data.
+7. We output the dimensions of the data in rows and columns (features)
+8. Here we output various data around the columns (features) including their types, names etc
+9. Using _describe(), _we output various statistical data associated with the entire dataset, max, mean etc. values for numeric columns.
+10. We output the sum of rows with null values with nulls - to assess data for errors, e.g a null for _charges_ indicates an error.
+11. Here we output the total count of the **_labeled_** column, *Churn*. We need a decent spread, and we have it - with just over 2 to 1.
+12. Here we make a simple conversion from Yes and  No to 1 and 0, to facilitate plotting.
+
+
 
 <img src="./images/lab2-data-science/ds-visualise-data-4.png " alt="drawing" width="500"/> 
-
-8. We output the sum of rows with null values with nulls - to assess data for errors, e.g null for _charges_ indicates an error.
-9. Here we output the total count of the **_labeled _**column, Churn. We need a decent spread, and we have it - with just over 2 to 1.
-10. Here we make a simple conversion from Yes and  No to 1 and 0, to facilitate plotting.
 
 <img src="./images/lab2-data-science/ds-visualise-data-5.png " alt="drawing" width="500"/> 
 
 
-11.  This cell visually outputs churn count by various features in the data set
+1.   This cell visually outputs churn count by various features in the data set
     
 <img src="./images/lab2-data-science/ds-visualise-data-6.png " alt="drawing" width="500"/> 
 
 
 
 
-12. Replace spaces with numpy NAN values
-13. Output sum of NAN and None values
-14. Convert to numeric
-15. Fill NANs with the mean
-16. Here we output a box plot - a useful visualization of 2 dimensions by the labeled column _Churn_
+1.  Replace spaces with numpy NAN values
+2.  Output sum of NAN and None values
+3.  Convert to numeric
+4.  Fill NANs with the mean
+5.  Here we output a box plot - a useful visualization of 2 dimensions by the labeled column _Churn_
 
 ## Part 2: Experiment with Models ## 
 
