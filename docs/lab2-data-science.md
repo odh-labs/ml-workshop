@@ -119,9 +119,11 @@ Now, as previously, select the first cell and walk through each cell executing y
 
 <img src="./images/lab2-data-science/ds-visualise-data-2.png " alt="drawing" width="500"/> 
 
-1. Import our desired Python libraries. (notice we don’t need to **_pip install_** any libraries - our administrator has bundled all of our required libraries into this base container image - which we selected earlier the _MLWorkShop Notebook Image_)
-2. _watermark_ outputs the versions of various components, libraries, operating system attributes etc.
-3. Here we connect to our S3 object store, Minio, using the URL and credentials shown
+1. **_pip install_** extra libraries not in our base container image
+2. Import our desired Python libraries. (notice we don’t need to **_pip install_** any libraries - our administrator has bundled all of our required libraries into this base container image - which we selected earlier the _MLWorkShop Notebook Image_)
+3. _watermark_ outputs the versions of various components, libraries, operating system attributes etc.
+4. Here we connect to our S3 object store, Minio, using the URL and credentials shown
+
 <img src="./images/lab2-data-science/ds-visualise-data-3.png " alt="drawing" width="500"/> 
 
 4. In this cell we also output the first 5 lines of the file - so the data scientist can get a quick view of the data.
