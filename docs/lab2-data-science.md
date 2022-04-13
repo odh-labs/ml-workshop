@@ -135,9 +135,16 @@ Now, as previously, select the first cell and walk through each cell executing y
 11. Here we output the total count of the **_labeled_** column, *Churn*. We need a decent spread, and we have it - with just over 2 to 1.
 12. Here we make a simple conversion from Yes and  No to 1 and 0, to facilitate plotting.
 
-
-
 <img src="./images/lab2-data-science/ds-visualise-data-4.png " alt="drawing" width="500"/> 
+
+13.  This cell visually outputs churn count by various features in the data set.
+14.  Here we swap NaNs for spaces.
+15.  Detect missing values for our features  
+
+
+
+
+
 
 <img src="./images/lab2-data-science/ds-visualise-data-5.png " alt="drawing" width="500"/> 
 
