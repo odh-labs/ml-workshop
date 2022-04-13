@@ -147,9 +147,7 @@ cd $REPO_HOME/src/deploy/scripts
 ./setup-users.sh
 ```
 
-
-<span style="color:yellow">**Note: User configuration will invalidate any other logins like opentlc-mgr**.  
-For cluster-admin access you should now use **user29**.<span>
+After this script, both **_opentlc-mgr_** and **_user29_** have cluster-admin access.
 
 If you need to create users with different credentials consult [this blog](https://medium.com/kubelancer-private-limited/create-users-on-openshift-4-dc5cfdf85661) - on which these instructions are based.
 
