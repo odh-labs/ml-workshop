@@ -21,11 +21,11 @@ This diagram illustrates the section we’re implementing - the Data Science par
 
 **Instructions to access your prepared data file from the previous lab**
 
-You need to access the prepared CSV data file you created and pushed to S3 object storage, in the previous lab under the Data Engineer persona.
+Now you access the prepared CSV data file you created and pushed to S3 object storage, in the previous lab under the Data Engineer persona.
 
 Login to OpenShift using the credentials your administrator gave you. Ensure your workshop project ml-workshop is selected.
 
-The first thing you need to do is retrieve the path and file pertaining to <span style="text-decoration:underline;">your username</span> - which you as a data engineer created previously.  \
+The first thing you need to do is view the file pertaining to <span style="text-decoration:underline;">your username</span> - which you as a data engineer created previously.  \
 Choose the **Administration perspective**
 
 
@@ -45,7 +45,7 @@ Minio displays a list of folders in the _data_ bucket. The folder-name format is
 
 
 - Scroll through the list of folders and locate the folder with your username \
-**Note**: There will be many folders there - be sure to identify the one containing **your username.**
+**Note**: There may be many folders there - be sure to identify the one containing **your username.**
 - Click the folder that corresponds to your username. \
 Minio displays the file(s) you created in the Data Engineering lab
 
@@ -54,37 +54,12 @@ Minio displays the file(s) you created in the Data Engineering lab
 - Click the file with name starting with “part”:
 <img src="./images/lab2-data-science/ds-minio-user-bucket-part.png " alt="drawing" width="500"/> 
 
+Our workflow has created this file - and as such allows eaiser collaboration and work handoff between the data engineer and the data scientist. It's a powerful capability that breaks down the sileos we often see in AI/ML workflows. 
 
-Minio displays a panel containing the details of the file you created in the Data Engineering lab. 
-
-<img src="./images/lab2-data-science/ds-minio-data-bucket-filename.png " alt="drawing" width="500"/> 
-
-
-
-
-- Highlight the filename path as shown below and copy the text to the clipboard. E.g. <code>[part-00000-f53c1282-b53d-4b86-9f8d-](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)1b2eded4d09d[-c000.csv](http://minio-ml-workshop-ui-ml-workshop.apps.cluster-lwwqr.lwwqr.sandbox779.opentlc.com/buckets/data/browse/ZnVsbF9kYXRhX2NzdnVzZXIxL3BhcnQtMDAwMDAtZjUzYzEyODItYjUzZC00Yjg2LTlmOGQtMWIyZWRlZDRkMDlkLWMwMDAuY3N2)</code>
-
-<img src="./images/lab2-data-science/ds-minio-data-bucket-filename-highlight.png " alt="drawing" width="500"/> 
-
-
-
-
-- Copy this text to the Clipboard (E.g. Ctrl-C or Command-C) \
-You need to copy this somewhere safe because we will refer to it throughout this section as **YOUR_CSV_FILE.**  \
-
-- Open any editor you choose and paste this into a text editor so you can use it later. E.g. Sublime Text or Microsoft Word.
-
-You file path should now look similar to this:
-
-<img src="./images/lab2-data-science/ds-sublime-text.png " alt="drawing" width="500"/> 
-
-
-As mentioned we'll refer to this long filename string as **YOUR_CSV_FILE** - which later you’ll paste into the parameters.py source file
 
 ## Part 1: Visualise Data ##
 
 Now to our Data Science focused Jupyter notebooks. As we did with Minio, we will find the url for Jupyterhub within the routes of the OpenShift console.
-
 
 
 1. Open the browser tab with the OpenShift console.
@@ -93,7 +68,6 @@ Now to our Data Science focused Jupyter notebooks. As we did with Minio, we will
 4. Type **Jupyterhub** in the **Filter** text box.
 
 OpenShift reduces the list of routes as you type the filter.
-
 
 
 5. Click the Jupyterhub link in the **Location** column of the **Routes** display. 
@@ -127,11 +101,9 @@ Observe:
 * The same _ml-workshop_ folder we previously pulled down from our GitHub repository \
 git clone [https://github.com/odh-labs/ml-workshop](https://github.com/odh-labs/ml-workshop) 
 
-Now to run your first notebook, double click the file **Visulaise_Data.ipynb** as shown
+Now to run your first data science notebook, navigate to ml-workshop/src/notebooks/ and open Visualise_Data.ipynb
 
 <img src="./images/lab2-data-science/ds-visualise-data-1.png " alt="drawing" width="500"/> 
-
-
 
 
 1.  Scroll up to the top of the notebook
@@ -147,7 +119,7 @@ Now, as previously, select the first cell and walk through each cell executing y
 
 <img src="./images/lab2-data-science/ds-visualise-data-2.png " alt="drawing" width="500"/> 
 
-1. Import our desired Python libraries. (notice we don’t need to do any **_pip install_**s - our administrator has bundled all of our required libraries into this base container image - which we selected earlier the _MLWorkShop Notebook Image_)
+1. Import our desired Python libraries. (notice we don’t need to **_pip install_** any libraries - our administrator has bundled all of our required libraries into this base container image - which we selected earlier the _MLWorkShop Notebook Image_)
 2. _watermark_ outputs the versions of various components, libraries, operating system attributes etc.
 3. Here we connect to our S3 object store, Minio, using the URL and credentials shown
 <img src="./images/lab2-data-science/ds-visualise-data-3.png " alt="drawing" width="500"/> 
