@@ -295,7 +295,7 @@ Now run the **_Train_Model.ipynb Jupyter_** notebook - cell by cell by continual
 
 Go back to ML Flow - as described above in section **Part 3: Visualise the Model Experiments** 
 
-Find your latest experiment as described above. This will be the one associated with the **_Train_Model.ipynb _**experiment.(it needs to be this one - as the 2 encoder binaries are pushed to the repo).
+Find your latest experiment as described above. This will be the one associated with the **_Train_Model.ipynb_** experiment.(it needs to be this one - as the 2 encoder binaries are pushed to the repo).
 
 Verify this by navigating down to Artifacts as described above in  _Part 3: Visualise the Model Experiments._ Make sure the 2 encoders are there. If not, you probably selected the wrong experiment on the previous page. Make sure you have chosen the most recent.
 
