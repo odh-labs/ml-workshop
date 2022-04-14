@@ -119,38 +119,34 @@ Now, as previously, select the first cell and walk through each cell executing y
 
 <img src="./images/lab2-data-science/ds-visualise-data-2.png " alt="drawing" width="500"/> 
 
-1. Import our desired Python libraries. (notice we don’t need to **_pip install_** any libraries - our administrator has bundled all of our required libraries into this base container image - which we selected earlier the _MLWorkShop Notebook Image_)
-2. _watermark_ outputs the versions of various components, libraries, operating system attributes etc.
-3. Here we connect to our S3 object store, Minio, using the URL and credentials shown
+1. **_pip install_** extra libraries not in our base container image
+2. Import our desired Python libraries.
+3. _watermark_ outputs the versions of various components, libraries, operating system attributes etc.
+4. Here we load our lab parameters - in particular our username and CSV file prepared earlier when we assumed the role of _data engineer_.
+
 <img src="./images/lab2-data-science/ds-visualise-data-3.png " alt="drawing" width="500"/> 
 
-4. In this cell we also output the first 5 lines of the file - so the data scientist can get a quick view of the data.
-5. We output the dimensions of the data in rows and columns (features)
-6. Here we output various data around the columns (features) including their types, names etc
-7. Using _describe(), _we output various statistical data associated with the entire dataset, max, mean etc. values for numeric columns.
+5. Return our S3 Object store details for retrieval of the CSV file prepared earlier.
+6. In this cell we read in the CSV file then output the first 5 lines of the file - so the data scientist can get a quick view of the data.
+7. We output the dimensions of the data in rows and columns (features)
+8. Here we output various data around the columns (features) including their types, names etc
+9. Using _describe(), _we output various statistical data associated with the entire dataset, max, mean etc. values for numeric columns.
+10. We output the sum of rows with null values with nulls - to assess data for errors, e.g a null for _charges_ indicates an error.
+11. Here we output the total count of the **_labeled_** column, *Churn*. We need a decent spread, and we have it - with just over 2 to 1.
+12. Here we make a simple conversion from Yes and  No to 1 and 0, to facilitate plotting.
 
 <img src="./images/lab2-data-science/ds-visualise-data-4.png " alt="drawing" width="500"/> 
 
-8. We output the sum of rows with null values with nulls - to assess data for errors, e.g null for _charges_ indicates an error.
-9. Here we output the total count of the **_labeled _**column, Churn. We need a decent spread, and we have it - with just over 2 to 1.
-10. Here we make a simple conversion from Yes and  No to 1 and 0, to facilitate plotting.
+13.  This cell visually outputs churn count by various features in the data set.
+14.  Here we swap NaNs for spaces.
+15.  Detect missing values for our features  
 
 <img src="./images/lab2-data-science/ds-visualise-data-5.png " alt="drawing" width="500"/> 
 
-
-11.  This cell visually outputs churn count by various features in the data set
+16.  Convert to numeric.
+17.  Fill NANs with the mean
+18.  Here we output a box plot - a useful visualization of 2 dimensions by the labeled column _Churn_
     
-<img src="./images/lab2-data-science/ds-visualise-data-6.png " alt="drawing" width="500"/> 
-
-
-
-
-12. Replace spaces with numpy NAN values
-13. Output sum of NAN and None values
-14. Convert to numeric
-15. Fill NANs with the mean
-16. Here we output a box plot - a useful visualization of 2 dimensions by the labeled column _Churn_
-
 ## Part 2: Experiment with Models ## 
 
 At this point, as a data scientist, we have a good understanding of the data. Now it's time to start experimenting with different models, parameters and hyper parameters.

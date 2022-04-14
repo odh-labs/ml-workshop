@@ -22,7 +22,7 @@
             "env_vars": [
               "SPARK_CLUSTER=user29-cluster",
               "WORKER_NODES=2",
-              "SPARK_CLUSTER=user29-cluster"
+              "S3_ENDPOINT_URL=http://minio-ml-workshop:9000"
             ],
             "dependencies": [
               "spark-cluster.yaml",
@@ -72,15 +72,19 @@
           "type": "execution_node",
           "op": "execute-notebook-node",
           "app_data": {
-            "filename": "../../notebook/Merge_Data.ipynb",
+            "filename": "../../notebooks/Merge_Data.ipynb",
             "runtime_image": "quay.io/ml-aml-workshop/elyra-spark:0.0.4",
             "env_vars": [
+              "S3_ENDPOINT_URL=http://minio-ml-workshop:9000",
+              "WORKER_NODES=2",
               "S3_ENDPOINT_URL=http://minio-ml-workshop:9000"
             ],
             "include_subdirectories": false,
             "outputs": [],
             "dependencies": [
-              "spark_util.py"
+              "spark_util.py",
+              "spark-cluster-route.yaml",
+              "config.py"
             ],
             "invalidNodeError": null,
             "ui_data": {

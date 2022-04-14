@@ -1,6 +1,6 @@
 #! /bin/bash
 
-cd $REPO_HOME/scripts
+cd $REPO_HOME/src/deploy/scripts
 oc delete secret htpasswd-secret -n openshift-config
 oc create secret generic htpasswd-secret --from-file=htpasswd=pre-bakedusers.httpasswd -n openshift-config
 
@@ -13,9 +13,6 @@ oc apply -f htpasswd-oauth.yaml
 #oc scale deployment/oauth-deployment --replicas=3 -n openshift-authentication
 oc rollout status deployment/oauth-openshift --watch=true -n openshift-authentication
 
-
-
-oc create ns ml-workshop
 
 for i in {1..30}
 do
