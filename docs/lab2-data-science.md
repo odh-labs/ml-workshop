@@ -277,12 +277,10 @@ Ml Flow is a very powerful capability for the following reasons. Every experimen
 
 Now following examination of our experiments In Ml Flow, let’s assume for performance reasons, as a data scientist, you’ve decided to proceed with the Decision Tree Classifier experiment and push that model to production.
 
-
 - Go back to Jupyter Hub and ensure you’re in **ml-workshop-improved/notebook**
-- Open the **_Train_Model.ipynb Jupyter _**notebook.
+- Open the **_Train_Model.ipynb Jupyter_** notebook.
 
 <img src="./images/lab2-data-science/ds-train-model-1.png " alt="drawing" width="500"/> 
-
 
 You have already encountered most of the cells here in the 2 previous notebooks. Therefore, we will just it describe at a high level here - then you can run the notebook yourself.
 
@@ -291,7 +289,7 @@ You have already encountered most of the cells here in the 2 previous notebooks.
 * After examining both experiments in Jupyter and Ml Flow, they decide they want to proceed with DecisionTreeClassifier - for whatever reason.
 * So in this notebook, **_​​Train_Model.ipynb_** they use the DecisionTreeClassifier algorithm and all of the same parameters/hyper parameters they used previously, then train the model in the same way, and again push it to Ml Flow - this time with the model binaries (CustomerChurnPredictor.sav, CustomerChurnOrdinalEncoder.pkl, CustomerChurnOneHotEncoder.pkl) so they can be pushed to production later.
 
-Now run the **_Train_Model.ipynb Jupyter _**notebook - cell by cell by continually hitting **SHIFT + ENTER**, on by choosing menu item** Kernel > Restart Kernel and Run all Cells**
+Now run the **_Train_Model.ipynb Jupyter_** notebook - cell by cell by continually hitting **SHIFT + ENTER**, on by choosing menu item** Kernel > Restart Kernel and Run all Cells**
 
 ## Part 5: Register the chosen Model ##
 
