@@ -335,7 +335,7 @@ Right click on the **ocp_deploy.py** pipeline element and choose **Properties**.
 
 MODEL_NAME=**userXX-model**
 
-i.e. the model name you created in the previous step, in my case **.**
+i.e. the model name you created in the previous step, in my case **u29**
 
 As this is the first version, you should not need to change your MODEL_VERSION yet, but change it running a subsequent time
 
