@@ -155,34 +155,23 @@ As we experiment, we want our notebook to create an experiment id for every expe
 
 This experiment id is then used as an identifier when we push our experiment metadata and binaries to our model repository, ML Flow. In this way, we retrieve and repeat any experiment we have done, as well as share this experiment with other team members, breaking down silos between teams and individuals in AI//ML workflows.
 
+ - Using the File Explorer, open the **Model_Experiments.ipynb** notebook. Jupyterhub opens the code window as shown:
 
-1. Using the File Explorer, open the **Model_Experiments.ipynb** notebook. 
-Jupyterhub opens the code windows.
+<img src="./images/lab2-data-science/ds-model-experiments-1.png" alt="drawing" width="500"/> 
 
-
-<img src="./images/lab2-data-science/ds-model-experiments-1.png " alt="drawing" width="500"/> 
-
-
-Next, just as you did in the previous lab you will step through the code one cell at a time. **Note there are 3 changes you’ll need to make to your cells - which we’ll highlight below.**
-
-
-1. Scroll up to the top of the notebook
-2. Click in cell **[1]**.
-
-You will now step through the notebook one cell at a time.
-
-
-
-4. Type **[Shift] + [Return]** to step through each cell in the notebook.
+Next, just as you did in the previous lab you will step through the code one cell at a time.
+ - Scroll up to the top of the notebook
+ - Click in cell **[1]**.
+ - Type **[Shift] + [Return]** to step through each cell in the notebook.
+ - Cell descriptions follow
 
 <img src="./images/lab2-data-science/ds-model-experiments-2.png " alt="drawing" width="500"/> 
 
-
-
-
-1. Do imports - more applicable when we want to use _Ray_.
-2. More imports of libraries we need
-3. See _watermark_ description of this cell above in - **_first Data Science workshop - Visualisation_**
+1. Import required libraries
+2. **_pip install_** extra libraries not in our base container image.
+3. Import required libraries
+   
+4. See _watermark_ description of this cell above in - **_first Data Science workshop - Visualisation_**
 
 <img src="./images/lab2-data-science/ds-model-experiments-3.png " alt="drawing" width="500"/> 
 
