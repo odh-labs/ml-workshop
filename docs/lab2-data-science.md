@@ -222,55 +222,31 @@ From here, run all the way down to cell 19, _Feature Engineering Pipeline_.
 
 
 
-
-
-
-
-
-
-<img src="./images/lab2-data-science/ds-model-experiments-.png " alt="drawing" width="500"/> 
- 
-1.  
-2.  
-3.  
-4.  
-
-<img src="./images/lab2-data-science/ds-model-experiments-6.png " alt="drawing" width="500"/> 
-
-
-
-25. Modify the 3rd line substituting your username in place of user29.
-Then we create a Random Forest Classifier with these hyper parameters. 
-26. This cell and cell 27 are equivalents of the previous Decision Tree classifier cells.
-
 ## Part 3: Visualise the Model Experiments. ##
 
 Let’s use our model registry **Ml-Flow** to analyse compare the model performance. 
 
-1. Open the OpenShift console tab in your browser.
-2. Select the **Administrator Perspective**.
-3. Click **Networking > Routes**.
-4. Type **_mlflow_** in the Filter text box. \
-OpenShift will display the link to the **_Ml Flow_** tool.
+- Open the OpenShift console tab in your browser.
+- Select the **Administrator Perspective**.
+- Click **Networking > Routes**.
+- Type **_mlflow_** in the Filter text box. OpenShift will display the link to the **_Ml Flow_** tool.
 
 <img src="./images/lab2-data-science/ds-routes-mlflow.png " alt="drawing" width="500"/> 
 
-1. Click the hyperlink in the **Location** column \
+- Click the hyperlink in the **Location** column \
 OpenShift will launch the **Ml-Flow** console in a new browser tab. 
 
-2. After logging in with your OpenShift credentials, you’ll be presented with a screen like this - showing all users’ experiments. 
+- After logging in with your OpenShift credentials, you’ll be presented with a screen like this - showing all users’ experiments. 
 
 <img src="./images/lab2-data-science/ds-mlflow-1.png " alt="drawing" width="500"/> 
 
-
-3. Filter on CustomerChurn-**userXX** , replacing **userXX ** with your username in my case CustomerChurn-user30 - so you only see your own experiments. 
+- Filter on CustomerChurn-**userXX** , replacing **userXX** with your username in my case CustomerChurn-user30 - so you only see your own experiments. 
 
 <img src="./images/lab2-data-science/ds-mlflow-2.png " alt="drawing" width="500"/> 
 
-
-4. Click on the link under Start Time - to drill into one. You can see that out of the box, just by adding the simple **_mlflow_** based integration code you added earlier to your notebook, out of the box, you get a fantastic amount of useful information. Including
-    1. every experiment gets an id - which s useful for sharing and traceability purposes later
-    2. your parameters are recorded as shown:
+Click on the link under Start Time - to drill into one. You can see that out of the box, just by adding the simple **_mlflow_** based integration code you added earlier to your notebook, you get a fantastic amount of useful information. Including
+- every experiment gets an id - which is useful for sharing and traceability purposes later
+- your parameters are recorded as shown:
 
 <img src="./images/lab2-data-science/ds-mlflow-3.png " alt="drawing" width="500"/> 
 
