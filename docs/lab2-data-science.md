@@ -369,4 +369,4 @@ You should see your pipeline runs - including the deploy model one you just kick
 
 When the colour has turned dark green - as it will if all goes well, you’re done! Otherwise, let an administrator know!
 
-Now move to the next lab **_AI/ML on OpenShift Workshop - V2 - Lab 3 - ML OPs & Inference._**
+Now move to the next lab **_Lab 3 - ML OPs & Inference._**
