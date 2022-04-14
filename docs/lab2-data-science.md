@@ -309,7 +309,7 @@ Leave this tab open and open  ML Flow again - this time in a separate tab. Choos
 <img src="./images/lab2-data-science/ds-register-model-2.png " alt="drawing" width="500"/> 
 
 
-Name your model your _username-model**, **_i.e.**  uXX** and click **Create**
+Name your model your _username-model**, **_i.e. uXX** and click **Create**
 
 <img src="./images/lab2-data-science/ds-register-model-3.png " alt="drawing" width="500"/> 
 
