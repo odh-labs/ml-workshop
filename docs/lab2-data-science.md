@@ -333,7 +333,7 @@ Move back to Jupyter Hub, navigate to **ml-workshop/src/automation/deploy_model/
 
 Right click on the **ocp_deploy.py** pipeline element and choose **Properties**.Ensure your selections look like the screenshot below. Pay particular attention to MODEL_NAME - you’ll need to change it to:
 
-MODEL_NAME=**userXX-model**
+MODEL_NAME=**uXX**
 
 i.e. the model name you created in the previous step, in my case **u29**
 
