@@ -326,7 +326,7 @@ You can see a new model is created with version 1. Each time you register a new 
 
 We’re now ready to run an Airflow deployment pipeline to deploy this chosen model to a higher environment like Test or even Production.
 
-Move back to Jupyter Hub, navigate to **ml-workshop-improved/airflow/deploy_model/ocp/** and open **deploy_model.pipeline**. ocp_deploy.py should already be there on the canvas as shown:
+Move back to Jupyter Hub, navigate to **ml-workshop/src/automation/deploy_model/ocp/** and open **deploy_model.pipeline**. ocp_deploy.py should already be there on the canvas as shown:
 
 <img src="./images/lab2-data-science/ds-model-pipeline-1.png " alt="drawing" width="500"/> 
 
