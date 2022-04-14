@@ -163,7 +163,8 @@ Next, just as you did in the previous lab you will step through the code one cel
  - Scroll up to the top of the notebook
  - Click in cell **[1]**.
  - Type **[Shift] + [Return]** to step through each cell in the notebook.
- - Cell descriptions follow
+
+Cell descriptions follow
 
 <img src="./images/lab2-data-science/ds-model-experiments-2.png " alt="drawing" width="500"/> 
 
@@ -171,35 +172,68 @@ Next, just as you did in the previous lab you will step through the code one cel
 2. **_pip install_** extra libraries not in our base container image.
 3. Import required libraries
    
-4. See _watermark_ description of this cell above in - **_first Data Science workshop - Visualisation_**
-
 <img src="./images/lab2-data-science/ds-model-experiments-3.png " alt="drawing" width="500"/> 
 
+4. _watermark_ outputs the versions of various components, libraries, operating system attributes etc.
 
+5. Here we load our lab parameters - in particular our username and CSV file prepared earlier when we assumed the role of _data engineer_..
 
-
-4. Here we pull in the user-specific parameters you added earlier to **parameters.py** for use in the file.
-5. Here we add some simple integration code - to allow the data scientist 
-    1. Retrieve the CSV file prepared earlier data engineer, from Minio S3 object storage
-    2. Participate their work in the workflow. \
-The HOST line on top and 4 lines using ml-flow is all they need to  push all of their experiments to our model registry** Ml Flow**
-6. Here we retrieve the CSV we prepared in the Data Engineer lab earlier and output the first 5 lines of the file - so the data scientist can get a quick view of the data.
-
-Run all the way down to cell 17, _Feature Engineering Pipeline_, as all cells until then are discussed above  in - **_first Data Science workshop - Visualisation_**
-
+6. n/a
+7. Here we add some simple integration code - to allow the data scientist 
+   - Retrieve the CSV file prepared earlier data engineer, from Minio S3 object storage
+   - Inject their work into the workflow.
+  
+  The HOST line on top and the 4 lines using ml-flow is all they need to  push all of their experiments to our model registry** Ml Flow**
+   
 <img src="./images/lab2-data-science/ds-model-experiments-4.png " alt="drawing" width="500"/> 
 
-17. Here we use an Ordinal Encoder to convert simple binary values to a numeric representation. Output the data after applying the Ordinal Encoder.
-18. Here we use a One Hot Encoder to convert multi valued features to a numeric representation. Output the data after applying the One Hot Encoder.
-19. Here we split our data set into a training and a testing set, and discard unwanted columns customer id and our labeled column Churn.  
-20. Further data set refinement.
+8. Here we retrieve the CSV we prepared in the Data Engineer lab earlier and output the first 5 lines of the file - so the data scientist can get a quick view of the data.
+9. Descriptions of the cells that follow.
+
+Several of the cells after 9 are identical to those in the previous notebook, *Visualise_Data.ipynb*
+
+From here, run all the way down to cell 19, _Feature Engineering Pipeline_.
 
 <img src="./images/lab2-data-science/ds-model-experiments-5.png " alt="drawing" width="500"/> 
+
+19.  Here we use an Ordinal Encoder to convert simple binary values to a numeric representation. Output the data after applying the Ordinal Encoder.
+20.  Here we use a One Hot Encoder to convert multi valued features to a numeric representation. Output the data after applying the One Hot Encoder.
+21.  n/a
+22.  Here we split our data set into a training and a testing set, and discard unwanted columns customer id and our labeled column Churn.  
+23.  Further data set refinement.
+
+<img src="./images/lab2-data-science/ds-model-experiments-6.png " alt="drawing" width="500"/> 
+
+24.   Create a DecisionTree Classifier with these hyper parameters
+25.   Use GridSearch to output the best model / hyper parameters from the combinations supplied to its _fit_ method.
+26.   Print out those best model parameters
+27.   Use K-Folds cross-validator to split data into train/test sets. Create a dictionary of hyperparameter candidates, train the model using a DecisionTreeClassifier.
+
+<img src="./images/lab2-data-science/ds-model-experiments-7.png " alt="drawing" width="500"/> 
+
+28.   Create a RandomForest Classifier with these hyper parameters. Use GridSearch to output the best model / hyper parameters from the combinations supplied to its _fit_ method.
+29.   Output the best values
+30.   Use K-Folds cross-validator to split data into train/test sets. Create a dictionary of hyperparameter candidates, train the model using a RandomForestClassifier.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="./images/lab2-data-science/ds-model-experiments-.png " alt="drawing" width="500"/> 
  
-21. Create a DecisionTreeClassifier with these hyper parameters
-22. User GridSearch to output the best model / hyper parameters from the combinations supplied to its _fit_ method.
-23. Print out those best model parameters
-24. Use K-Folds cross-validator to split data into train/test sets. Create a dictionary of hyperparameter candidates, train the model using a DecisionTreeClassifier. Print and store hyperparameters and accuracy in ML Flow and tag using 'DecisionTreeClassifier''. The **_store_** method push this metadata to ML Flow, which you’ll see below.
+1.  
+2.  
+3.  
+4.  
 
 <img src="./images/lab2-data-science/ds-model-experiments-6.png " alt="drawing" width="500"/> 
 
