@@ -348,7 +348,7 @@ Save your work by clicking on the **Save** button
 <img src="./images/lab2-data-science/ds-model-pipeline-3.png " alt="drawing" width="500"/> 
 
 
-**Run Pipeline**
+## Part 5: Run Pipeline. ##
 
 You can now run your pipeline. Click the Play button as shown. A useful naming convention is to enter a name in a format beginning with your username - followed by the month and day and the count of runs that day. This sends each run to the bottom of the list on the Airflow GUI.
 
