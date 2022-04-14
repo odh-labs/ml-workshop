@@ -260,6 +260,14 @@ Ml Flow is a very powerful capability for the following reasons. Every experimen
 
 
 
+
+
+
+
+
+
+
+
 * can be easily pushed to this repo
 * gets a unique ID - that can be traced throughout the workflow and its metadata, parameters etc, examined here at any time
 * each experiment can be easily retrieved and repeated here by **_the same_** data scientist
@@ -270,8 +278,8 @@ Ml Flow is a very powerful capability for the following reasons. Every experimen
 Now following examination of our experiments In Ml Flow, let’s assume for performance reasons, as a data scientist, you’ve decided to proceed with the Decision Tree Classifier experiment and push that model to production.
 
 
-1. Go back to Jupyter Hub and ensure you’re in **ml-workshop-improved/notebook**
-2. Open the **_Train_Model.ipynb Jupyter _**notebook.
+- Go back to Jupyter Hub and ensure you’re in **ml-workshop-improved/notebook**
+- Open the **_Train_Model.ipynb Jupyter _**notebook.
 
 <img src="./images/lab2-data-science/ds-train-model-1.png " alt="drawing" width="500"/> 
 
