@@ -12,8 +12,7 @@ and AI models.
 This diagram illustrates the workflow we're implementing - the beginning
 part of the overall AI/ML workflow:
 
-![](images/lab1-data-engineering/image41.png){width="6.0in"
-height="1.9861111111111112in"}
+<img src="./images/lab1-data-engineering/image41.png " alt="drawing" width="900"/> 
 
 You can see, we source raw data from Kafka and S3 object storage. We use
 Jupyter notebooks to do some simple data engineering - combining these
@@ -34,23 +33,20 @@ instructor:
 1.  Open the url provided by your instructor.\
     > OpenShift displays a login page.
 
-![](images/lab1-data-engineering/image6.png){width="6.0in"
-height="2.625in"}
+<img src="./images/lab1-data-engineering/image6.png " alt="drawing" width="900"/> 
 
 2.  Enter the credentials your instructor provided and click **Log
     > in**.\
     > OpenShift displays the main console.
 
-![](images/lab1-data-engineering/image37.png){width="6.0in"
-height="3.736111111111111in"}
+<img src="./images/lab1-data-engineering/image37.png " alt="drawing" width="900"/> 
 
 **Note:** Throughout these labs, you will be asked to select either the
 **Developer** or **Administrator** perspectives to perform the lab
 steps. To change the perspective, click the Perspective dropdown menu in
 the top left of the console, then click the perspective you need to use.
 
-![](images/lab1-data-engineering/image19.png){width="6.0in"
-height="2.638888888888889in"}
+<img src="./images/lab1-data-engineering/image19.png " alt="drawing" width="900"/> 
 
 Change to the Developer perspective.
 
@@ -66,8 +62,7 @@ Open the project you will use in the workshop:
 6.  Type **ml-workshop** in the *project-name* text box.\
     > OpenShift filters the list of available projects
 
-![](images/lab1-data-engineering/image16.png){width="6.0in"
-height="3.9027777777777777in"}
+<img src="./images/lab1-data-engineering/image16.png " alt="drawing" width="900"/> 
 
 7.  Click **ml-workshop** from the drop-down list.\
     > OpenShift opens the ml-workshop project.
@@ -78,8 +73,7 @@ components that make up the Open Data Hub suite of applications
 8.  Click Topology in the OpenShift sidebar\
     > OpenShift will open the project and display the project Topology.
 
-![](images/lab1-data-engineering/image47.png){width="6.0in"
-height="3.1527777777777777in"}
+<img src="./images/lab1-data-engineering/image47.png " alt="drawing" width="900"/> 
 
 You have now completed accessing the lab environment. Proceed to the
 next section.
@@ -93,13 +87,11 @@ Change to the **Administrator** perspective:
 
 2.  Click **Administrator**.
 
-![](images/lab1-data-engineering/image12.png){width="5.286458880139983in"
-height="2.9277438757655294in"}
+<img src="./images/lab1-data-engineering/image12.png " alt="drawing" width="900"/> 
 
 The OpenShift console displays the **Administrator** perspective.
 
-![](images/lab1-data-engineering/image30.png){width="5.265625546806649in"
-height="2.5906878827646542in"}
+<img src="./images/lab1-data-engineering/image30.png " alt="drawing" width="900"/> 
 
 Open a second browser tab with the same URL for the OpenShift console.
 
@@ -109,8 +101,7 @@ In Google Chrome you can do this by
 
 2.  Click **Duplicate**.
 
-![](images/lab1-data-engineering/image34.png){width="3.026042213473316in"
-height="2.0345745844269465in"}
+<img src="./images/lab1-data-engineering/image34.png " alt="drawing" width="900"/> 
 
 We will refer to these as **tab 1** and **tab 2** in the instructions
 below.
@@ -121,8 +112,7 @@ below.
     > **OpenShift displays a list of all pods running in the ml-workshop
     > project.
 
-![](images/lab1-data-engineering/image57.png){width="6.0in"
-height="3.125in"}
+<img src="./images/lab1-data-engineering/image57.png " alt="drawing" width="900"/> 
 
 4.  Click the **Filter** text box.
 
@@ -130,8 +120,7 @@ height="3.125in"}
     > OpenShift removes all (or almost all) of the pods so you only see
     > the pods related to you.
 
-![](images/lab1-data-engineering/image13.png){width="5.755208880139983in"
-height="1.7285608048993877in"}
+<img src="./images/lab1-data-engineering/image13.png " alt="drawing" width="900"/> 
 
 Open Jupyterhub using the second tab.
 
@@ -145,8 +134,7 @@ OpenShift displays the external network routes to the applications in
 the ml-workshop projects. These routes are how you open the console for
 each application in Open Data Hub.
 
-![](images/lab1-data-engineering/image18.png){width="5.250566491688539in"
-height="2.8449726596675418in"}
+<img src="./images/lab1-data-engineering/image18.png " alt="drawing" width="900"/> 
 
 Filter the URLS to locate Jupyterhub
 
@@ -154,8 +142,7 @@ Filter the URLS to locate Jupyterhub
 
 10. Click the route in the **Location** column
 
-![](images/lab1-data-engineering/image28.png){width="5.968156167979003in"
-height="2.1744444444444446in"}
+<img src="./images/lab1-data-engineering/image28.png " alt="drawing" width="900"/> 
 
 OpenShift launches a new browser tab for Jupyterhub and prompts you for
 a username and password.
@@ -165,15 +152,13 @@ a username and password.
     > OpenShift prompts you to authorise Jupyterhub to access your
     > account credentials
 
-![](images/lab1-data-engineering/image21.png){width="4.729166666666667in"
-height="1.5795997375328084in"}
+<img src="./images/lab1-data-engineering/image21.png " alt="drawing" width="900"/> 
 
 12. Click **Allow selected permissions**.\
     > OpenShift prompts you to select the Jupyter Notebook image and
     > image size.
 
-![](images/lab1-data-engineering/image25.png){width="4.791666666666667in"
-height="3.7251826334208222in"}
+<img src="./images/lab1-data-engineering/image25.png " alt="drawing" width="900"/> 
 
 13. Click **Elyra Notebook Image with Spark\
     > Warning:** Please make sure you select the correct notebook image,
@@ -186,8 +171,7 @@ height="3.7251826334208222in"}
 OpenShift starts a new Jupyterhub notebook server for your lab
 environment.
 
-![](images/lab1-data-engineering/image2.png){width="4.651042213473316in"
-height="1.171502624671916in"}
+<img src="./images/lab1-data-engineering/image2.png " alt="drawing" width="900"/> 
 
 During the provisioning of your notebook OpenShift has also created a
 Spark cluster for your dedicated use.
@@ -196,53 +180,45 @@ Spark cluster for your dedicated use.
     > OpenShift displays the pods associated with your username. Observe
     > the Jupyter notebook pod and the new spark cluster pods.
 
-![](images/lab1-data-engineering/image17.png){width="5.317708880139983in"
-height="2.1695516185476817in"}
+<img src="./images/lab1-data-engineering/image17.png " alt="drawing" width="900"/> 
 
 **Using JupyterLab**
 
 17. Open the **JupyterLab** browser tab you started earlier.\
     > After a few minutes, Jupyterhub displays the notebook.
 
-![](images/lab1-data-engineering/image23.png){width="4.828125546806649in"
-height="3.889323053368329in"}
+<img src="./images/lab1-data-engineering/image23.png " alt="drawing" width="900"/> 
 
 **Copy notebooks**
 
 The workshop requires you to copy some notebooks from a repository.
-[*[https://github.com/bryonbaker/ml-workshop-improved]{.underline}*](https://github.com/bryonbaker/ml-workshop-improved)
 
-18. Do the following in this order - as shown below
+18. Do the following in this order - as shown below:
 
-    a.  Click the **Git icon**
-        > ![](images/lab1-data-engineering/image53.png){width="0.2716032370953631in"
-        > height="0.27645341207349083in"}on the left toolbar.\
-        > JupyterLab prompts you to select a repository.
+    a.  Click the **Git icon** 
+<img src="./images/lab1-data-engineering/image53.png " alt="drawing" width="30"/> on the left toolbar.\
+        JupyterLab prompts you to select a repository.
 
     b.  Click the **Clone a Repository** button
 
-    c.  Enter
-        > [[https://github.com/bryonbaker/ml-workshop-improved]{.underline}](https://github.com/bryonbaker/ml-workshop-improved)
-        > in the URI textbox
+    c.  Enter: **https://github.com/odh-labs/ml-workshop** in the URI textbox
 
     d.  Click **CLONE**.
 
-![](images/lab1-data-engineering/image39.png){width="5.37344706911636in"
-height="3.2744444444444443in"}
+
+<img src="./images/lab1-data-engineering/image39.png " alt="drawing" width="900"/> 
 
 Jupyterhub clones the git repository that has all the code you will be
 using for this lab.
 
 The **Notebook Explorer** is updated to show the workshop files.
 
-![](images/lab1-data-engineering/image36.png){width="3.5781255468066493in"
-height="2.236327646544182in"}
+<img src="./images/lab1-data-engineering/image36.png " alt="drawing" width="900"/> 
 
 19. Note: If your explorer has not updated click the **Refresh or
     > Reload** in your browser
 
-![](images/lab1-data-engineering/image52.png){width="6.0in"
-height="2.5833333333333335in"}
+<img src="./images/lab1-data-engineering/image52.png " alt="drawing" width="900"/> 
 
 Open the folder containing the notebooks for this workshop.
 
@@ -250,8 +226,7 @@ Open the folder containing the notebooks for this workshop.
     > OpenShift displays all of the notebooks you will be using in this
     > lab.
 
-![](images/lab1-data-engineering/image32.png){width="5.363932633420823in"
-height="2.86076334208224in"}
+<img src="./images/lab1-data-engineering/image32.png " alt="drawing" width="900"/> 
 
 **The code used in this workshop is generic to everyone. Before we get
 going, you need to make some small changes to the code that are unique
@@ -260,8 +235,7 @@ to your user.**
 21. Open **hyper_parameters.py\
     > **JupyterLab displays the code editor
 
-![](images/lab1-data-engineering/image43.png){width="6.0in"
-height="3.1666666666666665in"}
+<img src="./images/lab1-data-engineering/image43.png " alt="drawing" width="900"/> 
 
 22. Replace **user123** with your username that you are using for this
     > lab (the same one you used to log on to OpenShift).
@@ -272,8 +246,7 @@ user_id = "\<your username\>"
 
 23. Click the **Save** icon as shown to save your work.
 
-![](images/lab1-data-engineering/image24.png){width="6.0in"
-height="3.1527777777777777in"}
+<img src="./images/lab1-data-engineering/image24.png " alt="drawing" width="900"/> 
 
 **Prepare the Data**
 
@@ -303,15 +276,13 @@ so you get an understanding for what it is doing.
 
 26. Click inside the first code cell.
 
-![](images/lab1-data-engineering/image56.png){width="6.0in"
-height="2.1666666666666665in"}
+<img src="./images/lab1-data-engineering/image56.png " alt="drawing" width="900"/> 
 
 27. Press the **SHIFT+RETURN** keys on your keyboard to execute the code
     > in the cell.\
     > JupyterLab runs the code in the call and displays any output.
 
-![](images/lab1-data-engineering/image50.png){width="6.0in"
-height="2.7777777777777777in"}
+<img src="./images/lab1-data-engineering/image50.png " alt="drawing" width="900"/> 
 
 Step through each cell one by one so you can see what is going on.
 
@@ -322,16 +293,14 @@ Step through each cell one by one so you can see what is going on.
 
 -   Any output is displayed immediately under the cell.
 
-![](images/lab1-data-engineering/image14.png){width="6.0in"
-height="1.5555555555555556in"}
+<img src="./images/lab1-data-engineering/image14.png " alt="drawing" width="900"/> 
 
 **Note:** If you want to run the entire notebook click: **Kernel \>
 Restart Kernel and Run All Cells** in the toolbar menu**.**
 
 At a high level, this is what is happening in the most important cells:
 
-![](images/lab1-data-engineering/image60.png){width="6.0in"
-height="6.5in"}
+<img src="./images/lab1-data-engineering/image60.png " alt="drawing" width="900"/> 
 
 1.  *pip install xxxx*, installs various libraries that aren't contained
     > in our case container image
@@ -354,8 +323,7 @@ height="6.5in"}
 7.  Here we actually start our Spark server. This cell can take several
     > minutes to start.
 
-![](images/lab1-data-engineering/image15.png){width="6.0in"
-height="2.6527777777777777in"}
+<img src="./images/lab1-data-engineering/image15.png " alt="drawing" width="900"/> 
 
 8.  Here we pull in our data from S3 - our CSV based demographic data
     > for each of our approximately 7000 customers.
@@ -367,8 +335,7 @@ height="2.6527777777777777in"}
 
 10. Commented out Kafka connection code - ignore for now
 
-> ![](images/lab1-data-engineering/image48.png){width="6.0in"
-> height="1.9722222222222223in"}
+<img src="./images/lab1-data-engineering/image48.png " alt="drawing" width="900"/> 
 
 11. We join these 2 datasets, on the common column to each:
     > *customerID*.
@@ -438,22 +405,18 @@ GUI - which we'll do later.
 
 -   Copy this URL to your clipboard.
 
-![](images/lab1-data-engineering/image9.png){width="6.0in"
-height="2.5555555555555554in"}
+<img src="./images/lab1-data-engineering/image9.png " alt="drawing" width="900"/> 
 
 Switch to JupyterLab in browser **Tab 3**
 
--   Click on the **Runtimes** icon
-    > ![](images/lab1-data-engineering/image33.png){width="0.3032830271216098in"
-    > height="0.3091152668416448in"} on the toolbar shortcuts\
+-   Click on the **Runtimes** icon <img src="./images/lab1-data-engineering/image33.png " alt="drawing" width="30"/> on the toolbar shortcuts\
     > JupyterLab displays the Runtimes Explorer.
 
 -   Click on the **+** icon at the top of the **Runtimes Explorer**
 
 -   Select **New Apache Airflow runtime**
 
-> ![](images/lab1-data-engineering/image51.png){width="3.451580271216098in"
-> height="2.101923665791776in"}
+<img src="./images/lab1-data-engineering/image51.png " alt="drawing" width="900"/> 
 
 -   Fill it in as follows - and click **Save and Close**
 
@@ -480,14 +443,11 @@ Cloud Object Storage bucket name airflow
 
 As shown here:
 
-![](images/lab1-data-engineering/image22.png){width="5.119792213473316in"
-height="3.2443121172353457in"}
+<img src="./images/lab1-data-engineering/image22.png " alt="drawing" width="900"/> 
 
 Next, we need to add a Python Runner.
 
--   Click the **Runtime Images**
-    > ![](images/lab1-data-engineering/image3.png){width="0.20833333333333334in"
-    > height="0.21296259842519685in"} button in the toolbar shortcuts.
+-   Click the **Runtime Images** <img src="./images/lab1-data-engineering/image3.png " alt="drawing" width="30"/> button in the toolbar shortcuts.
 
 -   Click on the **+** icon at the top of the **Runtimes Images
     > Explorer**
@@ -500,14 +460,11 @@ Image Pull Policy: IfNotPresent
 
 ***as shown here:***
 
-![](images/lab1-data-engineering/image5.png){width="6.838542213473316in"
-height="2.1888768591426073in"}
+<img src="./images/lab1-data-engineering/image5.png " alt="drawing" width="900"/> 
 
 -   Click **Save and Close**
 
--   Again, click **Runtime Images**
-    > ![](images/lab1-data-engineering/image3.png){width="0.20833333333333334in"
-    > height="0.21296259842519685in"}
+-   Click **Runtime Images** <img src="./images/lab1-data-engineering/image3.png " alt="drawing" width="30"/> 
 
 -   Click **+** and complete the form as per the illustration below.
 
@@ -516,20 +473,16 @@ Image Name: quay.io/ml-aml-workshop/elyra-spark:0.0.4\
 Image Pull Policy: IfNotPresent
 
 as shown
-here:![](images/lab1-data-engineering/image49.png){width="6.0in"
-height="2.2222222222222223in"}
+<img src="./images/lab1-data-engineering/image49.png " alt="drawing" width="900"/> 
 
 -   Click **Save and Close**
 
--   Click the **File Browser**
-    > ![](images/lab1-data-engineering/image4.png){width="0.25793635170603674in"
-    > height="0.20833333333333334in"} button in the toolbar shortcuts so
+-   Click the **File Browser** <img src="./images/lab1-data-engineering/image4.png " alt="drawing" width="30"/> button in the toolbar shortcuts so
     > you can access the rest of the project files.
 
 -   Click the **spark-demo.pipeline** tab in JupyterLab to open it
 
-> ![](images/lab1-data-engineering/image44.png){width="6.0in"
-> height="3.2916666666666665in"}
+<img src="./images/lab1-data-engineering/image44.png " alt="drawing" width="900"/> 
 
 Each component in the pipeline can be configured from the pipeline GUI -
 which we'll do now beginning with the start-spark-cluster element of the
@@ -537,9 +490,8 @@ pipeline.
 
 -   Refresh your browser page
 
--   Right-click on **start-spark-cluster** and choose **Properties**\
-    > ![](images/lab1-data-engineering/image58.png){width="6.344545056867892in"
-    > height="2.3863746719160104in"}
+-   Right-click on **start-spark-cluster** and choose **Properties** \
+   <img src="./images/lab1-data-engineering/image58.png " alt="drawing" width="900"/> 
 
 -   Select these values as shown in the screenshot below
 
@@ -570,14 +522,11 @@ pipeline.
 
         -   spark-info.txt
 
-> As shown here:
->
-> ![](images/lab1-data-engineering/image27.png){width="3.3928543307086616in"
-> height="5.558681102362205in"}
+ As shown here:
+<img src="./images/lab1-data-engineering/image27.png " alt="drawing" width="900"/> 
 
 -   Save your work by clicking on the **Save** button\
-    > ![](images/lab1-data-engineering/image31.png){width="4.328125546806649in"
-    > height="1.855984251968504in"}
+    <img src="./images/lab1-data-engineering/image31.png " alt="drawing" width="900"/> 
 
 -   Do the same with Merge_Data, right-clicking and filling as follows:
 
@@ -603,23 +552,17 @@ pipeline.
 
         -   S3_ENDPOINT_URL=[[http://minio-ml-workshop:9000]{.underline}](http://minio-ml-workshop:9000)
 
-> As shown here:
->
-> ![](images/lab1-data-engineering/image29.png){width="2.2324825021872265in"
-> height="6.420485564304462in"}
+As shown here:
+<img src="./images/lab1-data-engineering/image29.png " alt="drawing" width="900"/> 
 
 -   Save your work by clicking on the **Save** button\
-    > ![](images/lab1-data-engineering/image31.png){width="4.328125546806649in"
-    > height="1.855984251968504in"}
+    <img src="./images/lab1-data-engineering/image31.png " alt="drawing" width="900"/> 
 
--   Finally, do the same with stop-spark-cluster - which has fewer still
-    > values\
-    > ![](images/lab1-data-engineering/image10.png){width="6.0in"
-    > height="2.388888888888889in"}
+-   Finally, do the same with stop-spark-cluster - which has fewer still values\
+    <img src="./images/lab1-data-engineering/image10.png " alt="drawing" width="900"/> 
 
 -   Save your work by clicking on the **Save** button\
-    > ![](images/lab1-data-engineering/image31.png){width="4.328125546806649in"
-    > height="1.855984251968504in"}
+    <img src="./images/lab1-data-engineering/image31.png " alt="drawing" width="900"/> 
 
 **Run Pipeline**
 
@@ -630,8 +573,7 @@ This sends each run to the bottom of the list on the Airflow GUI.
 
 **userXX**-**MMDD**-01-spark, in my case ***user30-0223-01-spark***.
 Also choose your Airflow Runtime and Runner as shown:\
-![](images/lab1-data-engineering/image11.png){width="6.0in"
-height="3.1666666666666665in"}
+<img src="./images/lab1-data-engineering/image11.png " alt="drawing" width="900"/> 
 
 ~~Note - if you get an error that it can't find
 ***spark-cluster-route.yaml***, in the file explorer on the left
@@ -643,18 +585,16 @@ navigate to **airflow/deploy_spark_jobs** and copy
 ~~Press Play again. Two pop-ups will show - including this one. OK
 them~~
 
-![](images/lab1-data-engineering/image54.png){width="6.0in"
-height="2.75in"}
+<img src="./images/lab1-data-engineering/image54.png " alt="drawing" width="900"/> 
 
 Now let's take a look at the Spark job we pushed to our workflow engine
 Airflow.
 
 In a browser open your **Airflow Route URL** as described above in step
-30. After logging in with your OpenShift credentials. click DAGs and
+1.  After logging in with your OpenShift credentials. click DAGs and
 you'll be presented with the a page like this:
 
-![](images/lab1-data-engineering/image20.png){width="6.0in"
-height="1.2777777777777777in"}
+<img src="./images/lab1-data-engineering/image20.png " alt="drawing" width="900"/> 
 
 You will see many DAGs, representing previous pipeline runs. Filter on
 your username in the right-hand side box to see only yours.
@@ -663,30 +603,25 @@ Drill into your Spark job DAG by clicking on it - the one you just ran.
 You can see the stages and the success or otherwise of the various
 stages in your pipeline.Click on Graph View for a more detailed view
 
-![](images/lab1-data-engineering/image35.png){width="6.0in"
-height="2.3055555555555554in"}
+<img src="./images/lab1-data-engineering/image35.png " alt="drawing" width="900"/> 
 
 Click on the Merge Data stage
 
-![](images/lab1-data-engineering/image8.png){width="6.0in"
-height="2.0555555555555554in"}
+<img src="./images/lab1-data-engineering/image8.png " alt="drawing" width="900"/> 
 
 You have many options to control and re-run stages for example. You can
 also view the logs for the stage from here as well\
-![](images/lab1-data-engineering/image45.png){width="6.0in"
-height="5.111111111111111in"}
+<img src="./images/lab1-data-engineering/image45.png " alt="drawing" width="900"/> 
 
 Finally, by clicking **schedule@once** you can schedule this job to run
 on a periodic basis - fully automated through cron.
 
-![](images/lab1-data-engineering/image1.png){width="6.0in"
-height="1.7222222222222223in"}
+<img src="./images/lab1-data-engineering/image1.png " alt="drawing" width="900"/> 
 
 Click the blue **+** icon to do this. We'll leave this as an exercise
 for you, the user.
 
-![](images/lab1-data-engineering/image42.png){width="6.0in"
-height="1.5416666666666667in"}
+<img src="./images/lab1-data-engineering/image42.png " alt="drawing" width="900"/> 
 
 That concludes our Airflow pipeline and workflow section. Hopefully you
 agree this is a very powerful tool - bringing agility and autonomy to
@@ -699,8 +634,7 @@ Spark cluster for you to do your work.
 
 -   Open **Tab 1**.
 
-![](images/lab1-data-engineering/image46.png){width="5.027457349081365in"
-height="3.3479549431321085in"}
+<img src="./images/lab1-data-engineering/image46.png " alt="drawing" width="900"/> 
 
 OpenSHift displays all of the pods for your username. Here you can
 observe that a Spark cluster was started for the Data Engineering work.
@@ -716,13 +650,11 @@ to the pool when they are no longer needed.
 
 -   Click menu item **File \> Hub Control Panel**
 
-![](images/lab1-data-engineering/image59.png){width="5.080430883639545in"
-height="4.912847769028871in"}
+<img src="./images/lab1-data-engineering/image59.png " alt="drawing" width="900"/> 
 
 Jupyterhub displays the server-control page.
 
-![](images/lab1-data-engineering/image55.png){width="6.0in"
-height="1.1111111111111112in"}
+<img src="./images/lab1-data-engineering/image55.png " alt="drawing" width="900"/> 
 
 -   Click **Stop My Server**.
 
@@ -734,8 +666,7 @@ height="1.1111111111111112in"}
 
 > Observe your Spark pods being destroyed.
 
-![](images/lab1-data-engineering/image38.png){width="6.0in"
-height="2.4166666666666665in"}
+<img src="./images/lab1-data-engineering/image38.png " alt="drawing" width="900"/> 
 
 You can see each of the pods terminating. This is a powerful
 demonstration of OpenShift's self service capabilities. No waiting for
