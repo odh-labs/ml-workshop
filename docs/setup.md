@@ -22,8 +22,8 @@ If you are running this as a workshop, it is recommended you fork this repo as t
 
 Using the example below:   
 1. Clone (or fork) this repo.
-2. Change directory into the root dir, *_*ml-workshop*_*.  
-3. Create a variable *REPO_HOME*_ for this directory
+2. Change directory into the root directory of the cloned repository **ml-workshop**.  
+3. Create a variable *REPO_HOME* for this directory
 
 *<span style="color:yellow">REVISIT: Change to use a clone based on a tag/branch: 
 git clone -b tag --single-branch https://github.com/odh-labs/ml-workshop.git<span>*
@@ -37,39 +37,42 @@ export REPO_HOME=`pwd`
 ## Install the Open Data Hub Operator
 
 1. Log on to OpenShift as a Cluster Administrator. (For RHPDS this is opentlc-mgr.)
-2. Select the Administrator perspective
-3. Install the Open Data Hub operator. Click **Operators > Operator Hub**  
+2. Click the *Perspective* dropdown list box
+3. Click the *Administrator* perspective\
+   OpenShift changes the user interface to the Adminstrator perspective.
+
+<img src="./images/setup/install-0.png" alt="drawing" width="200"/>
+
+4. Click **Operators > Operator Hub**  
    OpenShift displays the operator catalogue.  
-4. Click the *Filter by keybord* text box and type *open data hub*  
+5. Click the *Filter by keybord* text box and type *open data hub*  
    OpenShift displays the *Open Data Hub Operator* tile.
-5. Click the tile  
+6. Click the tile  
    OpenShift displays a Commmunity Operator warning dialog box.
-6. Click **Continue**  
+7. Click **Continue**  
    OpenShift displays the operator details.
-7. Click **Install**   
+8. Click **Install**   
    OpenShift prompts for the operator configuration details.   
    <img src="./images/setup/install-2.png" alt="drawing" width="500"/>  
-8. Accept all defaults and click **Install*  
+9. Accept all defaults and click **Install**\
    OpenShift installs the operator and displays a diaglog box once complete.  
    <img src="./images/setup/install-3.png" alt="drawing" width="500"/>
-9. Click **View Operator**  
+10. Click **View Operator**  
     OpenShift displays the operator details.   
    <img src="./images/setup/install-4.png" alt="drawing" width="500"/>  
 
 The Open Data Hub Operator is now installed. Proceed to create the workshop project and install Open Data Hub
 
 ## Project Creation & ODH Installation Steps
-We will now create the workshop's project and install Open Data Hub into the project.  
-Before we do this we need to copy the Open Data Hub KfDef file that will instruct the operator which tools to install and how to configure them.
-
-Later in these steps you will also need to:  
-a. Edit the KfDef file you create in OpenShift with the URL of your cluster. Pay careful attention to those steps or Airflow will not run.  
-b. Update the certificate for Airflow.
+Now that the Open Data Hub Operator is installed we can proceed to setting up the workshop project and then configure the tools.
 
 ### Prerequisite Step:
-Before installing Open Data Hub you need to copy the KFDef file from a oublic git repository.   
+Before we set up the project we need to get some YAML ready to paste into the operator configurtation. This KfDef YAML defines which tools the ODH Operator will install and how to configure them.
 
-1. Using any editor of choice, open the KFDef File from the github repository your cloned. It is located in *./src/kfdef/workshop-kfdef.yaml*.
+1. Using any editor of choice, open the KFDef File from the github repository your cloned. It is located in *ml-workshop/deploy/kfdef/workshop-kfdef.yaml*.\
+   The following diagram is from Visual Studio Code's File Explorer and illustrates the path to the file.
+  
+   <img src="./images/setup/install-4-1.png" alt="drawing" width="300"/>
 2. Copy the contents to the clipboard and keep it - you will use it shortly.
 
 ### Create the Workshop's Project and Install ODH
@@ -86,11 +89,11 @@ Before installing Open Data Hub you need to copy the KFDef file from a oublic gi
    <img src="./images/setup/install-11.png" alt="drawing" width="400"/>  
    2.3 Click **Delete LimitRange**  
    OpenShift removes the LImitRange for the project.
-2. Install Open Data Hub  
+2. Install Open Data Hub
    2.1 Click **Operators > Installed Operators**  
    OpenShift displays all the operators currently installed.  
 
-   <span style="color:yellow">**Note that the ml-workshop project is unselected and **All Projects** is selected. You must make ml-workshop the active project.**<span>  
+   <span style="color:yellow">**Note that the ml-workshop project may have become unselected and **All Projects** is selected. If it is not already, you must make ml-workshop the active project. Failure to do this will break the installation**<span>  
 
    2.2 Click the **Projects** drop-down list and click **ml-workshop**  
    <img src="./images/setup/install-6.png" alt="drawing" width="300"/>  
@@ -104,13 +107,13 @@ Before installing Open Data Hub you need to copy the KFDef file from a oublic gi
    2.6 Click the **YAML View** radio button  
    OpenShift displays the KfDef YAML editor.  
    <img src="./images/setup/install-8.png" alt="drawing" width="300"/>  
-   2.7 Replace the entire YAML file with the KfDef YAML you copied to your clipboard in the *Prerequisits* step above.  
-   This KfDef file will tell OpenShift how to install and configure ODH.  
+   2.7 Replace the entire YAML file with the KfDef YAML you copied to your clipboard in the *Prerequisits* step above. This KfDef file will tell OpenShift how to install and configure ODH.  
+
    Before you save the KfDef you must edit one line of code.  
    2.8 Locate the **airflow2** overlay in the code  
    <img src="./images/setup/install-9.png" alt="drawing" width="400"/>  
    Around line 57 you will see a **value** field that contains part of the URL to your OpenShift clister.  
-   2.9 Replace the value with the the URI of **your** cluster from the *.apps* through to the *.com* as follows:   
+   2.9 Using the example below, replace the value with the the URI of **your** cluster from the *.apps* through to the *.com* as follows (your URI will be different to this example):   
 ```yaml
        - kustomizeConfig:
         overlays:
@@ -129,7 +132,7 @@ Before installing Open Data Hub you need to copy the KFDef file from a oublic gi
        OpenShift creates the KfDef and proceeeds to deploy ODH.  
   2.11 Click **Workloads > Pods** to observe the deployment progress.  
       <img src="./images/setup/install-10.png" alt="drawing" width="400"/>  
-      Be aweare this may take seveeralk minutes to complete.
+      Note: This installation will take several minutes to complete.
 
 ## Installation Complete
 The installation phase of Open Data Hub is now complete. Next you will configure the workshop environment.
@@ -249,8 +252,9 @@ Superset prompts for the advanced database configuration.
 14. Click **SQL Lab**.
 15. Complete the form as illustrated in the following figure:  
    <img src="./images/setup/superset-7.png" alt="superset-7.png" width="300"/>  
-16. Click **CONNECT** (or **FINISH** if you have done this step previously)
-17. Click **SQL Lab Settings > Saved Queries** in the main toolbar.   
+16. Click **CONNECT** (or **FINISH** if you have done this step previously)\
+    Superset saves the connection details and displays the main console
+17. Click **SQL Lab > Saved Queries** in the main toolbar.   
    <img src="./images/setup/superset-8.png" alt="superset-8.png" width="300"/>  
 
 18. Click the **+ QUERY** button.
@@ -287,11 +291,14 @@ Superset prompts for the advanced database configuration.
    Run the query as shown. You should see a resultset spanning personal and product consumption customer data.  
    <img src="./images/setup/superset-10.png" alt="superset-10.png" width="400"/>  
 
-22. Click the *SAVE AS* button <img src="./images/setup/superset-11.png" alt="superset-11.png" width="50"/>.   
+22. Click the <img src="./images/setup/superset-11.png" alt="SAVE AS button" width="50"/> button .   
 Superset displays the Save As dialog box.
-23. Click the **Name** text box. Replace the text with: **Kafka-CSV-Join**
-24. Click the SAVE button.   
-    Superset saves the query.
+
+23. Click the **Name** text box. Replace the text with: **Kafka-CSV-Join**\
+
+<img src="./images/setup/superset-12.png" alt="superset-12.png" width="400"/>
+
+22. Click the **SAVE** button .
 
 # Setup Complete
 
