@@ -48,31 +48,29 @@ Change to the Developer perspective.
 
 3.  Click the **Administrator** dropdown list box in the sidebar.
 
-4.  Click **Developer**.  
+4.  Click **Developer**.\
     OpenShift displays the Developer perspective.
 
 Open the project you will use in the workshop:
 
 5.  Click **All Projects** in the console title bar.
-
-6.  Type **ml-workshop** in the *project-name* text box.  
-    OpenShift filters the list of available projects
+   
+6.  Type **ml-workshop** in the *project-name* text box.\
+    OpenShift filters the list of available projects as you type.
 
 <img src="./images/lab1-data-engineering/image16.png " alt="drawing" width="900"/> 
 
-7.  Click **ml-workshop** from the drop-down list.  
+7.  Click **ml-workshop** from the drop-down list.\
     OpenShift opens the ml-workshop project.
 
-Open Data Hub was deployed prior to this workshop. Explore all the
-components that make up the Open Data Hub suite of applications
+Open Data Hub was deployed prior to this workshop. Explore all the components that make up the Open Data Hub suite of applications
 
-8.  Click Topology in the OpenShift sidebar  
-    OpenShift will open the project and display the project Topology.
+8.  Click Topology in the OpenShift sidebar\
+    OpenShift displays the project Topology. Observe all the pods for the different applications that make up OpenData Hub.
 
 <img src="./images/lab1-data-engineering/image47.png " alt="drawing" width="900"/> 
 
-You have now completed accessing the lab environment. Proceed to the
-next section.
+**You have now completed accessing the lab environment. Proceed to the next section.**
 
 ## Instructions for the Spark workshop
 
@@ -90,9 +88,11 @@ The OpenShift console displays the **Administrator** perspective.
 
 Open a second browser tab with the same URL for the OpenShift console.
 
-In Google Chrome you can do this by
+<span style="color:yellow">edits done to here</span>
 
-1.  Right-click the browser tab.
+(If you are using Google Chrome you do this by:)
+
+1.  **Right-click** the OpenShift browser tab.
 
 2.  Click **Duplicate**.
 
@@ -103,17 +103,15 @@ below.
 
 **In Tab 1**
 
-3.  Click **Workloads \> Pods.\
-    > **OpenShift displays a list of all pods running in the ml-workshop
-    > project.
+3.  Click **Workloads** Pods.\
+    OpenShift displays a list of all pods running in the ml-workshop project.
 
 <img src="./images/lab1-data-engineering/image57.png " alt="drawing" width="900"/> 
 
 4.  Click the **Filter** text box.
 
 5.  Enter your username\
-    > OpenShift removes all (or almost all) of the pods so you only see
-    > the pods related to you.
+    OpenShift removes all (or almost all) of the pods so you only see the pods related to you.
 
 <img src="./images/lab1-data-engineering/image13.png " alt="drawing" width="900"/> 
 
@@ -125,9 +123,7 @@ Open Jupyterhub using the second tab.
 
 8.  Click **Networking \> Routes**.
 
-OpenShift displays the external network routes to the applications in
-the ml-workshop projects. These routes are how you open the console for
-each application in Open Data Hub.
+OpenShift displays the external network routes to the applications in the ml-workshop projects. These routes are how you open the console for each application in Open Data Hub.
 
 <img src="./images/lab1-data-engineering/image18.png " alt="drawing" width="900"/> 
 
@@ -139,13 +135,10 @@ Filter the URLS to locate Jupyterhub
 
 <img src="./images/lab1-data-engineering/image28.png " alt="drawing" width="900"/> 
 
-OpenShift launches a new browser tab for Jupyterhub and prompts you for
-a username and password.
+OpenShift launches a new browser tab for Jupyterhub and prompts you for a username and password.
 
-11. Enter the same credentials your instructor gave you to log into
-    > OpenSHift\
-    > OpenShift prompts you to authorise Jupyterhub to access your
-    > account credentials
+11. Enter the same credentials your instructor gave you to log into OpenShift\
+    OpenShift prompts you to authorise Jupyterhub to access your account credentials
 
 <img src="./images/lab1-data-engineering/image21.png " alt="drawing" width="900"/> 
 
@@ -180,7 +173,7 @@ Spark cluster for your dedicated use.
 **Using JupyterLab**
 
 17. Open the **JupyterLab** browser tab you started earlier.\
-    > After a few minutes, Jupyterhub displays the notebook.
+    After a few minutes, Jupyterhub displays the notebook.
 
 <img src="./images/lab1-data-engineering/image23.png " alt="drawing" width="900"/> 
 
@@ -218,8 +211,7 @@ The **Notebook Explorer** is updated to show the workshop files.
 Open the folder containing the notebooks for this workshop.
 
 20. Double click **ml-workshop-improved/notebook/**\
-    > OpenShift displays all of the notebooks you will be using in this
-    > lab.
+    OpenShift displays all of the notebooks you will be using in this lab.
 
 <img src="./images/lab1-data-engineering/image32.png " alt="drawing" width="900"/> 
 
