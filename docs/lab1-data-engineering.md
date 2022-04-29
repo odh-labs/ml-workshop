@@ -30,21 +30,17 @@ Your instructor will provide you with a username, password, and link to
 access your environment. Using your browser and the URL provided by the
 instructor:
 
-1.  Open the url provided by your instructor.\
-    > OpenShift displays a login page.
+1.  Open the url provided by your instructor.  
+    OpenShift displays a login page.
 
 <img src="./images/lab1-data-engineering/image6.png " alt="drawing" width="900"/> 
 
-2.  Enter the credentials your instructor provided and click **Log
-    > in**.\
-    > OpenShift displays the main console.
+2.  Enter the credentials your instructor provided and click **Log in**.\
+    OpenShift displays the main console.
 
 <img src="./images/lab1-data-engineering/image37.png " alt="drawing" width="900"/> 
 
-**Note:** Throughout these labs, you will be asked to select either the
-**Developer** or **Administrator** perspectives to perform the lab
-steps. To change the perspective, click the Perspective dropdown menu in
-the top left of the console, then click the perspective you need to use.
+<span style="color:yellow">**Note:**</span> Throughout these labs, you will be asked to select either the **Developer** or **Administrator** perspectives to perform the lab steps. To change the perspective, click the Perspective dropdown menu in the top left of the console, then click the perspective you need to use.
 
 <img src="./images/lab1-data-engineering/image19.png " alt="drawing" width="900"/> 
 
@@ -52,26 +48,26 @@ Change to the Developer perspective.
 
 3.  Click the **Administrator** dropdown list box in the sidebar.
 
-4.  Click **Developer**.\
-    > OpenShift displays the Developer perspective.
+4.  Click **Developer**.  
+    OpenShift displays the Developer perspective.
 
 Open the project you will use in the workshop:
 
 5.  Click **All Projects** in the console title bar.
 
-6.  Type **ml-workshop** in the *project-name* text box.\
-    > OpenShift filters the list of available projects
+6.  Type **ml-workshop** in the *project-name* text box.  
+    OpenShift filters the list of available projects
 
 <img src="./images/lab1-data-engineering/image16.png " alt="drawing" width="900"/> 
 
-7.  Click **ml-workshop** from the drop-down list.\
-    > OpenShift opens the ml-workshop project.
+7.  Click **ml-workshop** from the drop-down list.  
+    OpenShift opens the ml-workshop project.
 
 Open Data Hub was deployed prior to this workshop. Explore all the
 components that make up the Open Data Hub suite of applications
 
-8.  Click Topology in the OpenShift sidebar\
-    > OpenShift will open the project and display the project Topology.
+8.  Click Topology in the OpenShift sidebar  
+    OpenShift will open the project and display the project Topology.
 
 <img src="./images/lab1-data-engineering/image47.png " alt="drawing" width="900"/> 
 
@@ -82,8 +78,7 @@ next section.
 
 Change to the **Administrator** perspective:
 
-1.  Click the **Perspective** drop-down list in the top left of the
-    > console.
+1.  Click the **Perspective** drop-down list in the top left of the console.
 
 2.  Click **Administrator**.
 
