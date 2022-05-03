@@ -294,7 +294,7 @@ Superset prompts for the advanced database configuration.
 22. Click the <img src="./images/setup/superset-11.png" alt="SAVE AS button" width="50"/> button .   
 Superset displays the Save As dialog box.
 
-23. Click the **Name** text box. Replace the text with: **Kafka-CSV-Join**\
+23. Click the **Name** text box. Replace the text with: **Kafka-CSV-Join**
 
 <img src="./images/setup/superset-12.png" alt="superset-12.png" width="400"/>
 
