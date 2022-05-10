@@ -24,8 +24,7 @@ these stages are executed:
 
 -   Deploy Model
 
-![alt_text](images/lab3-mlops/image3.png){width="6.0in"
-height="2.0555555555555554in"}
+![alt_text](images/lab3-mlops/image3.png)
 
 During this phase, we also utilise the model serving component Seldon,
 which wraps the model behind a RESTful API, making the model easily
