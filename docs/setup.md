@@ -158,6 +158,13 @@ The password for all users is **openshift**.
 
 --------------------------------------------------------------------------------------------------------
 
+## Allocate sufficient compute and memory resources for the workshop
+
+This workshop is quite resource hungry - especially the Data Engineering section, which allocates two 3-node Spark clusters per user. Therefore, we suggest adding three nodes to your cluster of the following size, for every 10 users:
+- 8vCPUs and 64 GB Memory
+Increase in accordance if you have more workshop users.
+--------------------------------------------------------------------------------------------------------
+
 ## Configure the S3 Storage
 
 ### Upload File to the rawdata Bucket
