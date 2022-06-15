@@ -220,7 +220,7 @@ Open the folder containing the notebooks for this workshop.
 going, you need to make some small changes to the code that are unique
 to your user.**
 
-21. Open **hyper_parameters.py\
+21. Open **config.py\
     > **JupyterLab displays the code editor
 
 ![alt_text](images/lab1-data-engineering/image43.png) 
@@ -299,7 +299,7 @@ At a high level, this is what is happening in the most important cells:
     > operating system attributes etc.
 
 4.  Here we load the user specific parameters - based on the username
-    > you entered in hyper_parameters.py
+    > you entered in config.py
 
 5.  Here we create a Spark session, a precursor to firing up our own
     > Spark server.
@@ -528,7 +528,7 @@ pipeline.
 
         -   spark-cluster-route.yaml
 
-        -   hyper_parameters.py
+        -   config.py
 
     -   Environment Variables
 
