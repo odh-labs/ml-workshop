@@ -195,7 +195,7 @@ Edit the same MachineSet again. You see the same view as before. __Click the pen
 
 
 
-Increase accordingly if you have more workshop users.
+Increase your node count accordingly if you have more workshop users. (though we do find limiting the participant count to 20 makes the lab more manageable)
 
 ### Note - be sure to scale back down your machine count following the workshop, so you're not overconsuming resources - and costs!
 --------------------------------------------------------------------------------------------------------
