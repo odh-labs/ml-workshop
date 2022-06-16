@@ -180,7 +180,7 @@ Click YAML. Then inside the YAML, search for _large_. Then replace your value (i
 
 <img src="./images/setup/machines-3.png" alt="drawing" width="500"/> 
 
-
+Edit the same MachineSet again. You see the same view before. __Click the pencil icon__ and __increment the count to 3__ and then __click Save__
 
 
 
