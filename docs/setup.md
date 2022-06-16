@@ -169,6 +169,20 @@ In OpenShift, navigate to __Compute > MachineSets__
 
 <img src="./images/setup/machines-1.png" alt="drawing" width="500"/> 
 
+Notice in my case, I have two MachineSets, each with a type of _m5.4xlarge_. (yours may be different)
+Click one one of these MachineSet links. I'm choosing the one with one machine - but you can choose either.
+
+You'll see a view like this:
+
+<img src="./images/setup/machines-2.png" alt="drawing" width="500"/> 
+
+Click YAML. Then inside the YAML, search for _large_
+
+
+
+
+
+
 Increase accordingly if you have more workshop users.
 
 ### Note - be sure to scale back down your machine count following the workshop, so you're not overconsuming resources - and costs!
