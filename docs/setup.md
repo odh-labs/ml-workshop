@@ -165,7 +165,13 @@ This workshop is quite resource hungry - especially the Data Engineering section
 
 To illustrate this, let's assume we have a workshop of 20 users. Therforwe we need to add two nodes, each with 16vCPUs and 128 GiB Memory. If you're on AWS, this exact size of machine is available with machine __m5a.8xlarge__. So let's add two nodes of that type.
 
-In OpenShift, navigate to __Compute > MachineSets__
+In OpenShift, navigate to __Compute > Nodes__. Notice you have a number of __worker__ nodes, in my case 3.
+
+<img src="./images/setup/machines-0-nodes.png" alt="drawing" width="500"/> 
+
+We're going to increase that.
+
+Next, navigate to __Compute > MachineSets__
 
 <img src="./images/setup/machines-1.png" alt="drawing" width="500"/> 
 
@@ -181,6 +187,9 @@ Click YAML. Then inside the YAML, search for _large_. Then replace your value (i
 <img src="./images/setup/machines-3.png" alt="drawing" width="500"/> 
 
 Edit the same MachineSet again. You see the same view before. __Click the pencil icon__ and __increment the count to 3__ and then __click Save__
+
+<img src="./images/setup/machines-4.png" alt="drawing" width="500"/> 
+
 
 
 
