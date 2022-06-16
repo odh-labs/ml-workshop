@@ -166,7 +166,8 @@ This workshop is quite resource hungry - especially the Data Engineering section
 To illustrate this, let's assume we have a workshop of 20 users. Therforwe we need to add two nodes, each with 16vCPUs and 128 GiB Memory. If you're on AWS, this exact size of machine is available with machine __m5a.8xlarge__. So let's add two nodes of that type.
 
 In OpenShift, navigate to __Compute > MachineSets__
- <img src="./images/setup/machines-1.png" alt="drawing" width="300"/> 
+
+<img src="./images/setup/machines-1.png" alt="drawing" width="500"/> 
 
 Increase accordingly if you have more workshop users.
 
