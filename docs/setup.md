@@ -163,7 +163,7 @@ The password for all users is **openshift**.
 This workshop is quite resource hungry - especially the Data Engineering section, which allocates two 3-node Spark clusters per user. Therefore, for every 10 users, we suggest adding three nodes to your cluster **each** of the following size:
 - 16vCPUs and 128 GiB Memory
 
-To illustrate this, let's assume we have a workshop of 20 users. Therforwe we need to add two nodes, each with 16vCPUs and 128 GiB Memory. If you're on AWS, this exact size of machine is available with machine __m5a.8xlarge__. So let's add two nodes of that type.
+To illustrate this, let's assume we have a workshop of 20 users. Therfore we need to add two nodes, each with 16vCPUs and 128 GiB Memory. If you're on AWS, this exact size of machine is available with machine __m5a.8xlarge__. So let's add two nodes of that type.
 
 In OpenShift, navigate to __Compute > Nodes__. Notice you have a number of __worker__ nodes, in my case 3.
 
@@ -178,11 +178,11 @@ Next, navigate to __Compute > MachineSets__
 Notice in my case, I have two MachineSets, each with a type of _m5.4xlarge_. (yours may be different)
 Click one one of these MachineSet links. I'm choosing the one with one machine - but you can choose either.
 
-You'll see a view like this:
+You'll see a view like this - __click YAML__
 
 <img src="./images/setup/machines-2.png" alt="drawing" width="500"/> 
 
-Click YAML. Then inside the YAML, search for _large_. Then replace your value (in my case __m5.4xlarge__) with __m5a.8xlarge__ and click __Save__
+Then inside the YAML, search for _large_. Then replace your value (in my case __m5.4xlarge__) with __m5a.8xlarge__ and click __Save__
 
 <img src="./images/setup/machines-3.png" alt="drawing" width="500"/> 
 
