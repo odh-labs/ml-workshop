@@ -89,8 +89,6 @@ The OpenShift console displays the **Administrator** perspective.
 
 Open a second browser tab with the same URL for the OpenShift console.
 
-<span style="color:yellow">edits done to here</span>
-
 (If you are using Google Chrome you do this by:)
 
 1.  **Right-click** the OpenShift browser tab.
@@ -143,22 +141,19 @@ OpenShift launches a new browser tab for Jupyterhub and prompts you for a userna
 
 ![alt_text](images/lab1-data-engineering/image21.png) 
 
-12. Click **Allow selected permissions**.\
-    > OpenShift prompts you to select the Jupyter Notebook image and
-    > image size.
+12. Click **Allow selected permissions**. \
+    OpenShift prompts you to select the Jupyter Notebook image and image size.
 
 ![alt_text](images/lab1-data-engineering/image25.png) 
 
 13. Click **Elyra Notebook Image with Spark\
-    > Warning:** Please make sure you select the correct notebook image,
-    > otherwise the lab will not work.
+    Warning:** Please make sure you select the correct notebook image, otherwise the lab will not work.
 
 14. Click the **Container size** dropdown list box and click **Large**.
 
 15. Click **Start server**.
 
-OpenShift starts a new Jupyterhub notebook server for your lab
-environment.
+OpenShift starts a new Jupyterhub notebook server for your lab environment.
 
 ![alt_text](images/lab1-data-engineering/image2.png) 
 
@@ -166,8 +161,8 @@ During the provisioning of your notebook OpenShift has also created a
 Spark cluster for your dedicated use.
 
 16. Open browser **Tab 1**\
-    > OpenShift displays the pods associated with your username. Observe
-    > the Jupyter notebook pod and the new spark cluster pods.
+    OpenShift displays the pods associated with your username. Observe
+    the Jupyter notebook pod and the new spark cluster pods.
 
 ![alt_text](images/lab1-data-engineering/image17.png) 
 
@@ -204,14 +199,13 @@ The **Notebook Explorer** is updated to show the workshop files.
 
 ![alt_text](images/lab1-data-engineering/image36.png) 
 
-19. Note: If your explorer has not updated click the **Refresh or
-    > Reload** in your browser
+19. Note: If your explorer has not updated click the **Refresh or Reload** in your browser
 
 ![alt_text](images/lab1-data-engineering/image52.png) 
 
 Open the folder containing the notebooks for this workshop.
 
-20. Double click **ml-workshop-improved/notebook/**\
+1.  Navigate to the directory **ml-workshop/src/notebooks** in the File Explorer by double clicking each directory.\
     OpenShift displays all of the notebooks you will be using in this lab.
 
 ![alt_text](images/lab1-data-engineering/image32.png) 
@@ -220,19 +214,20 @@ Open the folder containing the notebooks for this workshop.
 going, you need to make some small changes to the code that are unique
 to your user.**
 
-21. Open **config.py\
-    > **JupyterLab displays the code editor
+21. Open **config.py**\
+    JupyterLab displays the code editor
 
 ![alt_text](images/lab1-data-engineering/image43.png) 
 
-22. Replace **user123** with your username that you are using for this
-    > lab (the same one you used to log on to OpenShift).
+22. Replace **user123** with your username that you are using for this lab (the same one you used to log on to OpenShift). \
+\
+**Note:** Be careful to enter the correct user name or you will clash with other students. In the example below we have used *user29* Your user will be different.
 
-user_id = "\<your username\>"
+> user_id = "\<your username\>"
 
 **Save your work**
 
-23. Click the **Save** icon as shown to save your work.
+1.  Click the **Save** icon as shown to save your work.
 
 ![alt_text](images/lab1-data-engineering/image24.png) 
 
@@ -243,8 +238,7 @@ you will use for feature engineering. The first step is to merge the two
 datasets.
 
 24. Double-click the **Merge_Data.ipynb** notebook to open it.\
-    > Jupyterhub opens the **Merge_Data** notebook. This notebook is
-    > used by the Data Engineer to prepare the data.
+    Jupyterhub opens the **Merge_Data** notebook. This notebook is used by the Data Engineer to prepare the data.
 
 **The Structure of a Notebook**
 
@@ -275,7 +269,7 @@ so you get an understanding for what it is doing.
 Step through each cell one by one so you can see what is going on.
 
 28. Repeat the previous step to execute each cell in turn.\
-    > Observe that when a cell completes executing:
+    Observe that when a cell completes executing:
 
 -   It is given a sequence number.
 
@@ -283,53 +277,40 @@ Step through each cell one by one so you can see what is going on.
 
 ![alt_text](images/lab1-data-engineering/image14.png) 
 
-**Note:** If you want to run the entire notebook click: **Kernel \>
-Restart Kernel and Run All Cells** in the toolbar menu**.**
+**Note:** If you want to run the entire notebook click:\
+**Kernel > Restart Kernel and Run All Cells** in the toolbar menu.
 
 At a high level, this is what is happening in the most important cells:
 
 ![alt_text](images/lab1-data-engineering/image60.png) 
 
-1.  *pip install xxxx*, installs various libraries that aren't contained
-    > in our case container image
+1.  *pip install xxxx*, installs various libraries that aren't already installed in our notebook image
 
 2.  import the python libraries we need
 
-3.  *watermark* outputs the versions of various components, libraries,
-    > operating system attributes etc.
+3.  *watermark* outputs the versions of various components, libraries, operating system attributes etc.
 
-4.  Here we load the user specific parameters - based on the username
-    > you entered in config.py
+4.  Here we load the user specific parameters - based on the username you entered in config.py
 
-5.  Here we create a Spark session, a precursor to firing up our own
-    > Spark server.
+5.  Here we create a Spark session, a precursor to firing up our own Spark server.
 
-6.  Here we set up various environment variables, including connection
-    > access to our S3 object store, in our case implemented using the
-    > open-source component Minio.
+6.  Here we set up various environment variables, including connection access to our S3 object store, in our case implemented using the open-source component Minio.
 
-7.  Here we actually start our Spark server. This cell can take several
-    > minutes to start.
+7.  Here we actually start our Spark server. This cell can take several minutes to start.
 
 ![alt_text](images/lab1-data-engineering/image15.png) 
 
-8.  Here we pull in our data from S3 - our CSV based demographic data
-    > for each of our approximately 7000 customers.
+8.  Here we pull in our data from S3 - our CSV based demographic data for each of our approximately 7000 customers.
 
-9.  Note - we are upgrading our demo and workshop. Kafka will be
-    > available shortly for the second half(side) of the data set. For
-    > now, both halves of our dataset comes from CSV files in S3 object
-    > storage
+9.  Note - we are upgrading our demo and workshop. Kafka will be available shortly for the second half(side) of the data set. For now, both halves of our dataset comes from CSV files in S3 object storage
 
 10. Commented out Kafka connection code - ignore for now
 
 ![alt_text](images/lab1-data-engineering/image48.png) 
 
-11. We join these 2 datasets, on the common column to each:
-    > *customerID*.
+11. We join these 2 datasets, on the common column to each: *customerID*.
 
-12. We push our data to our object store - filename contains our
-    > username.
+12. We push our data to our object store - filename contains our username.
 
 13. We are all done now - we stop our Spark server.
 
@@ -351,96 +332,76 @@ notebook. As a data engineer, you've built a data pipeline (merge-data)
 that merges customer data from 2 data sources. But:
 
 -   How do I run it with production workloads?
-
--   How do I schedule it to run - overnight, every day or every week
-    > etc.?
-
+-   How do I schedule it to run - overnight, every day or every week etc.?
 -   How do I ensure this pipeline works right across the ecosystem?
 
-That\'s where a tool called Airflow comes in. With Airflow,
+That's where a tool called Airflow comes in. With Airflow:
 
--   you can automate the running of your notebook - and run it anywhere,
-    > or scheduled any time
-
--   the same IDE (Jupyter Hub in OpenShift) can be used to develop and
-    > create the automated data pipelines
+-   you can automate the running of your notebook - and run it anywhere, or scheduled any time
+-   the same IDE (Jupyter Hub in OpenShift) can be used to develop and create the automated data pipelines
 
 Let's get started
 
--   Using the JupyterLab Explorer, navigate to:
-    > **ml-workshop-improved/airflow/deploy_spark_jobs/**
+## Lab Steps
 
--   Open **spark-demo.pipeline**
+1. Using the JupyterLab Explorer, navigate to the directory:\
+    **/ml-workshop/src/automation/deploy_spark_jobs/**
+2. Double click **spark-demo.pipeline**
+   Jupyterlab opens the pipline.
 
-![](images/lab1-data-engineering/image7.png){width="6.0in"
-height="2.0in"}
+   <img src="images/lab1-data-engineering/image7.png" alt="image7.png">
+   
+*Observe that the GUI is like a canvas. Each component in the pipeline can be dragged onto the surface, wired up and configured from this GUI - which we'll do later.*
 
-Notice it's a canvas-type GUI component onto which Python files can be
-dragged. Each component in the pipeline can be configured from this
-GUI - which we'll do later.
+The next thing we need to do is set up an Apache Airflow runtime.\
+    Before we do that we need to get the value of your *Airflow Route URL*.
 
--   The next thing we need to do is set up an Apache Airflow runtime.
-    > Before we do that we need to get the value of your **Airflow Route
-    > URL**.
+3. Select browser **Tab 1**
+4. In the OpenShift Explorer panel navigate to **Networking > Routes**
+5. Filter by the name ***ap-airflow2*** as shown.\
+   Observe the URL link to the Airflow console in the **Location** column.
+6. Copy this URL to your clipboard.
 
--   In browser **Tab 1**, OpenShift, navigate to **Networking \>
-    > Routes**
-
--   Filter by the name ***ap-airflow2*** as shown.
-
--   Observe the URL link to the Airflow console in the **Location**
-    > column.
-
--   Copy this URL to your clipboard.
-
-![alt_text](images/lab1-data-engineering/image9.png) 
+   <img src="images/lab1-data-engineering/image9.png" alt="image9.png">
 
 Switch to JupyterLab in browser **Tab 3**
 
--   Click on the **Runtimes** icon ![alt_text](images/lab1-data-engineering/image33.png) on the toolbar shortcuts\
-    > JupyterLab displays the Runtimes Explorer.
+7. Click on the **Runtimes** icon ![alt_text](images/lab1-data-engineering/image33.png) on the toolbar shortcuts\
+    JupyterLab displays the Runtimes Explorer.
+8. Click on the **+** icon at the top of the **Runtimes Explorer**
+9. Select **New Apache Airflow runtime**
 
--   Click on the **+** icon at the top of the **Runtimes Explorer**
+   <img src="images/lab1-data-engineering/image51.png" alt="image51.png">
+ 
 
--   Select **New Apache Airflow runtime**
-
-![alt_text](images/lab1-data-engineering/image51.png) 
-
--   Fill it in as follows - and click **Save and Close**
-
+10. Fill the form in as follows:
 Name: **UserXX** Airflow runtime [^1]\
-Apache Airflow UI endpoint: your \<**Airflow Route URL**\> retrieved
-above\
+Apache Airflow UI endpoint: your \<**Airflow Route URL**\> retrieved above\
 Apache Airflow User Namespace: ml-workshop\
-Github API endpoint:
-[[https://api.github.com]{.underline}](https://api.github.com) \[
+Github API endpoint: [[https://api.github.com]{.underline}](https://api.github.com) \[
 **footnote** [^2]\]\
 Github DAG Repo: airflow-dags/dags \[ **footnote** [^3]\]\
 Branch: main\
-Github Personal Access Token: **\<your administrator should give you
-this - likely in**
-
-> **the meeting chat\>**
-
-Cloud Object Storage Endpoint
-[[http://minio-ml-workshop:9000]{.underline}](http://minio-ml-workshop:9000)
-\[**footnote** [^4]\]\
+Github Personal Access Token: *Note: your administrator will give you this during the workshop.
+\
+\
+**Cloud Object Storage Endpoint details:**\
+[[http://minio-ml-workshop:9000]{.underline}](http://minio-ml-workshop:9000) [**footnote** [^4]\]\
 The Cloud Object Storage Username minio\
 The Cloud Object Storage Password minio123\
 Cloud Object Storage bucket name airflow
 
 As shown here:
 
-![alt_text](images/lab1-data-engineering/image22.png) 
+   <img src="images/lab1-data-engineering/image22.png" alt="image22.png">
 
-Next, we need to add a Python Runner.
+11.  Click **Save and Close**
 
--   Click the **Runtime Images** ![alt_text](images/lab1-data-engineering/image3.png) button in the toolbar shortcuts.
+### Configure Python Runner
 
--   Click on the **+** icon at the top of the **Runtimes Images
-    > Explorer**
-
--   Complete the form as per the illustration below.
+12. Click the **Runtime Images** ![alt_text](images/lab1-data-engineering/image3.png) button in the toolbar shortcuts.
+13. Click on the **+** icon at the top of the **Runtimes Images Explorer**
+14. Complete the form as per the illustration below.
 
 Name: Airflow Python Runner\
 Image Name: quay.io/ml-aml-workshop/airflow-python-runner:0.0.8\
@@ -448,109 +409,83 @@ Image Pull Policy: IfNotPresent
 
 ***as shown here:***
 
-![alt_text](images/lab1-data-engineering/image5.png) 
+   <img src="images/lab1-data-engineering/image5.png" alt="image5.png">
 
--   Click **Save and Close**
-
--   Click **Runtime Images** ![alt_text](images/lab1-data-engineering/image3.png) 
-
--   Click **+** and complete the form as per the illustration below.
+  15. Click **Save and Close**
+  16. Click **Runtime Images** ![alt_text](images/lab1-data-engineering/image3.png) 
+  17. Click **+** and complete the form as per the illustration below.
 
 Name: Elyra Spark\
 Image Name: quay.io/ml-aml-workshop/elyra-spark:0.0.4\
 Image Pull Policy: IfNotPresent
 
 as shown
-![alt_text](images/lab1-data-engineering/image49.png) 
+   <img src="images/lab1-data-engineering/image49.png" alt="image49.png">
 
--   Click **Save and Close**
+  18. Click **Save and Close**
+  19. Click the **File Browser** ![alt_text](images/lab1-data-engineering/image4.png) button in the toolbar shortcuts so you can access the rest of the project files.
+  20. Click the **spark-demo.pipeline** tab in JupyterLab to open it
 
--   Click the **File Browser** ![alt_text](images/lab1-data-engineering/image4.png) button in the toolbar shortcuts so
-    > you can access the rest of the project files.
-
--   Click the **spark-demo.pipeline** tab in JupyterLab to open it
-
-![alt_text](images/lab1-data-engineering/image44.png)
+   <img src="images/lab1-data-engineering/image44.png" alt="image44.png">
 
 Each component in the pipeline can be configured from the pipeline GUI -
 which we'll do now beginning with the start-spark-cluster element of the
 pipeline.
 
--   Refresh your browser page
-
--   Right-click on **start-spark-cluster** and choose **Properties** \
+  21. Refresh your browser web page
+  22. Right-click **start-spark-cluster**  
+  23. Click **Properties** \
     ![alt_text](images/lab1-data-engineering/image58.png) 
+    Selt these values as shown in the screenshot below\
+    \
+  **Runtime Image:** Airflow Python Runner (note if *Airflow Python Runner* is not visible, refresh your web page)
 
--   Select these values as shown in the screenshot below
+  File Dependencies:
+  - spark-cluster.yaml
+  -  spark_util.py
+  -  spark-cluster-route.yaml
 
-    -   **Runtime Image:** Airflow Python Runner\
-        > (note if *Airflow Python Runner* is not visible, refresh your
-        > webpage)
+  Environment Variables
+  - SPARK_CLUSTER=**userXX**-cluster
+  - WORKER_NODES=2
+  - S3_ENDPOINT_URL=[[http://minio-ml-workshop:9000]{.underline}](http://minio-ml-workshop:9000)
 
-    -   File Dependencies
-
-        -   spark-cluster.yaml
-
-        -   spark_util.py
-
-        -   spark-cluster-route.yaml
-
-        -   Environment Variables
-
-            -   SPARK_CLUSTER=**userXX**-cluster\
-                > replacing **userXX** with your username and ensuring
-                > your cluster has 2 worker nodes\
-                > (if a second SPARK_CLUSTER is there, **delete it**).
-
-            -   WORKER_NODES=2
-
-            -   S3_ENDPOINT_URL=[[http://minio-ml-workshop:9000]{.underline}](http://minio-ml-workshop:9000)
-
-    -   Output Files
-
-        -   spark-info.txt
+  Output Files
+  -  spark-info.txt
 
  As shown here:
- ![alt_text](images/lab1-data-engineering/image27.png) 
+   <img src="images/lab1-data-engineering/image27.png" alt="image27.png">
+
+-   Save your work by clicking on the **Save** button ![alt_text](images/lab1-data-engineering/image31.png) 
+
+Repeate the above steps for Merge_Data:
+24. right-clicking and filling as follows:
+
+-   Complete the form as illustrated in the screenshot below
+
+  Runtime Image:
+  - Elyra Spark
+
+  File Dependencies
+  - spark_util.py
+  - spark-cluster-route.yaml
+  - config.py
+
+  Environment Variables
+  - SPARK_CLUSTER=**userXX**-cluster. \
+    Replace **userXX** with your username and ensure your cluster has 2 worker node
+  - WORKER_NODES=2
+  - S3_ENDPOINT_URL=[[http://minio-ml-workshop:9000]{.underline}](http://minio-ml-workshop:9000)
+
+   <img src="images/lab1-data-engineering/image29.png" alt="image29.png">
+
+25. Save your work by clicking on the **Save** button ![alt_text](images/lab1-data-engineering/image31.png) 
+
+26. Finally, do the same with stop-spark-cluster - which has fewer still values\
+   <img src="images/lab1-data-engineering/image10.png" alt="image10.png">
 
 -   Save your work by clicking on the **Save** button\
-    ![alt_text](images/lab1-data-engineering/image31.png) 
-
--   Do the same with Merge_Data, right-clicking and filling as follows:
-
--   Select these values as shown in the screenshot below
-
-    -   **Runtime Image:** **Elyra Spark**
-
-    -   File Dependencies
-
-        -   spark_util.py
-
-        -   spark-cluster-route.yaml
-
-        -   config.py
-
-    -   Environment Variables
-
-        -   SPARK_CLUSTER=**userXX**-cluster\
-            > replacing **userXX** with your username and ensuring your
-            > cluster has 2 worker node
-
-        -   WORKER_NODES=2
-
-        -   S3_ENDPOINT_URL=[[http://minio-ml-workshop:9000]{.underline}](http://minio-ml-workshop:9000)
-
-As shown here:
-![alt_text](images/lab1-data-engineering/image29.png) 
-
--   Save your work by clicking on the **Save** button\
-    ![alt_text](images/lab1-data-engineering/image31.png) 
-
--   Finally, do the same with stop-spark-cluster - which has fewer still values\
-    ![alt_text](images/lab1-data-engineering/image10.png) 
-
--   Save your work by clicking on the **Save** button\
-    ![alt_text](images/lab1-data-engineering/image31.png) 
+   <img src="images/lab1-data-engineering/image31.png" alt="image31.png">
 
 **Run Pipeline**
 
