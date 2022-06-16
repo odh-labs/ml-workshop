@@ -161,8 +161,16 @@ The password for all users is **openshift**.
 ## Allocate sufficient compute and memory resources for the workshop
 
 This workshop is quite resource hungry - especially the Data Engineering section, which allocates two 3-node Spark clusters per user. Therefore, for every 10 users, we suggest adding three nodes to your cluster **each** of the following size:
-- 8vCPUs and 64 GB Memory
-Increase in accordance if you have more workshop users.
+- 16vCPUs and 128 GiB Memory
+
+To illustrate this, let's assume we have a workshop of 20 users. Therforwe we need to add two nodes, each with 16vCPUs and 128 GiB Memory. If you're on AWS, this exact size of machine is available with machine __m5a.8xlarge__. So let's add two nodes of that type.
+
+In OpenShift, navigate to __Compute > MachineSets__
+ <img src="./images/setup/machines-1.png" alt="drawing" width="300"/> 
+
+Increase accordingly if you have more workshop users.
+
+### Note - be sure to scale back down your machine count following the workshop, so you're not overconsuming resources - and costs!
 --------------------------------------------------------------------------------------------------------
 
 ## Configure the S3 Storage
