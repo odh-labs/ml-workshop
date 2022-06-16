@@ -192,7 +192,7 @@ Edit the same MachineSet again. You see the same view as before. __Click the pen
 
 
 Finally, let's check that your node count has indeed incremented.
-___(you'll need toi wait 5-10 minutes before your new nodes are available__
+___(you'll need to wait 5-10 minutes before your new nodes are available___
 
 Navigate to __Compute > Nodes__. Notice your ___worker___ node count has increased by the number of machines you added earlier, in my case from 3 to 5.
 
