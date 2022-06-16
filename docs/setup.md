@@ -176,7 +176,7 @@ You'll see a view like this:
 
 <img src="./images/setup/machines-2.png" alt="drawing" width="500"/> 
 
-Click YAML. Then inside the YAML, search for _large_
+Click YAML. Then inside the YAML, search for _large_. Then replace your value (in my case __m5.4xlarge__) with __m5a.8xlarge__ and click __Save__
 
 
 
