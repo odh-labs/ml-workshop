@@ -163,7 +163,7 @@ The password for all users is **openshift**.
 This workshop is quite resource hungry - especially the Data Engineering section, which allocates two 3-node Spark clusters per user. Therefore, for every 10 users, we suggest adding three nodes to your cluster **each** of the following size:
 - 16vCPUs and 128 GiB Memory
 
-To illustrate this, let's assume we have a workshop of 20 users. Therfore we need to add two nodes, each with 16vCPUs and 128 GiB Memory. If you're on AWS, this exact size of machine is available with machine __m5a.8xlarge__. So let's add two nodes of that type.
+To illustrate this, let's assume we have a workshop of 7 users. Therefore let's add two nodes, each with 16vCPUs and 128 GiB Memory. If you're on AWS, this exact size of machine is available with machine __m5a.8xlarge__. So let's add two nodes of that type.
 
 In OpenShift, navigate to __Compute > Nodes__. Notice you have a number of __worker__ nodes, in my case 3.
 
@@ -202,7 +202,7 @@ Navigate to __Compute > Nodes__. Notice your ___worker___ node count has increas
 <img src="./images/setup/machines-5-nodes.png" alt="drawing" width="500"/> 
 
 
-Increase your node count accordingly if you have more workshop users. (though we do find limiting the participant count to 20 makes the lab more manageable)
+Increase your node count accordingly if you have more workshop users. (bear in mind we do find limiting the participant count to 20 makes the lab more manageable)
 
 ### Note - be sure to scale back down your machine count following the workshop, so you're not overconsuming resources - and costs!
 --------------------------------------------------------------------------------------------------------
