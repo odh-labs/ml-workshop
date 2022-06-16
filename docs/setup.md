@@ -191,8 +191,12 @@ Edit the same MachineSet again. You see the same view as before. __Click the pen
 <img src="./images/setup/machines-4.png" alt="drawing" width="500"/> 
 
 
+Finally, let's check that your node count has indeed incremented.
+___(you'll need toi wait 5-10 minutes before your new nodes are available__
 
+Navigate to __Compute > Nodes__. Notice your ___worker___ node count has increased by the number of machines you added earlier, in my case from 3 to 5.
 
+<img src="./images/setup/machines-5-nodes.png" alt="drawing" width="500"/> 
 
 
 Increase your node count accordingly if you have more workshop users. (though we do find limiting the participant count to 20 makes the lab more manageable)
