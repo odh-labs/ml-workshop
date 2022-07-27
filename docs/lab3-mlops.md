@@ -55,7 +55,7 @@ The URL under the Locations column is the URL our pipeline has created
 for us - which we will use to make inference calls to our model.We'll refer to that below as ***your inference URL***.  Make
 note of your URL, in my case
 
-[[http://model-3965f0d0540946de92a9adff3cb2e166-user30-model-ml-workshop.apps.cluster-4b94.4b94.sandbox923.opentlc.com/]{.underline}](http://model-3965f0d0540946de92a9adff3cb2e166-user30-model-ml-workshop.apps.cluster-4b94.4b94.sandbox923.opentlc.com/)
+[http://model-3965f0d0540946de92a9adff3cb2e166-user30-model-ml-workshop.apps.cluster-4b94.4b94.sandbox923.opentlc.com/](http://model-3965f0d0540946de92a9adff3cb2e166-user30-model-ml-workshop.apps.cluster-4b94.4b94.sandbox923.opentlc.com/)
 
 
 --------------------------------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ or the command line using curl, or there are various online options. This way yo
 
 I'll use *Postman* to illustrate. If you do not have Postman you can
 access a free web version here:
-[[https://web.postman.co/home]{.underline}](https://web.postman.co/home)
+[https://web.postman.co/home](https://web.postman.co/home)
 
 Open Postman, and create a new Workspace and add a new Collection and
 then a new Request to it. Populate is as follows:
