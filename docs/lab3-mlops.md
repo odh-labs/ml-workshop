@@ -64,11 +64,11 @@ note of your URL, in my case
 This is the simplest way to test the model.
 
 Before making an inference call to our model, you'll need to get *your inference URL*. In OpenShift, __open the Administrator perspective__ then __move to Networking > Routes__. In the filter box, enter your experiment ID from the experiment you registered in  __*ML FLOW*__  earlier. Copy the URL under *Location*. That's *your inference URL*. 
-<img src="./images/setup/frontendfrontend-6-inference-URL.png" width="700"/>  
+<img src="./images/setup/frontend/frontend-6-inference-URL.png" width="700"/>  
 
 
 In OpenShift, __open the Administrator perspective__ then __move to Networking > Routes__ and filter on __*churn-frontend*__
-<img src="./images/setup/frontendfrontend-4-frontend-route.png" width="700"/>  
+<img src="./images/setup/frontend/frontend-4-frontend-route.png" width="700"/>  
 
 Hit the route button as shown and append  __*churn-frontend.html*__ to the tab that opens our your browser. In my case the full URL is
 
@@ -79,13 +79,13 @@ http://churn-frontend-a-churn-frontend.apps.cluster-qk7ft.qk7ft.sandbox651.opent
 
 
 Open it and you'll see a screen like this:
-<img src="./images/setup/frontendfrontend-5-frontend-page.png" width="700"/>  
+<img src="./images/setup/frontend/frontend-5-frontend-page.png" width="700"/>  
 
 If you get a 404, or 503, change the protocol from HTTPS to HTTP.
 
 
 In the large textbox, enter *your inference URL* that you got a couple of steps back. Click __MAKE INFERENCE CALL__. Shortly, the page will show a prediction of __*Churn*__  or __*Not Churn*__  as a well as how certain the model is of this prediction. Feel free to experiment.
-<img src="./images/setup/frontendfrontend-7-inference-URL-result.png" width="700"/> 
+<img src="./images/setup/frontend/frontend-7-inference-URL-result.png" width="700"/> 
 
 
 #### Inference Call using an API Testing Tool
