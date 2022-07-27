@@ -52,7 +52,7 @@ You are now ready to test the API to your model.
 height="2.539433508311461in"}
 
 The URL under the Locations column is the URL our pipeline has created
-for us - which we will use to make inference calls to our model. Make
+for us - which we will use to make inference calls to our model.We'll refer to that below as ***your inference URL***.  Make
 note of your URL, in my case
 
 [[http://model-3965f0d0540946de92a9adff3cb2e166-user30-model-ml-workshop.apps.cluster-4b94.4b94.sandbox923.opentlc.com/]{.underline}](http://model-3965f0d0540946de92a9adff3cb2e166-user30-model-ml-workshop.apps.cluster-4b94.4b94.sandbox923.opentlc.com/)
@@ -62,9 +62,6 @@ note of your URL, in my case
 
 #### Inference Call using a webpage 
 This is the simplest way to test the model.
-
-Before making an inference call to our model, you'll need to get *your inference URL*. In OpenShift, __open the Administrator perspective__ then __move to Networking > Routes__. In the filter box, enter your experiment ID from the experiment you registered in  __*ML FLOW*__  earlier. Copy the URL under *Location*. That's *your inference URL*. 
-<img src="./images/setup/frontend/frontend-6-inference-URL.png" width="700"/>  
 
 
 In OpenShift, __open the Administrator perspective__ then __move to Networking > Routes__ and filter on __*churn-frontend*__
@@ -81,10 +78,10 @@ http://churn-frontend-a-churn-frontend.apps.cluster-qk7ft.qk7ft.sandbox651.opent
 Open it and you'll see a screen like this:
 <img src="./images/setup/frontend/frontend-5-frontend-page.png" width="700"/>  
 
-If you get a 404, or 503, change the protocol from HTTPS to HTTP.
+***If you get a 404, or 503, change the protocol from HTTPS to HTTP.***
 
 
-In the large textbox, enter *your inference URL* that you got a couple of steps back. Click __MAKE INFERENCE CALL__. Shortly, the page will show a prediction of __*Churn*__  or __*Not Churn*__  as a well as how certain the model is of this prediction. Feel free to experiment.
+In the large textbox, enter ***your inference URL*** that you got a couple of steps back. Click __MAKE INFERENCE CALL__. Shortly, the page will show a prediction of __*Churn*__  or __*Not Churn*__  as a well as how certain the model is of this prediction. Feel free to experiment.
 <img src="./images/setup/frontend/frontend-7-inference-URL-result.png" width="700"/> 
 
 
