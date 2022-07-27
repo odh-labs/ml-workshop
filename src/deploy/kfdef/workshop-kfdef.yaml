@@ -56,7 +56,7 @@ spec:
           - name: OCP_APPS_URI
           # Change the line below to match your cluster URI. Using the URI from your OpenShift cluster,
           # copy everything from .apps onwards and replace the value below.
-            value: .apps.rosa-5a98.ibhp.p1.openshiftapps.com
+            value: .apps.cluster-x5xvd.x5xvd.sandbox320.opentlc.com
         repoRef:
           name: manifests
           path: ml-workshop-airflow2
