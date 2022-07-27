@@ -101,7 +101,7 @@ height="2.413692038495188in"}
 
 1.  Choose the POST method
 
-2.  Take your inference URL from the previous step
+2.  Take ***your inference URL*** from the previous step
 
 3.  append the path ***/api/v1.0/predictions*** to that\
     > to form the full URL, in my case\
