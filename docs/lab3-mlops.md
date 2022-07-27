@@ -85,6 +85,9 @@ In the large textbox, enter ***your inference URL*** that you got a couple of st
 <img src="./images/setup/frontend/frontend-7-inference-URL-result.png" width="700"/> 
 
 
+--------------------------------------------------------------------------------------------------------
+
+
 #### Inference Call using an API Testing Tool
 If you are a developer and want to build the model call into your code, the other to make an inference call, you can use tools such as Postman,
 or the command line using curl, or there are various online options. This way you can build the input JSON and output JSON into your code.
