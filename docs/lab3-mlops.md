@@ -86,7 +86,7 @@ In the large textbox, enter ***your inference URL*** that you got a couple of st
 
 
 #### Inference Call using an API Testing Tool
-If you are a devloper and want to build the model call into your code, the other to make an inference call, you can use tools such as Postman,
+If you are a developer and want to build the model call into your code, the other to make an inference call, you can use tools such as Postman,
 or the command line using curl, or there are various online options. This way you can build the input JSON and output JSON into your code.
 
 I'll use *Postman* to illustrate. If you do not have Postman you can
