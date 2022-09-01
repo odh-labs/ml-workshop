@@ -69,7 +69,7 @@ Now that the Open Data Hub Operator is installed we can proceed to setting up th
 ### Prerequisite Step:
 Before we set up the project we need to get some YAML ready to paste into the operator configurtation. This KfDef YAML defines which tools the ODH Operator will install and how to configure them.
 
-1. Using any editor of choice, open the KFDef File from the github repository your cloned. It is located in *ml-workshop/deploy/kfdef/workshop-kfdef.yaml*.\
+1. Using any editor of choice, open the KFDef File from the github repository your cloned. It is located in *ml-workshop/src/deploy/kfdef/workshop-kfdef.yaml*.\
    The following diagram is from Visual Studio Code's File Explorer and illustrates the path to the file.
   
    <img src="./images/setup/install-4-1.png" alt="drawing" width="300"/>
@@ -82,55 +82,44 @@ Before we set up the project we need to get some YAML ready to paste into the op
    1.3 Click the **Name** text box and type  **ml-workshop**  
    1.4 Click **Create**  
    OpenShift creates the project.  
-   <img src="./images/setup/install-5.png" alt="drawing" width="300"/>  
+   <img src="./images/setup/install-5.png" alt="drawing" width="400"/>  
 2. Delete the Limit Range for the project  
    2.1 Click **Administration > LimitRanges**  
    2.2 Click the hambuger button for the **ml-workshop-core-resource-limits**.   
-   <img src="./images/setup/install-11.png" alt="drawing" width="400"/>  
+   <img src="./images/setup/install-11.png" alt="drawing" width="500"/>  
    2.3 Click **Delete LimitRange**  
    OpenShift removes the LImitRange for the project.
-2. Install Open Data Hub
-   2.1 Click **Operators > Installed Operators**  
+3. Install Open Data Hub:  
+   3.1 Click **Operators > Installed Operators**  
    OpenShift displays all the operators currently installed.  
 
    <span style="color:yellow">**Note that the ml-workshop project may have become unselected and **All Projects** is selected. If it is not already, you must make ml-workshop the active project. Failure to do this will break the installation**<span>  
 
-   2.2 Click the **Projects** drop-down list and click **ml-workshop**  
-   <img src="./images/setup/install-6.png" alt="drawing" width="300"/>  
-   2.3 Click **Open Data Hub Operator**.  
+   3.2 Click the **Projects** drop-down list and click **ml-workshop**  
+   <img src="./images/setup/install-6.png" alt="drawing" width="500"/>  
+   3.3 Click **Open Data Hub Operator**.  
    OpenShift displays the operator's details.  
-   <img src="./images/setup/install-6.png" alt="drawing" width="300"/>  
-   2.4 Click **Open Data Hub** in the operator toolbar.  
+   <img src="./images/setup/install-6.png" alt="drawing" width="500"/>  
+   3.4 Click **Open Data Hub** in the operator toolbar.  
    OpenShift displays the operand details - of which there are none.   
-   <img src="./images/setup/install-7.png" alt="drawing" width="300"/>  
-   2.5 Click the **Create KfDef** button.  
-   2.6 Click the **YAML View** radio button  
+   <img src="./images/setup/install-7.png" alt="drawing" width="500"/>  
+   3.5 Click the **Create KfDef** button.  
+   3.6 Click the **YAML View** radio button  
    OpenShift displays the KfDef YAML editor.  
-   <img src="./images/setup/install-8.png" alt="drawing" width="300"/>  
-   2.7 Replace the entire YAML file with the KfDef YAML you copied to your clipboard in the *Prerequisits* step above. This KfDef file will tell OpenShift how to install and configure ODH.  
+   <img src="./images/setup/install-8.png" alt="drawing" width="500"/>  
+   3.7 Replace the entire YAML file with the KfDef YAML you copied to your clipboard in the *Prerequisits* step above. This KfDef file will tell OpenShift how to install and configure ODH.  
 
    Before you save the KfDef you must edit one line of code.  
    2.8 Locate the **airflow2** overlay in the code  
-   <img src="./images/setup/install-9.png" alt="drawing" width="400"/>  
+   <img src="./images/setup/install-9.png" alt="drawing" width="600"/>  
    Around line 57 you will see a **value** field that contains part of the URL to your OpenShift clister.  
-   2.9 Using the example below, replace the value with the the URI of **your** cluster from the *.apps* through to the *.com* as follows (your URI will be different to this example):   
-```yaml
-       - kustomizeConfig:
-        overlays:
-          - custom-image
-        parameters:
-          - name: OCP_APPS_URI
-            # Change the line below to match your cluster URI. 
-            # Using the URI from your OpenShift cluster, copy everything from .apps onwards
-            # and replace the value below.
-            value: .apps.rosa-5a98.ibhp.p1.openshiftapps.com
-        repoRef:
-          name: manifests
-          path: ml-workshop-airflow2
-```  
-  2.10 Click **Create**  
+
+   2.9 Using the example above, replace the value with the the UR of **your** cluster from the *.apps* through to the *.com* as follows (your URI will be different to this example):   
+
+   2.10 Click **Create**  
        OpenShift creates the KfDef and proceeeds to deploy ODH.  
-  2.11 Click **Workloads > Pods** to observe the deployment progress.  
+
+   2.11 Click **Workloads > Pods** to observe the deployment progress.  
       <img src="./images/setup/install-10.png" alt="drawing" width="400"/>  
       Note: This installation will take several minutes to complete.
 
@@ -149,6 +138,7 @@ If you are running ODH for a a workshop then you need to configure the users. If
 cd $REPO_HOME/src/deploy/scripts
 ./setup-users.sh
 ```
+   <span style="color:yellow">**Note: This script sometimes generates errors creating the users. Need to revisit this and fix it. Just run it twice in the meantime.**<span> 
 
 After this script, both **_opentlc-mgr_** and **_user29_** have cluster-admin access.
 
@@ -160,51 +150,77 @@ The password for all users is **openshift**.
 
 ## Allocate sufficient compute and memory resources for the workshop
 
-This workshop is quite resource hungry - especially the Data Engineering section, which allocates two 3-node Spark clusters per user. Therefore, for every 10 users, we suggest adding three nodes to your cluster **each** of the following size:
-- 16vCPUs and 128 GiB Memory
+This workshop is based on a standard RHPDS OpenShift configuration that at the time of writing is:   
+| Purpose | Qty | vCPUs | Memory  |
+|---------|-----|-------|---------|
+| Master  | 3   | 4     | 16GiB   |
+| Worker  | 2   | 16    | 64GiB   |
 
-To illustrate this, let's assume we have a workshop of 7 users. Therefore let's add two nodes, each with 16vCPUs and 128 GiB Memory. If you're on AWS, this exact size of machine is available with machine __m5a.8xlarge__. So let's add two nodes of that type.
+This workshop is resource hungry - especially the Data Engineering section. 
 
-In OpenShift, navigate to __Compute > Nodes__. Notice you have a number of __worker__ nodes, in my case 3.
+In order to ensure that the workshop has adequater capacity, adjust the cluster's number of workers accordingly: **For every 10 users, we suggest adding three additional  nodes to your cluster** each with the following capacity:
+- 16vCPUs and 64 GiB Memory
 
-<img src="./images/setup/machines-0-nodes.png" alt="drawing" width="500"/> 
+For example, a workshop with seven users should have:
+| Purpose | Qty | vCPUs | Memory  |
+|---------|-----|-------|---------|
+| Master  | 3   | 4     | 16GiB   |
+| Worker  | 5   | 16    | 64GiB   |
 
-We're going to increase that.
+If you're on AWS, this exact size of machine is available with machine __m5a.8xlarge__.  
 
-Next, navigate to __Compute > MachineSets__
+### Review the Existing Cluster Capacity
 
-<img src="./images/setup/machines-1.png" alt="drawing" width="500"/> 
+Using the OpenShift Administrator perspective:   
 
-Notice in my case, I have two MachineSets, each with a type of _m5.4xlarge_. (yours may be different)
-Click one one of these MachineSet links. I'm choosing the one with one machine - but you can choose either.
+1. Click: **Compute > Nodes**   
+   Observe the number of worker nodes   
 
-You'll see a view like this - __click YAML__
+   <img src="./images/setup/machines-0-nodes.png" alt="drawing" width="900"/>   
 
-<img src="./images/setup/machines-2.png" alt="drawing" width="500"/> 
+2. Calculate the number of additional worker nodes according to the guidelines provided above.   
+3. Click **Compute > MachineSets**   
 
-Then inside the YAML, search for _large_. Then replace your value (in my case __m5.4xlarge__) with __m5a.8xlarge__ and click __Save__
+   <img src="./images/setup/machines-1.png" alt="drawing" width="800"/> 
+
+In this example there is I have two MachineSets of type _m5.4xlarge_. (yours may be different)
+4. Click the MachineSet link.   
+   OpenShift displays the MachineSet's details.
+
+   <span style="color:yellow">**Note: Fix the screen shot. This has m5.8xlarge.**<span> 
+
+5. Click **YAML** in the *MachineSet Detail toolbar*.  
+   OpenShift displays the YAML editor for the MachineSet   
+
+   <img src="./images/setup/machines-2.png" alt="drawing" width="500"/> 
+
+6. Locate the *instanceType* property under the *spec* section
+7. Replace the instanceType value with m5.8xlarge
 
 <img src="./images/setup/machines-3.png" alt="drawing" width="500"/> 
 
-Edit the same MachineSet again. 
+8. Scroll to the bottom of the web page and click **Save**   
+   OpenShift saves the MachineSet config and displays the MachineSet details
 
-<img src="./images/setup/machines-1.png" alt="drawing" width="500"/> 
+9. Click the **Actions > Edit Machine Count** drop-down button on the top right of the screen   .
+   <img src="./images/setup/machines-6.png" alt="drawing" width="600"/> 
 
-You see the same view as before. __Click the pencil icon__ and __increment the count to 3__ and then __click Save__
+10. Adjust the machine count to be the desired value and click **Save**.   
+    OpenShift will start adjusting the worker node count to the desired number of machines. This process can take some time **(you'll need to wait 5-10 minutes before your new nodes are available)**.  
+    <img src="./images/setup/machines-4.png" alt="drawing" width="500"/> 
 
-<img src="./images/setup/machines-4.png" alt="drawing" width="500"/> 
+Validate the machines are provisioned.
+11. Click **Compute > Nodes**
+    Observe the machines as they are provisioned and come online.
 
-Finally, let's check that your node count has indeed incremented.
-___(you'll need to wait 5-10 minutes before your new nodes are available)___
-
-Navigate to __Compute > Nodes__. Notice your ___worker___ node count has increased by the number of machines you added earlier, in my case from 3 to 5.
-
-<img src="./images/setup/machines-5-nodes.png" alt="drawing" width="500"/> 
+<img src="./images/setup/machines-5-nodes.png" alt="drawing" width="800"/> 
 
 
-Increase your node count accordingly if you have more workshop users. (bear in mind we do find limiting the participant count to 20 makes the lab more manageable)
+Increase your node count accordingly if you have more workshop users. (Bear in mind we do find limiting the participant count to 20 makes the lab more manageable)
 
-### Note - be sure to scale back down your machine count following the workshop, so you're not overconsuming resources - and costs!
+
+   <span style="color:yellow">**Note: Be sure to scale back down your machine count following the workshop, so you're not overconsuming resources - and costs!.**<span> 
+
 --------------------------------------------------------------------------------------------------------
 
 ## Configure the S3 Storage
