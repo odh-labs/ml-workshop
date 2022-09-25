@@ -380,30 +380,36 @@ Install the application that workshop participants will use to test their models
 
 <img src="./images/setup/frontend/frontend-1-add-container-image.png" width="700"/> 
 
-
 We've built a container and pushed it to Dockerhub under this repository tag __tnscorcoran/churn-frontend:latest__
 
- 
+1. Type ```tnscorcoran/churn-frontend:latest``` in the **Image name from external registry** text box.
+2. Select ```Create Application``` in the **Application** dropdown list
+3. Type ```churn-frontend``` in the **Application name** text box. 
+4. Type ```churn-frontend``` in the **Name** text box.
+5. Click ```Deployment``` in the **Resources** 
+6. Select ```8080``` in the **Target port** dropdown list.
+7. Click the ```Create a route to Application``` check box.
+8. Click ```Show advanced Routing options```  
+   OpenShift displays the Advanced routing options.  
+   a. Type ```/churn-frontend.html``` in the **Path** text box.
+   b. Click the ```Secure Route``` checkbox to **unselect the option**
+   c. Leave all options and fields as their other defaults 
+9. Click **Create**
 
-You'll see a screen like this. Under Image Name , enter 
-```
-tnscorcoran/churn-frontend:latest
-```
-
-Then set your __Application Name__ and __Name__ to __*churn-frontend*__
-Go with the rest of the defaults and click __Create__
 <img src="./images/setup/frontend/frontend-2-deploy-image.png" width="700"/>  
+Scroll down to reveal the rest of the form:  
+<img src="./images/setup/frontend/frontend-3-deploy-image.png" width="700"/>  
 
-A couple of minutes later, the circle should be dark blue - indicating it's deployed. 
+After a brief period the circle around the Dpeloyment should be dark blue - indicating it's deployed. 
 
 <img src="./images/setup/frontend/frontend-3-app-deployed.png" width="700"/>  
 
-
 ### Test you can access the application.
 
-1. Copy the route for the application and paste it in your browser. 
-2. Append ```/churn-frontend.html``` to the url  
-   For example, in this case the full URL is: ```http://churn-frontend-a-churn-frontend.apps.cluster-qk7ft.qk7ft.sandbox651.opentlc.com/churn-frontend.html```
+1. Click the arrow on the Deployment to open the route in a new broiwser tab.
+   OpenShift should launch the Churn Applciation
+
+<img src="./images/setup/frontend/frontend-app-1.png" width="700"/>  
 
 **Note:** If you get a 404, or 503, change the protocol from HTTPS to HTTP.
 
