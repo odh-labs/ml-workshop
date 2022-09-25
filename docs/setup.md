@@ -389,26 +389,14 @@ A couple of minutes later, the circle should be dark blue - indicating it's depl
 
 <img src="./images/setup/frontend/frontend-3-app-deployed.png" width="700"/>  
 
-Hit the route button as shown and append  __*/churn-frontend.html*__ to the tab that opens our your browser. In my case the full URL is
 
-```
-http://churn-frontend-a-churn-frontend.apps.cluster-qk7ft.qk7ft.sandbox651.opentlc.com/churn-frontend.html
+### Test you can access the application.
 
-```
+1. Copy the route for the application and paste it in your browser. 
+2. Append ```/churn-frontend.html``` to the url  
+   For example, in this case the full URL is: ```http://churn-frontend-a-churn-frontend.apps.cluster-qk7ft.qk7ft.sandbox651.opentlc.com/churn-frontend.html```
 
-
-If you get a 404, or 503, change the protocol from HTTPS to HTTP.
-
-
-
-
-
-
-
-
-
-
-
+**Note:** If you get a 404, or 503, change the protocol from HTTPS to HTTP.
 
 # Setup Complete
 
