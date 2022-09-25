@@ -277,7 +277,7 @@ Ml Flow is a very powerful capability for the following reasons. Every experimen
 
 Now following examination of our experiments In Ml Flow, let’s assume for performance reasons, as a data scientist, you’ve decided to proceed with the Decision Tree Classifier experiment and push that model to production.
 
-- Go back to Jupyter Hub and ensure you’re in **ml-workshop-improved/notebook**
+- Go back to Jupyter Hub and ensure you’re in **ml-workshop/src/notebooks** folder.
 - Open the **_Train_Model.ipynb Jupyter_** notebook.
 
 ![alt_text](images/lab2-data-science/ds-train-model-1.png ) 
