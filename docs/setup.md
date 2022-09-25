@@ -371,10 +371,19 @@ Superset displays the Save As dialog box.
 
 ### Install Front End Inferencing web page
 
+Install the application that workshop participants will use to test their models.
+
+1. Change to the **Developer Perspective.**
+2. Click **+Add**
+3. Click the **Container images** tile  
+   OpenShift displays the **Deploy Image** page.  
+
+<img src="./images/setup/frontend/frontend-1-add-container-image.png" width="700"/> 
+
+
 We've built a container and pushed it to Dockerhub under this repository tag __tnscorcoran/churn-frontend:latest__
 
-In OpenShift, in Developer perspective, click __Add__ and select __Container Images__
-<img src="./images/setup/frontend/frontend-1-add-container-image.png" width="700"/>  
+ 
 
 You'll see a screen like this. Under Image Name , enter 
 ```
