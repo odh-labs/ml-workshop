@@ -17,8 +17,7 @@ capabilities, critical at this stage in the workflow.
 
 This diagram illustrates what we're implementing:
 
-![](images/lab4-data-analytics/image19.png){width="5.234375546806649in"
-height="2.9534230096237972in"}
+<img src="images/lab4-data-analytics/image19.png" alt="drawing" width="600">
 
 You can see Trino is an SQL exposing abstraction in front of actual data
 located in Kafka and S3 Object storage. No data is moved - rather Trino
@@ -41,47 +40,57 @@ customer id.
 Login to OpenShift using the credentials your administrator gave you.
 Ensure your workshop project ml-workshop is selected.
 
-The first thing you will do is login to Superset.\
-Choose the **Administration perspective**
+The first thing you will do is login to Superset.  
+1. Choose the **Administration perspective**.
+2. Click to **Networking > Routes**.
+3.  Filter on the word Superset and open that route, by clicking on the URL as shown.
 
-1.  Navigate to **Networking \> Routes**.
+<img src="images/lab4-data-analytics/image15.png" alt="drawing" width="600">
 
-2.  Filter on the word Superset and open that route, by clicking on the URL as shown.
+4.  If prompted, enter credentials ***admin / admin***.
 
-![](images/lab4-data-analytics//image15.png){width="6.0in"
-height="2.4305555555555554in"}
+<img src="images/lab4-data-analytics/image14.png" alt="drawing" width="600">
 
-3.  Enter credentials ***admin / admin***.
+   **Note:** As this is a shared service between all participants, and the setup has already been done by your instructor. Here we will just describe you the steps we took to connect Superset to Trino and from there to underlying data.
 
-![](images/lab4-data-analytics//image14.png){width="6.0in"
-height="2.0972222222222223in"}
+5. Click **Data** in the toolbar drop-down list.
+6. Click **Databases**  
+   Superset displays a list of currently-configured databases.
+7. Move the mouse over the **Trino** database and observe the **Edit** button (pen) appear.
+8. Click the **Edit** button.  
+   Superset displays the **Edit database** diaglog box.
 
-4.  Choose menu **Data \> Databases**. Edit the ***trino*** Database. As this is a shared service between all participants, and the setup has already been done by your instructor, we'll just show you the steps we took to connect Superset to Trino & from there to underlying data.
+<img src="images/lab4-data-analytics/image16.png" alt="drawing" width="600">
 
-![](images/lab4-data-analytics//image16.png){width="6.0in"
-height="1.7638888888888888in"}
+  Observe that we only needed to add the URI ***trino:/admin@trino-service:8080/*** to connect to Trino as shown. 
 
-> Notice we simply added the URI ***trino://admin@trino-service:8080/***
-> to connect to Trino as shown. 
+### Test the Connection.
 
-Test the Connection.
+1. Click the **Test Connection** button  
+   Observe the ```Connection looks good``` message appear on the bottom right of the browser window.
 
-![](images/lab4-data-analytics//image22.png){width="4.421875546806649in"
-height="1.8920527121609798in"}
+<img src="images/lab4-data-analytics/image22.png" alt="drawing" width="600">
 
-5.  Move to the SQL LAB SETTINGS tab and notice we needed full access by selecting the checkboxes.
+5. Click the **Advanced** tab in the **Edit database** diaglog box.  
+   Superset displays a list of configuration groups to edit.
+6. Click the **SQL Lab** button.  
+   
+<img src="images/lab4-data-analytics/image1.png" alt="drawing" width="300">  
 
-![](images/lab4-data-analytics//image1.png){width="6.0in"
-height="3.0277777777777777in"}
+   Observe the variety of SQL connection settings  
+7. Click **CLOSE**.
 
-6.  In Superset, choose **SQL LAB \> Saved Queries**. Edit the query ***Kafka-CSV-Join*** as shown (though your query may be named differently)
+6. CLick **SQL LAB > Saved Queries** in the main Superset toolbar. 
+7. Edit the query ***Kafka-CSV-Join*** as shown  
+   **Note:** Your query may be named differently
 
-![](images/lab4-data-analytics//image12.png){width="6.817708880139983in"
-height="1.8275601487314086in"}
+<img src="images/lab4-data-analytics/image12.png" alt="drawing" width="600">
 
-Earlier the workshop admin created a virtual '***table'*** (hive.default.customer1) that uses the CSV data in our Minio S3 Object store as it's actual data - located in the bucket ***rawdata***.
+Earlier the workshop, the workshop facilitatore created two _virtual tables_ to hold the data. (A virtual table is a table that for all intents and purposes acts like a database, but is not). The virtual tables' details are:
+* Virtual table 1: (hive.default.customer1) that uses the CSV data in our Minio S3 Object store as it's actual data - located in the bucket ***Rawdata***.  
+* Virtual table2:  Backed by Kafka streaming data. (In this example it is the customer product-consumption data.)
 
-Earlier we also created a second virtual '***table'*** backed by our Kafka streaming data. In our case this is the customer product consumption data.\
+What you will see in this lab is how Trino presents a standard SQL interface for non-SQL data stores (CSV and Kafka).
 
 Now Trino allows us to create a SQL Join across data that resides in S3 Object storage and Kafka as follows:
 ```sql
@@ -90,147 +99,131 @@ FROM    customerchurn.default.data kafkaData,
         hive.default.customer1 s3Data
 WHERE   cast(kafkaData.customerId as VARCHAR) = s3Data.customerId
 ```
-Very cool!
 
-7.  **Run** the Query. Notice the result set spanning data covering S3 and Kafka, joined on *customerId.* Click **Explore**
+8.  **Run** the Query. Notice the result set spanning data covering S3 and Kafka, joined on *customerId.*    
+  ```Observe how cool that is! :-)```
 
-![](images/lab4-data-analytics//image6.png){width="5.684896106736658in"
-height="3.769574584426947in"}
+9. Click **Explore**.
+   Superset prompts you to sve the result set.  
 
-8.  Select **Save As New** Give it a name appending your username to ***Kafka-CSV-Join***. In my case, with user29: ***Kafka-CSV-Join-user29***. Then **Save & Explore**:
+  <img src="images/lab4-data-analytics/image6.png" alt="drawing" width="600">
 
-![](images/lab4-data-analytics//image21.png){width="5.558170384951881in"
-height="2.406742125984252in"}
 
-> You may see an error saving the dataset. Ignore it (this is a small
-> bug) - it probably saved successfully.
+10. Click the **Save as new** radio button
+11. Type ```Kafka-CSV-Join-``` and append your user name in the text box. E.g. ```Kafka-CSV-Join-user29```
+12. Click **SAVE & EXPLORE**
 
-9.  Move to **Data \> DataSets**, find [your]{.underline} new dataset - then click it to open it:
+<img src="images/lab4-data-analytics/image21.png" alt="drawing" width="600">  
 
-![](images/lab4-data-analytics//image11.png){width="6.0in"
-height="1.8333333333333333in"}
+ > **Note:**  You may see an error saving the dataset. Ignore it.
 
-10. By default ***Table*** Visualisation Type is selected
+13.  Click to **Data > DataSets** in the main toolbar.
+14. Locate your new dataset and click it to open it.
 
-![](images/lab4-data-analytics//image18.png){width="6.0in"
-height="4.402777777777778in"}
+<img src="images/lab4-data-analytics/image11.png" alt="drawing" width="600">
 
-Click **Table**. You have a large number of Visualization Types to choose from. Click **Bar Chart**:
+12. By default ***Table*** Visualisation Type is selected
 
-![](images/lab4-data-analytics//image24.png){width="5.171875546806649in"
-height="2.5230850831146108in"}
+<img src="images/lab4-data-analytics/image18.png" alt="drawing" width="600">
 
-You can now start visualising and understanding your data. First we\'ll create a bar chart representation of the entire dataset, representing the count of the different categories of *Primary Channel*:
+13. Click the **Table** icon in the ```VISUALIZATION``` section.  
+14. Click **All charts** at the top of the ```chart explorer``` panel.
+   Observe the large number of Visualization Types to choose from. 
+14. Click **Bar Chart**
+
+<img src="images/lab4-data-analytics/image24.png" alt="drawing" width="600">  
+
+15. Click **SELECT**
+
+You can now start visualising and understanding your data. First we'll create a bar chart representation of the entire dataset, representing the count of the different categories of *Primary Channel*:
 
 - *Branch*
-
 - *Mobile and*
-
 - *No* primary channel.
 
-Click **Last Week** under **TIME RANGE**. On the popup, click the **Range Type** dropdown, select **No Filter** and then **Apply**.
+For this report we will remove any default filters.  
+16. Locate the **TIME RANGE** category in the explorer panel. If it is not set to **No filter**, click the option and set the value of**RANGE TYPE** to **No filter**.  Click **Apply**.
 
-![](images/lab4-data-analytics//image25.png){width="3.9114588801399823in"
-height="3.239048556430446in"}
+<img src="images/lab4-data-analytics/image25.png" alt="drawing" width="600">
 
 Select ***Count*** under ***Metrics*** and select *PrimaryChannel* under ***Series***.
 
 Name the chart ***Count-PrimaryChannel-userXX*** (in my case***Count-PrimaryChannel-user29***) and click **Save**.
 
-![](images/lab4-data-analytics//image3.png){width="4.734375546806649in"
-height="2.9589840332458444in"}
+<img src="images/lab4-data-analytics/image3.png" alt="drawing" width="600">
 
 This will cause the query to run - and you will be presented with this bar chart - showing the breakdown of the resultset by Primary Channel, Branch, Mobile or None.
 
-![](images/lab4-data-analytics//image10.png){width="6.0in"
-height="4.194444444444445in"}
+<img src="images/lab4-data-analytics/image10.png" alt="drawing" width="600">
 
-11. Now we\'ll create a Pie Chart - and add another dimension - *account type*.
+17. Now we'll create a Pie Chart - and add another dimension - *account type*.
 
 On your open Bar Chart screen, click **Bar Chart**. On the popup click **Pie Chart**.
 
-![](images/lab4-data-analytics//image7.png){width="6.0in"
-height="4.319444444444445in"}
+<img src="images/lab4-data-analytics/image7.png" alt="drawing" width="600">
 
 Now make the following changes:
 
 -   On the **Group By** dropdown, add ***accounttype*** to already present **primarychannel**
 
--   Name the chart ***Count-ChannelByAccountType-userXX*** (in my case ***Count-ChannelByAccountType-user29***) and click **Save**.
-
+-   Name the chart ***Count-ChannelByAccountType-userXX*** (in my case ***Count-ChannelByAccountType-user29***) and click **Save**.  
+- Set the **METRIC** to ```f(x) count```  
 -   Go with the defaults on the popup. Click **Save As** then **Save**
 
-![](images/lab4-data-analytics//image23.png){width="2.921593394575678in" height="1.6742979002624672in"}
+<img src="images/lab4-data-analytics/image23.png" alt="drawing" width="600">
 
 This will cause the following pie chart to display - grouping *Primary Channel* by *Account Type*
 
-![](images/lab4-data-analytics//image2.png){width="6.0in"
-height="4.208333333333333in"}
+<img src="images/lab4-data-analytics/image2.png" alt="drawing" width="600">
 
-12. Next, we're going to showcase another unusual though informative visualization - the Sunburst Chart. It allows you to visualise splits of your data with varying degrees of granularity - within the same chart. On your open Pie Chart screen, click **Pie Chart** then on the popup, scroll down and click **Sunburst Chart** as shown:
+18. Next, we're going to showcase another unusual though informative visualization - the Sunburst Chart. It allows you to visualise splits of your data with varying degrees of granularity - within the same chart. On your open Pie Chart screen, click **Pie Chart** then on the popup, scroll down and click **Sunburst Chart** as shown:
 
-![](images/lab4-data-analytics//image29.png){width="6.0in"
-height="3.5972222222222223in"}
+<img src="images/lab4-data-analytics/image29.png" alt="drawing" width="600">
 
 Make the following changes
 
 -   Name the chart ***CreditRating-Distribution-userXX*** (in my case ***CreditRating-Distribution-user29***)
 
 -   On the **Hierarchy** dropdown, select
-
     -   **creditrating**
-
     -   **accounttype**
-
     -   **hascreditcard**
-
         -   **debitcard**
-
 -   click **Save**
 
-as shown:
-
-![](images/lab4-data-analytics//image27.png){width="6.0in"
-height="3.9305555555555554in"}
+<img src="images/lab4-data-analytics/image27.png" alt="drawing" width="600">
 
 Confirm by clicking **Save As** then **Save**
 
-![](images/lab4-data-analytics//image26.png){width="6.0in"
-height="3.4583333333333335in"}
+<img src="images/lab4-data-analytics/image26.png" alt="drawing" width="600">
 
 A chart similar to the following will appear.
 
-![](images/lab4-data-analytics//image5.png){width="6.0in"
-height="3.8472222222222223in"}
+<img src="images/lab4-data-analytics/image5.png" alt="drawing" width="600">
 
 If you hover over the inner circle, the breakdown according to the first hierarchical element is shown, in my case *medium* credit rating.
 
 You can see, you can also further refine, by hovering out towards over the outer circle - giving a very fine grained breakdown - according to the 4 hierarchies:
 
-![](images/lab4-data-analytics//image20.png){width="4.213542213473316in"
-height="2.392062554680665in"}
+<img src="images/lab4-data-analytics/image20.png" alt="drawing" width="600">
 
 Any of these datasets can be easily exported to JSON or CSV - as shown below. Then fed for example to an AI model training use case.
 
-![](images/lab4-data-analytics//image28.png){width="6.0in"
-height="3.361111111111111in"}
+<img src="images/lab4-data-analytics/image28.png" alt="drawing" width="600">
 
-13. Finally we're going to show you how to create a dashboard - to which we can add previously saved charts. Choose Dashboards -\> Add Dashboard as shown:
+15. Finally we're going to show you how to create a dashboard - to which we can add previously saved charts. Choose Dashboards -\> Add Dashboard as shown:
 
-![](images/lab4-data-analytics//image9.png){width="6.0in"
-height="0.9027777777777778in"}
+<img src="images/lab4-data-analytics/image9.png" alt="drawing" width="600">
 
 Name it and choose the Charts tab:
 
-![](images/lab4-data-analytics//image8.png){width="6.0in"
-height="1.2361111111111112in"}
+<img src="images/lab4-data-analytics/image8.png" alt="drawing" width="600">
 
 You can simply drag your charts from the right over to the display panel
 on the left as shown. You can also make them dynamic by choosing a
 refresh interval. Very cool!
 
-![](images/lab4-data-analytics//image4.png){width="6.0in"
-height="2.6527777777777777in"}
+<img src="images/lab4-data-analytics/image4.png" alt="drawing" width="600">
 
 Feel free to continue to experiment with different ways of accessing and
 visualising the underlying data.
