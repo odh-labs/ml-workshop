@@ -397,17 +397,19 @@ We've built a container and pushed it to Dockerhub under this repository tag __t
 9. Click **Create**
 
 <img src="./images/setup/frontend/frontend-2-deploy-image.png" width="700"/>  
+
 Scroll down to reveal the rest of the form:  
+
 <img src="./images/setup/frontend/frontend-3-deploy-image.png" width="700"/>  
 
 After a brief period the circle around the Dpeloyment should be dark blue - indicating it's deployed. 
 
-<img src="./images/setup/frontend/frontend-3-app-deployed.png" width="700"/>  
-
 ### Test you can access the application.
 
-1. Click the arrow on the Deployment to open the route in a new broiwser tab.
-   OpenShift should launch the Churn Applciation
+<img src="./images/setup/frontend/frontend-3-app-deployed.png" width="700"/>  
+
+1. Click the arrow on the Deployment to open the route in a new broiwser tab.  
+   OpenShift launchs the Churn Applciation
 
 <img src="./images/setup/frontend/frontend-app-1.png" width="700"/>  
 
