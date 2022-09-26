@@ -40,28 +40,25 @@ we'll move straight to the Inference stage.
 
 You are now ready to test the API to your model.
 
-1.  Open the OpenShift tab on your browser.
-
-2.  Select the **Administrator** perspective in the left panel.
-
-3.  Click **Networking \> Routes**
-
-4.  Filter on your username and append *model*, i.e. **userXX-model** ,in my case **user30-model** as shown below.
-
-![alt_text](images/lab3-mlops/image2.png){width="6.932292213473316in"
-height="2.539433508311461in"}
+1. Open the OpenShift tab on your browser.
+2. Select the **Administrator Perspective** in the left panel.
+3. Click **Networking > Routes**
+4. Using the name you gave to your model in the previous lab.  Eg ```u27``` in this example:  
+  <img src="images/lab3-mlops/image7.png" width="500"/>  
+  Filter to find the model you deployed in the previous lab:
+  <img src="images/lab3-mlops/image2.png" width="500"/>  
 
 The URL under the Locations column is the URL our pipeline has created
-for us - which we will use to make inference calls to our model.We'll refer to that below as ***your inference URL***.  Make
-note of your URL, in my case
+for us - which we will use to make inference calls to our model. We will refer to that below as ***your inference URL***.  Make
+note of your URL, in this example:  
 
-[http://model-3965f0d0540946de92a9adff3cb2e166-user30-model-ml-workshop.apps.cluster-4b94.4b94.sandbox923.opentlc.com/](http://model-3965f0d0540946de92a9adff3cb2e166-user30-model-ml-workshop.apps.cluster-4b94.4b94.sandbox923.opentlc.com/)
+```http://model-72b589fb2aa645b8ae02f4e286c57093-u27-ml-workshop.apps.cluster-hhbsq.hhbsq.sandbox242.opentlc.com/```
 
 
 --------------------------------------------------------------------------------------------------------
 
-#### Inference Call using a webpage 
-This is the simplest way to test the model.
+## Testing an Inference Call to Your Model using a Webpage 
+A little test application or a tool like _Postman_  is the simplest way to test the model.
 
 1. In OpenShift, elect ther **Administrator Perspective**.
 2. Click **Networking** > **Routes** 
