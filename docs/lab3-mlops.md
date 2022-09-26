@@ -66,8 +66,11 @@ A little test application or a tool like _Postman_  is the simplest way to test 
 
 <img src="./images/setup/frontend/frontend-4-frontend-route.png" width="700"/>  
 
-4. Click the URL in the **Location** column.  
-   OpenShift launches the Churn Frontend application in a new browser tab.  
+4. Copy the URL in the **Location** column tot he Clipboard
+5. Open a new Browser tab and paste the URL. Then append ```/churn-frontend.html```.  
+   E.g. ```https://churn-frontend-ml-workshop.apps.cluster-hhbsq.hhbsq.sandbox242.opentlc.com/churn-frontend.html```
+
+   OpenShift launches the Churn Frontend application in the browser tab.  
    
 <img src="./images/setup/frontend/frontend-5-frontend-page.png" width="700"/>  
 
@@ -80,13 +83,12 @@ In the large textbox, enter ***your inference URL*** that you got a couple of st
 --------------------------------------------------------------------------------------------------------
 
 
-#### Inference Call using an API Testing Tool
-If you are a developer and want to build the model call into your code, the other to make an inference call, you can use tools such as Postman,
-or the command line using curl, or there are various online options. This way you can build the input JSON and output JSON into your code.
+## Inference Call using an API Testing Tool
 
-I'll use *Postman* to illustrate. If you do not have Postman you can
-access a free web version here:
-[https://web.postman.co/home](https://web.postman.co/home)
+If you are a developer and want to build the model call into your code, the other to make an inference call, you can use tools such as ```Postman``` or the command line using ```curl```. This way you can build the input JSON and output JSON into your code.
+
+The following example uses *Postman* to illustrate. If you do not have Postman you can
+access a free web version here: [https://web.postman.co/home](https://web.postman.co/home)
 
 Open Postman, and create a new Workspace and add a new Collection and
 then a new Request to it. Populate is as follows:
@@ -94,28 +96,20 @@ then a new Request to it. Populate is as follows:
 ![alt_text](images/lab3-mlops/image1.png){width="7.057292213473316in"
 height="2.413692038495188in"}
 
-1.  Choose the POST method
+1.  Choose the POST method  
+2.  Using the  ***your inference URL*** from the previous step, append the path ```/api/v1.0/predictions``` to the url.  
+    E.g. ```http://model-3965f0d0540946de92a9adff3cb2e166-user30-model-ml-workshop.apps.cluster-4b94.4b94.sandbox923.opentlc.com/api/v1.0/predictions```  
 
-2.  Take ***your inference URL*** from the previous step
+3.  Click **Body** radio button  
+4.  Click the **raw** radio button  
+5.  Click the content-type drop-down list box (next to the **GraphQL** radio button) and click **JSON**  
+6. Open a new bowser tab and open this link: [[The Github Gist]](https://gist.githubusercontent.com/tnscorcoran/e3e09eedb59f46b6d8f946e8faab153c/raw/934687194b1b2c420f6ad2ca1d2a8a5a4f1711c1/Telco%2520Churn%2520Inference%2520Body)  
+7. Copy the JSON content from the Gist to the Clipboard.
+8. Open the Postman browser tab and paste the JSON in the content section as illustrated above.
+9. Click the **Send** button to make your inference call  
+   The model that you deployed in the previous lab will then return a churn response.
 
-3.  append the path ***/api/v1.0/predictions*** to that\
-    > to form the full URL, in my case\
-    > [[http://model-3965f0d0540946de92a9adff3cb2e166-user30-model-ml-workshop.apps.cluster-4b94.4b94.sandbox923.opentlc.com/api/v1.0/predictions]{.underline}](http://model-3965f0d0540946de92a9adff3cb2e166-user30-model-ml-workshop.apps.cluster-4b94.4b94.sandbox923.opentlc.com/api/v1.0/predictions)
-
-4.  Select Body
-
-5.  Choose raw
-
-6.  and JSON as shown as the content type.
-
-7.  Paste the JSON located in [[This Github Gist]{.underline}](https://gist.githubusercontent.com/tnscorcoran/e3e09eedb59f46b6d8f946e8faab153c/raw/934687194b1b2c420f6ad2ca1d2a8a5a4f1711c1/Telco%2520Churn%2520Inference%2520Body)into the Body box. Notice this represents a customer, we're asking the model to predict how likely it is they will churn. Notice also, we're passing in string values such as Brokerage etc. Conversion using the *Ordinal* and *One-Hot* encoders to numeric values will be done by the running container exposing the API. This simplifies these API calls greatly for Application developers making these inference calls.
-
-8.  Click Send to make your inference call
-
-Here you see a sample response.
-
-![alt_text](images/lab3-mlops/image6.png){width="6.0in"
-height="3.6944444444444446in"}
+  ![alt_text](images/lab3-mlops/image6.png)
 
 Observe the response - comprising two fields:
 
