@@ -63,23 +63,18 @@ note of your URL, in my case
 #### Inference Call using a webpage 
 This is the simplest way to test the model.
 
+1. In OpenShift, elect ther **Administrator Perspective**.
+2. Click **Networking** > **Routes** 
+3. Type *churn-frontend* in the **Filter** text box  
 
-In OpenShift, __open the Administrator perspective__ then __move to Networking > Routes__ and filter on __*churn-frontend*__
 <img src="./images/setup/frontend/frontend-4-frontend-route.png" width="700"/>  
 
-Hit the route button as shown and append  __*churn-frontend.html*__ to the tab that opens our your browser. In my case the full URL is
-
-```
-http://churn-frontend-a-churn-frontend.apps.cluster-qk7ft.qk7ft.sandbox651.opentlc.com/churn-frontend.html
-
-```
-
-
-Open it and you'll see a screen like this:
+4. Click the URL in the **Location** column.  
+   OpenShift launches the Churn Frontend application in a new browser tab.  
+   
 <img src="./images/setup/frontend/frontend-5-frontend-page.png" width="700"/>  
 
-***If you get a 404, or 503, change the protocol from HTTPS to HTTP.***
-
+**Note:** If you get a 404, or 503, change the protocol from HTTPS to HTTP.  
 
 In the large textbox, enter ***your inference URL*** that you got a couple of steps back. Click __MAKE INFERENCE CALL__. Shortly, the page will show a prediction of __*Churn*__  or __*Not Churn*__  as a well as how certain the model is of this prediction. Feel free to experiment.
 <img src="./images/setup/frontend/frontend-7-inference-URL-result.png" width="700"/> 

@@ -375,23 +375,23 @@ Switch to JupyterLab in browser **Tab 3**
  
 
 10. Fill the form in as follows:
-Name: **UserXX** Airflow runtime [^1]\
-Apache Airflow UI endpoint: your \<**Airflow Route URL**\> retrieved above\
-Apache Airflow User Namespace: ml-workshop\
-Github API endpoint: [[https://api.github.com]{.underline}](https://api.github.com) \[
-**footnote** [^2]\]\
-Github DAG Repo: airflow-dags/dags \[ **footnote** [^3]\]\
-Branch: main\
-Github Personal Access Token: *Note: your administrator will give you this during the workshop.
-\
-\
-**Cloud Object Storage Endpoint details:**\
-[[http://minio-ml-workshop:9000]{.underline}](http://minio-ml-workshop:9000) [**footnote** [^4]\]\
-The Cloud Object Storage Username minio\
-The Cloud Object Storage Password minio123\
-Cloud Object Storage bucket name airflow
-
-As shown here:
+    * While replacing ```XX``` with your user numer, type: ```userXX Airflow runtime``` in the **Name** text box. E.g. ```user30 Airflow runtime```.
+    * Paste the Airflow route URL you copied earlier into the **Apache Airflow** text box.
+    * Type ```ml-workshop``` in the **Apache Airflow User Namespace** text box.
+    * Type ```https://api.github.com``` in the **GitHub API Endpoint** text box.  
+    Note: When you create the pipeline, it doesn't get saved to
+        Airflow, rather it is saved to Git. This provides full versioning of the DAGs.
+    * Type ```airflow-dags/dags``` in the **GitHub DAG Repository** text box  
+    Note: For convenience we have provided the Git repository. You would generally use your own.
+    * Type ```main``` in the **GitHub DAG Reposiory Branch** text box.
+    * Paste the _Personal Access Token_ into the **GitHub Personal Access Token** text box.  
+    **Note:** Your workshop facilitator will give you this during the workshop.  
+    * Type ```http://minio-ml-workshop:9000``` in the Cloud Object Storage Endpoint** text box.
+    * Type ```minio``` in the **Cloud Object Storage Username** text box
+    * Type ```minio123``` in the **Cloud Object Storage Password** text box
+    * Type ```airflow``` in the **Cloud Object Storage Bucket Name** text box
+    * Click **Save and Close**  
+    Airflow saves the runtime configuration
 
    <img src="images/lab1-data-engineering/image22.png" alt="image22.png">
 
@@ -399,7 +399,7 @@ As shown here:
 
 ### Configure Python Runner
 
-12. Click the **Runtime Images** ![alt_text](images/lab1-data-engineering/image3.png) button in the toolbar shortcuts.
+12. Click the **Runtime Images** <img src="images/lab1-data-engineering/image3.png" width="20"/> button in the toolbar shortcuts.
 13. Click on the **+** icon at the top of the **Runtimes Images Explorer**
 14. Complete the form as per the illustration below.
 
@@ -412,7 +412,7 @@ Image Pull Policy: IfNotPresent
    <img src="images/lab1-data-engineering/image5.png" alt="image5.png">
 
   15. Click **Save and Close**
-  16. Click **Runtime Images** ![alt_text](images/lab1-data-engineering/image3.png) 
+  16. Click **Runtime Images** <img src="images/lab1-data-engineering/image3.png" width="20"/> 
   17. Click **+** and complete the form as per the illustration below.
 
 Name: Elyra Spark\
@@ -423,7 +423,7 @@ as shown
    <img src="images/lab1-data-engineering/image49.png" alt="image49.png">
 
   18. Click **Save and Close**
-  19. Click the **File Browser** ![alt_text](images/lab1-data-engineering/image4.png) button in the toolbar shortcuts so you can access the rest of the project files.
+  19. Click the **File Browser** <img src="images/lab1-data-engineering/image4.png" width="20"/> button in the toolbar shortcuts so you can access the rest of the project files.
   20. Click the **spark-demo.pipeline** tab in JupyterLab to open it
 
    <img src="images/lab1-data-engineering/image44.png" alt="image44.png">
@@ -448,7 +448,7 @@ pipeline.
   Environment Variables
   - SPARK_CLUSTER=**userXX**-cluster
   - WORKER_NODES=2
-  - S3_ENDPOINT_URL=[[http://minio-ml-workshop:9000]{.underline}](http://minio-ml-workshop:9000)
+  - S3_ENDPOINT_URL=```http://minio-ml-workshop:9000```
 
   Output Files
   -  spark-info.txt
@@ -475,7 +475,7 @@ Repeate the above steps for Merge_Data:
   - SPARK_CLUSTER=**userXX**-cluster. \
     Replace **userXX** with your username and ensure your cluster has 2 worker node
   - WORKER_NODES=2
-  - S3_ENDPOINT_URL=[[http://minio-ml-workshop:9000]{.underline}](http://minio-ml-workshop:9000)
+  - S3_ENDPOINT_URL=```http://minio-ml-workshop:9000```
 
    <img src="images/lab1-data-engineering/image29.png" alt="image29.png">
 
@@ -497,16 +497,6 @@ This sends each run to the bottom of the list on the Airflow GUI.
 **userXX**-**MMDD**-01-spark, in my case ***user30-0223-01-spark***.
 Also choose your Airflow Runtime and Runner as shown:\
 ![alt_text](images/lab1-data-engineering/image11.png) 
-
-~~Note - if you get an error that it can't find
-***spark-cluster-route.yaml***, in the file explorer on the left
-navigate to **airflow/deploy_spark_jobs** and copy
-***spark-cluster-route.yaml***. Then navigate to ***notebook*** where
-***Merge_Data.ipynb*** is located and paste
-***spark-cluster-route.yaml*** there.~~
-
-~~Press Play again. Two pop-ups will show - including this one. OK
-them~~
 
 ![alt_text](images/lab1-data-engineering/image54.png) 
 
@@ -559,7 +549,7 @@ Spark cluster for you to do your work.
 
 ![alt_text](images/lab1-data-engineering/image46.png) 
 
-OpenSHift displays all of the pods for your username. Here you can
+OpenShift displays all of the pods for your username. Here you can
 observe that a Spark cluster was started for the Data Engineering work.
 This is an example of the self-service capabilities OpenShift brings to
 the table and unlocks the productivity of your team.
@@ -599,15 +589,3 @@ back to the central pool when finished.
 
 Congratulations - you've completed the first lab. Now move to the next
 one: **AI/ML on OpenShift Workshop - Lab 2 - Data Science.**
-
-[^1]: Replacing **userXX** with you username
-
-[^2]: Note: when you create the pipeline, it doesn\'t get saved to
-    Airflow, rather it is saved to Git - to give you versioning etc.
-
-    Then Airflow downloads from Git. Means you need to use a Git repo.
-
-[^3]: For convenience, use our temporary repo setup for workshops:
-    [[https://github.com/airflow-dags/dags]{.underline}](https://github.com/airflow-dags/dags)
-
-[^4]: Airflow needs S3 to push logs to
