@@ -94,10 +94,10 @@ What you will see in this lab is how Trino presents a standard SQL interface for
 
 Now Trino allows us to create a SQL Join across data that resides in S3 Object storage and Kafka as follows:
 ```sql
-SELECT  kafkaData.*, s3Data.*
-FROM    customerchurn.default.data kafkaData,
-        hive.default.customer1 s3Data
-WHERE   cast(kafkaData.customerId as VARCHAR) = s3Data.customerId
+SELECT customers.gender, customers.seniorcitizen, customers.partner, customers.dependents, customers.tenure, products.*
+from hive.default.customers customers,
+customerchurn.default.data products
+where cast(customers.customerId as VARCHAR) = cast(products.customerId as VARCHAR)
 ```
 
 8.  **Run** the Query. Notice the result set spanning data covering S3 and Kafka, joined on *customerId.*    
