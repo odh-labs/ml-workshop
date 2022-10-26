@@ -12,7 +12,7 @@ This is the Open Data Hub (ODH) Machine Learning Workshop repo via which you per
 
 
 This diagram shows the overall workflow:
-<img src="docs/images/overview/churn-workshop-architecture.png" alt="drawing" width="600">
+<img src="docs/images/overview/churn-workshop-architecture.png" alt="drawing" width="800">
 
 
 For more details on how to deploy this workkflow as a hands-on workshop, see the links in the [Documentation folder](https://github.com/odh-labs/ml-workshop/tree/main/docs)
