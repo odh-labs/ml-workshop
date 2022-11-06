@@ -3,7 +3,7 @@
 ## Prerequisites
 You'll need:
 - An OpenShift 4.10 cluster - with admin rights. You can create one by following the instructions [here](http:/try.openshift.com), or via RHPDS (Red Hat staff only).
-- the OpenShift command line interface, _oc_ available [here](https://docs.openshift.com/container-platform/4.6/cli_reference/openshift_cli/getting-started-cli.html)
+- the OpenShift command line interface, _oc_ available [here](https://docs.openshift.com/container-platform/4.6/cli_reference/openshift_cli/getting-started-cli.html) - or an updated version for higher versions of OpenShift than 4.6 if using.
 
 
 ## Workshop Structure
@@ -34,8 +34,9 @@ cd ml-workshop
 export REPO_HOME=`pwd`
 ```
 
-## Install the Open Data Hub Operator
-
+## Install the Open Data Hub Operator version 1.3 cluster-wide
+The latest version of the Open Data Hub operatpr is 1.4 at the time of writing. We need 1.3, until various updates are done.
+Install 1.3 as follows.
 1. Log on to OpenShift as a Cluster Administrator. (For RHPDS this is opentlc-mgr.)
 2. Click the *Perspective* dropdown list box
 3. Click the *Administrator* perspective\
@@ -43,25 +44,59 @@ export REPO_HOME=`pwd`
 
 <img src="./images/setup/install-0.png" alt="drawing" width="200"/>
 
-4. Click **Operators > Operator Hub**  
-   OpenShift displays the operator catalogue.  
-5. Click the *Filter by keybord* text box and type *open data hub*  
-   OpenShift displays the *Open Data Hub Operator* tile.
-6. Click the tile  
-   OpenShift displays a Commmunity Operator warning dialog box.
-7. Click **Continue**  
-   OpenShift displays the operator details.
-8. Click **Install**   
-   OpenShift prompts for the operator configuration details.   
-   <img src="./images/setup/install-2.png" alt="drawing" width="500"/>  
-9. Accept all defaults and click **Install**\
-   OpenShift installs the operator and displays a diaglog box once complete.  
-   <img src="./images/setup/install-3.png" alt="drawing" width="500"/>
-10. Click **View Operator**  
-    OpenShift displays the operator details.   
-   <img src="./images/setup/install-4.png" alt="drawing" width="500"/>  
+4. Click the + icon as shown so you can import this yaml pertaining to the ODH operator version 1.3. Paste this yaml in OpenSHift and click **Create**
+```
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: opendatahub-operator
+  namespace: openshift-operators
+spec:
+  channel: stable
+  installPlanApproval: Manual
+  name: opendatahub-operator
+  source: community-operators
+  sourceNamespace: openshift-marketplace
+  startingCSV: opendatahub-operator.v1.3.0
+```
 
-The Open Data Hub Operator is now installed. Proceed to create the workshop project and install Open Data Hub
+<img src="./images/setup/install-12.png" alt="drawing" width="600"/>
+
+5. As this is not the latest ODH operator, we need to manually approve it. Navigate to **Operators > Installed Operators**. Notice the ODH operator is there but not fully installed
+<img src="./images/setup/install-13.png" alt="drawing" width="600"/>
+
+6. Click on 
+
+
+
+
+
+
+The Open Data Hub Operator version 1.3 is now installed. 
+
+
+
+
+# TODO - install strimzi operator 2.6
+
+# TODO - install KFDEF: 
+oc project ml-workshop 
+oc apply workshop-kfdef-kafka-and-populator-only.yaml
+
+verify jobs completed
+
+# TODO - install KFDEF: workshop-kfdef-no-kafka-and-populator.yaml
+oc project ml-workshop 
+oc apply workshop-kfdef-no-kafka-and-populator.yaml
+
+verify jobs completed
+
+
+
+
+
+
+Proceed to create the workshop project and install Open Data Hub
 
 ## Project Creation & ODH Installation Steps
 Now that the Open Data Hub Operator is installed we can proceed to setting up the workshop project and then configure the tools.
