@@ -35,7 +35,9 @@ export REPO_HOME=`pwd`
 ```
 
 ## Login to OpenShift and install the Open Data Hub Operator version 1.3 cluster-wide
-Login to OpenShift as a Cluster Administrator. (For RHPDS this is opentlc-mgr)Login on the web console then on a terminal using the *Copy Login Command* as shown:
+Login to OpenShift as a Cluster Administrator. (For RHPDS this is opentlc-mgr). 
+Login on the web console then on a terminal using the *Copy Login Command* as shown:
+
 <img src="./images/setup/install-13.png" alt="drawing" width="600"/>
 
 
