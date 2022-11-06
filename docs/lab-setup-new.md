@@ -64,7 +64,7 @@ Navigate back to **Operators > Installed Operators**. Notice the *strimzi-kafka-
 
 Follow these steps to fully install it
 - click **1 requires approval**  
-<img src="./images/setup/install-20.png" alt="drawing" width="600"/>
+<img src="./images/setup/install-21.png" alt="drawing" width="600"/>
 - on the next screen, click **Preview Install Plan**
 - on the next screen, click **Approve**
 
