@@ -71,8 +71,8 @@ spec:
 5. As this is not the latest ODH operator, we need to manually approve it. Navigate to **Operators > Installed Operators**. Ensure All projects is selected under the projects menu. Notice the ODH operator is there but not fully installed. Click on the **opendatahub-operator** link:
 <img src="./images/setup/install-14.png" alt="drawing" width="600"/>
 
-6. Click **1 Requires Approval*
-<img src="./images/setup/install-15*.png" alt="drawing" width="600"/>
+6. Click *1 Requires Approval*
+<img src="./images/setup/install-15.png" alt="drawing" width="600"/>
 
 7. Then click **Preview Install Plan**
 <img src="./images/setup/install-16.png" alt="drawing" width="600"/>
