@@ -34,22 +34,56 @@ cd ml-workshop
 export REPO_HOME=`pwd`
 ```
 
-## Login to OpenShift and install the Open Data Hub Operator version 1.3 cluster-wide
+
+
+
+
+## Login to OpenShift and install the Strimzi operator version 2.6 cluster wide
+
 Login to OpenShift as a Cluster Administrator. (For RHPDS this is opentlc-mgr). 
 Login on the web console then on a terminal using the *Copy Login Command* as shown:
 
 <img src="./images/setup/install-13.png" alt="drawing" width="600"/>
 
-
-The latest version of the Open Data Hub operatpr is 1.4 at the time of writing. We need 1.3, until various updates are done.
-Install 1.3 as follows.
+We need Strimzi operator version 0.26 - which is a slightly older version than the latest.
+## NOTE - Strimzi needs to be installed before Open Data Hub operator (which we'll do next)
+Install Strimzi 0.26 as follows.
 1. On to OpenShift, click the *Perspective* dropdown list box
 2. Click the *Administrator* perspective\
    OpenShift changes the user interface to the Adminstrator perspective.
 
-<img src="./images/setup/install-0.png" alt="drawing" width="200"/>
+Navigate to **Operators > Operator Hub** and type *Strimzi*. Click on the Community oparotor box as shown
+<img src="./images/setup/install-18.png" alt="drawing" width="600"/>
 
-4. 
+Accept the *Show community Operator* warning. On the next screen go with the defaults and click Install. On the next screen, click **strimzi-0.26.x** and ensure *All namespaces on the cluster (default)* is selected as shown. Then click **Install** on the bottom of the screen
+<img src="./images/setup/install-19.png" alt="drawing" width="600"/>
+
+Navigate back to **Operators > Installed Operators**. Notice the *strimzi-kafka-operator* is there but not installed - like the ODH operator above. 
+
+<img src="./images/setup/install-20.png" alt="drawing" width="600"/>
+
+Follow the same steps as before with ODH, i.e. 
+- click **strimzi-kafka-operator**
+- click **1 requires approval**  
+- click **Preview Install Plan**
+- Then click **Approve**
+
+Within a few seconds Strimzi operator version 0.26x will be installed. 
+
+
+
+
+
+
+
+
+
+
+## Install the Open Data Hub Operator version 1.3 cluster-wide
+
+The latest version of the Open Data Hub operatpr is 1.4 at the time of writing. We need 1.3, until various updates are done.
+Install 1.3 as follows.
+
 Click the + icon as shown so you can import this yaml pertaining to the ODH operator version 1.3. Paste this yaml in OpenSHift and click **Create**
 ```
 apiVersion: operators.coreos.com/v1alpha1
@@ -68,7 +102,8 @@ spec:
 
 <img src="./images/setup/install-12.png" alt="drawing" width="600"/>
 
-5. As this is not the latest ODH operator, we need to manually approve it. Navigate to **Operators > Installed Operators**. Ensure All projects is selected under the projects menu. Notice the ODH operator is there but not fully installed. Click on the **opendatahub-operator** link:
+
+As this is not the latest ODH operator, we need to manually approve it. Navigate to **Operators > Installed Operators**. Ensure All projects is selected under the projects menu. Notice the ODH operator is there but not fully installed. Click on the **opendatahub-operator** link:
 <img src="./images/setup/install-14.png" alt="drawing" width="600"/>
 
 6. Click *1 Requires Approval*
@@ -77,23 +112,20 @@ spec:
 7. Then click **Preview Install Plan**
 <img src="./images/setup/install-16.png" alt="drawing" width="600"/>
 
-8. Then click **Approve Plan**
+8. Then click **Approve**
 <img src="./images/setup/install-17.png" alt="drawing" width="600"/>
 
 If you move back to **Operators > Installed Operators**, you will see 1.3 is fuly installed within a few seconds. Do not upgrade it.
 
 The Open Data Hub Operator version 1.3 is now installed. 
 
-## Install Strimzi operator version 2.6 cluster wide
 
-Navigate to **Operators > Operator Hub** and type *Strimzi*. Click on the Community oparotor box as shown
-<img src="./images/setup/install-18.png" alt="drawing" width="600"/>
-
-Accept the *Show community Operator* warning. On the next screen go with the defaults and click Install. On the next screen, click **strimzi-0.26.x** and ensure *All namespaces on the cluster (default)* is selected as shown. Then click **Install** on the bottom of the screen
-<img src="./images/setup/install-19.png" alt="drawing" width="600"/>
-
-
-# TODO -Install strimzi operator version 2.6 cluster wide
+# Create and select ml-workshop namespace and remove any limits
+On your terminal, run this
+```
+oc new-project ml-workshop
+oc delete limits ml-workshop-core-resource-limits
+```
 
 # TODO - install KFDEF: 
 oc project ml-workshop 
