@@ -119,6 +119,9 @@ On your terminal, run this
 oc new-project ml-workshop
 oc delete limits ml-workshop-core-resource-limits
 ```
+This will create our working project *ml-workshop* and delete any resource limits (if they exist - ignore any warnings of no limits exist). 
+
+On the web console, select your *ml-workshop* and navigate to **Operators > Installed Operators**. You should see the correct versions of ODH and Strimzi operators, 0.26 and 1.3, respectively.
 
 # TODO - install KFDEF: 
 oc project ml-workshop 
