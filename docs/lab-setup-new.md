@@ -125,9 +125,12 @@ On the web console, select your *ml-workshop* and navigate to **Operators > Inst
 
 <img src="./images/setup/install-22.png" alt="drawing" width="600"/>
 
-# TODO - install KFDEF: 
+# Install Fafka elements including populate Kafka cluster with product info:
+For this we have an openshift manifest. Run the following
+```
 oc project ml-workshop 
-oc apply workshop-kfdef-kafka-and-populator-only.yaml
+oc apply -f $REPO_HOME/src/deploy/kfdef/workshop-kfdef-kafka-and-populator-ONLY.yaml
+```
 
 verify jobs completed
 
