@@ -46,7 +46,7 @@ Login on the web console then on a terminal using the *Copy Login Command* as sh
 <img src="./images/setup/install-13.png" alt="drawing" width="600"/>
 
 We need Strimzi operator version 0.26 - which is a slightly older version than the latest.
-## NOTE - Strimzi needs to be installed before Open Data Hub operator (which we'll do next)
+### NOTE - Strimzi needs to be installed before Open Data Hub operator (which we'll do next)
 Install Strimzi 0.26 as follows.
 1. On to OpenShift, click the *Perspective* dropdown list box
 2. Click the *Administrator* perspective\
