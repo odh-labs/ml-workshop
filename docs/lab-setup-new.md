@@ -58,7 +58,7 @@ Navigate to **Operators > Operator Hub** and type *Strimzi*. Click on the Commun
 Accept the *Show community Operator* warning. On the next screen go with the defaults and click Install. On the next screen, click **strimzi-0.26.x** and ensure *All namespaces on the cluster (default)* is selected as shown. Then click **Install** on the bottom of the screen
 <img src="./images/setup/install-19.png" alt="drawing" width="600"/>
 
-Navigate back to **Operators > Installed Operators**. Notice the *strimzi-kafka-operator* is there but not installed - like the ODH operator above. 
+Navigate back to **Operators > Installed Operators**. Notice the *strimzi-kafka-operator* is there but not installed. 
 
 <img src="./images/setup/install-20.png" alt="drawing" width="600"/>
 
