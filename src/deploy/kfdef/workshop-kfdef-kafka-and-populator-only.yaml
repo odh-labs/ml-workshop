@@ -1,0 +1,23 @@
+apiVersion: kfdef.apps.kubeflow.org/v1
+kind: KfDef
+metadata:
+  name: opendatahub-ml-workshop-kafka-populator
+#  namespace: opendatahub
+spec:
+  applications:
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: kafka/kafka
+      name: kafka-cluster
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: ml-workshop-kafka-populator
+      name: kafka-populator      
+  repos:
+    - name: kf-manifests
+      uri: https://github.com/kubeflow/manifests/archive/v1.2-branch.tar.gz
+    - name: manifests
+      uri: https://github.com/masoodfaisal/odh-manifests/tarball/disconnected-install
+  version: disconnected-install
