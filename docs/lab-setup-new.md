@@ -78,7 +78,7 @@ spec:
 <img src="./images/setup/install-16.png" alt="drawing" width="600"/>
 
 8. Then click **Approve Plan**
-<img src="./images/setup/install-16.png" alt="drawing" width="600"/>
+<img src="./images/setup/install-17.png" alt="drawing" width="600"/>
 
 If you move back to **Operators > Installed Operators**, you will see 1.3 is fuly installed within a few seconds. Do not upgrade it.
 
