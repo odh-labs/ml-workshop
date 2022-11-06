@@ -1,4 +1,4 @@
-# Open Data Hub Workshop Setup Instructions
+# Open Data Hub Workshop (ODH) Setup Instructions
 
 ## Prerequisites
 You'll need:
@@ -46,7 +46,7 @@ Login on the web console then on a terminal using the *Copy Login Command* as sh
 <img src="./images/setup/install-13.png" alt="drawing" width="600"/>
 
 We need Strimzi operator version 0.26 - which is a slightly older version than the latest.
-### NOTE - Strimzi needs to be installed before Open Data Hub operator (which we'll do next)
+### NOTE - Strimzi needs to be installed before Open Data Hub (ODH) operator (which we'll do next)
 Install Strimzi 0.26 as follows.
 1. On to OpenShift, click the *Perspective* dropdown list box
 2. Click the *Administrator* perspective\
@@ -125,87 +125,34 @@ On the web console, select your *ml-workshop* and navigate to **Operators > Inst
 
 <img src="./images/setup/install-22.png" alt="drawing" width="600"/>
 
-# Install Fafka elements including populate Kafka cluster with product info:
+# Install Kafka elements including populate Kafka cluster with product info:
 For this we have an openshift manifest. Run the following
 ```
 oc project ml-workshop 
 oc apply -f $REPO_HOME/src/deploy/kfdef/workshop-kfdef-kafka-and-populator-ONLY.yaml
 ```
 
-verify jobs completed
+To verify jobs completed, Navigate to **Workloads > Jobs**. You shoul see 2two job, which about 3-5 minutes later should show as successfuly completed as follows:
 
-# TODO - install KFDEF: workshop-kfdef-no-kafka-and-populator.yaml
-oc project ml-workshop 
-oc apply workshop-kfdef-no-kafka-and-populator.yaml
+<img src="./images/setup/install-23.png" alt="drawing" width="600"/>
 
-verify jobs completed
-
-
-
-
-
-
-Proceed to create the workshop project and install Open Data Hub
-
-## Project Creation & ODH Installation Steps
-Now that the Open Data Hub Operator is installed we can proceed to setting up the workshop project and then configure the tools.
-
-### Prerequisite Step:
-Before we set up the project we need to get some YAML ready to paste into the operator configurtation. This KfDef YAML defines which tools the ODH Operator will install and how to configure them.
-
-1. Using any editor of choice, open the KFDef File from the github repository your cloned. It is located in *ml-workshop/src/deploy/kfdef/workshop-kfdef.yaml*.\
-   The following diagram is from Visual Studio Code's File Explorer and illustrates the path to the file.
-  
-   <img src="./images/setup/install-4-1.png" alt="drawing" width="300"/>
-2. Copy the contents to the clipboard and keep it - you will use it shortly.
-
-### Create the Workshop's Project and Install ODH
-1. Create the **ml-workshop** project:  
-   1.1 Click **Home > Projects**  
-   1.2 Click the **Create Project** button on the top right of the screen  
-   1.3 Click the **Name** text box and type  **ml-workshop**  
-   1.4 Click **Create**  
-   OpenShift creates the project.  
-   <img src="./images/setup/install-5.png" alt="drawing" width="400"/>  
-2. Delete the Limit Range for the project  
-   2.1 Click **Administration > LimitRanges**  
-   2.2 Click the hambuger button for the **ml-workshop-core-resource-limits**.   
-   <img src="./images/setup/install-11.png" alt="drawing" width="500"/>  
-   2.3 Click **Delete LimitRange**  
-   OpenShift removes the LImitRange for the project.
-3. Install Open Data Hub:  
-   3.1 Click **Operators > Installed Operators**  
-   OpenShift displays all the operators currently installed.  
-
-   <span style="color:yellow">**Note that the ml-workshop project may have become unselected and **All Projects** is selected. If it is not already, you must make ml-workshop the active project. Failure to do this will break the installation**<span>  
-
-   3.2 Click the **Projects** drop-down list and click **ml-workshop**  
-   <img src="./images/setup/install-6.png" alt="drawing" width="500"/>  
-   3.3 Click **Open Data Hub Operator**.  
-   OpenShift displays the operator's details.  
-   <img src="./images/setup/install-6.png" alt="drawing" width="500"/>  
-   3.4 Click **Open Data Hub** in the operator toolbar.  
-   OpenShift displays the operand details - of which there are none.   
-   <img src="./images/setup/install-7.png" alt="drawing" width="500"/>  
-   3.5 Click the **Create KfDef** button.  
-   3.6 Click the **YAML View** radio button  
-   OpenShift displays the KfDef YAML editor.  
-   <img src="./images/setup/install-8.png" alt="drawing" width="500"/>  
-   3.7 Replace the entire YAML file with the KfDef YAML you copied to your clipboard in the *Prerequisits* step above. This KfDef file will tell OpenShift how to install and configure ODH.  
-
-   Before you save the KfDef you must edit one line of code.  
-   2.8 Locate the **airflow2** overlay in the code  
+# Install ODH elements including populate Kafka cluster with product info:
+In a text editor or IDE, open the file ***$REPO_HOME/src/deploy/kfdef/workshop-kfdef-WITHOUT-kafka-and-populator.yaml***
+You need to make one change to it. 
+- Locate the **airflow2** overlay in the code  
    <img src="./images/setup/install-9.png" alt="drawing" width="600"/>  
    Around line 57 you will see a **value** field that contains part of the URL to your OpenShift clister.  
 
-   2.9 Using the example above, replace the value with the the UR of **your** cluster from the *.apps* through to the *.com* as follows (your URI will be different to this example):   
+- Using the example above, replace the value with the the URL of **your** cluster from the *.apps* through to the *.com* as follows (your URI will be different to this example)
 
-   2.10 Click **Create**  
-       OpenShift creates the KfDef and proceeeds to deploy ODH.  
+- Save the file
 
-   2.11 Click **Workloads > Pods** to observe the deployment progress.  
-      <img src="./images/setup/install-10.png" alt="drawing" width="400"/>  
-      Note: This installation will take several minutes to complete.
+Now run the following:
+```
+oc project ml-workshop 
+oc apply -f $REPO_HOME/src/deploy/kfdef/workshop-kfdef-WITHOUT-kafka-and-populator.yaml
+```
+Note: This installation will take several minutes to complete.
 
 ## Installation Complete
 The installation phase of Open Data Hub is now complete. Next you will configure the workshop environment.
