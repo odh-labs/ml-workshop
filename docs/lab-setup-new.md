@@ -136,7 +136,7 @@ To verify jobs completed, Navigate to **Workloads > Jobs**. You shoul see 2two j
 
 <img src="./images/setup/install-23.png" alt="drawing" width="600"/>
 
-# Install ODH elements including populate Kafka cluster with product info:
+# Install ODH based workshop tools
 In a text editor or IDE, open the file ***$REPO_HOME/src/deploy/kfdef/workshop-kfdef-WITHOUT-kafka-and-populator.yaml***
 You need to make one change to it. 
 - Locate the **airflow2** overlay in the code  
