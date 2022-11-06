@@ -80,12 +80,18 @@ spec:
 8. Then click **Approve Plan**
 <img src="./images/setup/install-16.png" alt="drawing" width="600"/>
 
+If you move back to **Operators > Installed Operators**, you will see 1.3 is fuly installed within a few seconds. Do not upgrade it.
 
 The Open Data Hub Operator version 1.3 is now installed. 
 
-## Install strimzi operator version 2.6 cluster wide
+## Install Strimzi operator version 2.6 cluster wide
 
-Navigate to **Operators > Operator Hub** and type *Strimzi*
+Navigate to **Operators > Operator Hub** and type *Strimzi*. Click on the Community oparotor box as shown
+<img src="./images/setup/install-18.png" alt="drawing" width="600"/>
+
+Accept the *Show community Operator* warning. On the next screen go with the defaults and click Install. On the next screen, click **strimzi-0.26.x** and ensure *All namespaces on the cluster (default)* is selected as shown. Then click **Install** on the bottom of the screen
+<img src="./images/setup/install-19.png" alt="drawing" width="600"/>
+
 
 # TODO -Install strimzi operator version 2.6 cluster wide
 
