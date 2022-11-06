@@ -58,25 +58,17 @@ Navigate to **Operators > Operator Hub** and type *Strimzi*. Click on the Commun
 Accept the *Show community Operator* warning. On the next screen go with the defaults and click Install. On the next screen, click **strimzi-0.26.x** and ensure *All namespaces on the cluster (default)* is selected as shown. Then click **Install** on the bottom of the screen
 <img src="./images/setup/install-19.png" alt="drawing" width="600"/>
 
-Navigate back to **Operators > Installed Operators**. Notice the *strimzi-kafka-operator* is there but not installed. 
+Navigate back to **Operators > Installed Operators**. Notice the *strimzi-kafka-operator* is there but not installed. Click **strimzi-kafka-operator**
 
 <img src="./images/setup/install-20.png" alt="drawing" width="600"/>
 
-Follow the same steps as before with ODH, i.e. 
-- click **strimzi-kafka-operator**
+Follow these steps to fully install it
 - click **1 requires approval**  
-- click **Preview Install Plan**
-- Then click **Approve**
+<img src="./images/setup/install-20.png" alt="drawing" width="600"/>
+- on the next screen, click **Preview Install Plan**
+- on the next screen, click **Approve**
 
 Within a few seconds Strimzi operator version 0.26x will be installed. 
-
-
-
-
-
-
-
-
 
 
 ## Install the Open Data Hub Operator version 1.3 cluster-wide
