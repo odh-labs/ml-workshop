@@ -73,10 +73,10 @@ spec:
 <img src="./images/setup/install-15*.png" alt="drawing" width="600"/>
 
 7. Then click **Preview Install Plan**
-<img src="./images/setup/install-15.png" alt="drawing" width="600"/>
+<img src="./images/setup/install-16.png" alt="drawing" width="600"/>
 
 8. Then click **Approve Plan**
-<img src="./images/setup/install-15.png" alt="drawing" width="600"/>
+<img src="./images/setup/install-16.png" alt="drawing" width="600"/>
 
 
 The Open Data Hub Operator version 1.3 is now installed. 
