@@ -132,7 +132,7 @@ oc project ml-workshop
 oc apply -f $REPO_HOME/src/deploy/kfdef/workshop-kfdef-kafka-and-populator-ONLY.yaml
 ```
 
-To verify jobs completed, Navigate to **Workloads > Jobs**. You shoul see 2two job, which about 3-5 minutes later should show as successfuly completed as follows:
+To verify jobs completed, Navigate to **Workloads > Jobs**. You should see two jobs, which about 3-5 minutes later should show as successfuly completed as follows:
 
 <img src="./images/setup/install-23.png" alt="drawing" width="600"/>
 
