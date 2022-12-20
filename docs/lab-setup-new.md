@@ -56,6 +56,7 @@ Navigate to **Operators > Operator Hub** and type *Strimzi*. Click on the Commun
 <img src="./images/setup/install-18.png" alt="drawing" width="600"/>
 
 Accept the *Show community Operator* warning. On the next screen go with the defaults and click Install. On the next screen, click **strimzi-0.26.x** and ensure *All namespaces on the cluster (default)* is selected as shown. Then click **Install** on the bottom of the screen
+
 <img src="./images/setup/install-19.png" alt="drawing" width="600"/>
 
 Navigate back to **Operators > Installed Operators**. Notice the *strimzi-kafka-operator* is there but not installed. Click **strimzi-kafka-operator**
@@ -97,6 +98,7 @@ spec:
 
 
 As this is not the latest ODH operator, we need to manually approve it. Navigate to **Operators > Installed Operators**. Ensure All projects is selected under the projects menu. Notice the ODH operator is there but not fully installed. Click on the **opendatahub-operator** link:
+
 <img src="./images/setup/install-14.png" alt="drawing" width="600"/>
 
 6. Click *1 Requires Approval*
@@ -107,6 +109,8 @@ As this is not the latest ODH operator, we need to manually approve it. Navigate
 
 8. Then click **Approve**
 <img src="./images/setup/install-17.png" alt="drawing" width="600"/>
+
+Please note that there may be a delay for the approve dialog to show after installing the ODH operator. Please allow for a few seconds if it does not show up immediately.
 
 If you move back to **Operators > Installed Operators**, you will see 1.3 is fuly installed within a few seconds. Do not upgrade it.
 
@@ -129,7 +133,7 @@ On the web console, select your *ml-workshop* and navigate to **Operators > Inst
 For this we have an openshift manifest. Run the following
 ```
 oc project ml-workshop 
-oc apply -f $REPO_HOME/src/deploy/kfdef/workshop-kfdef-kafka-and-populator-ONLY.yaml
+oc apply -f $REPO_HOME/src/deploy/kfdef/workshop-kfdef-kafka-and-populator-only.yaml
 ```
 
 To verify jobs completed, Navigate to **Workloads > Jobs**. You should see two jobs, which about 3-5 minutes later should show as successfuly completed as follows:
@@ -403,6 +407,12 @@ Superset displays the Save As dialog box.
 ### Install Front End Inferencing web page
 
 Install the application that workshop participants will use to test their models.
+
+Before beginning, create a new project as a developer. Example below:
+
+```
+$ oc new-project a-churn-frontend
+```
 
 1. Change to the **Developer Perspective.**
 2. Click **+Add**
