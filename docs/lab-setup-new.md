@@ -56,6 +56,7 @@ Navigate to **Operators > Operator Hub** and type *Strimzi*. Click on the Commun
 <img src="./images/setup/install-18.png" alt="drawing" width="600"/>
 
 Accept the *Show community Operator* warning. On the next screen go with the defaults and click Install. On the next screen, click **strimzi-0.26.x** and ensure *All namespaces on the cluster (default)* is selected as shown. Then click **Install** on the bottom of the screen
+
 <img src="./images/setup/install-19.png" alt="drawing" width="600"/>
 
 Navigate back to **Operators > Installed Operators**. Notice the *strimzi-kafka-operator* is there but not installed. Click **strimzi-kafka-operator**
@@ -97,6 +98,7 @@ spec:
 
 
 As this is not the latest ODH operator, we need to manually approve it. Navigate to **Operators > Installed Operators**. Ensure All projects is selected under the projects menu. Notice the ODH operator is there but not fully installed. Click on the **opendatahub-operator** link:
+
 <img src="./images/setup/install-14.png" alt="drawing" width="600"/>
 
 6. Click *1 Requires Approval*
@@ -411,8 +413,6 @@ Before beginning, create a new project as a developer. Example below:
 ```
 $ oc new-project a-churn-frontend
 ```
-
-The project name is a suggestion
 
 1. Change to the **Developer Perspective.**
 2. Click **+Add**
