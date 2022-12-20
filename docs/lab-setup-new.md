@@ -108,6 +108,8 @@ As this is not the latest ODH operator, we need to manually approve it. Navigate
 8. Then click **Approve**
 <img src="./images/setup/install-17.png" alt="drawing" width="600"/>
 
+Please note that there may be a delay for the approve dialog to show after installing the ODH operator. Please allow for a few seconds if it does not show up immediately.
+
 If you move back to **Operators > Installed Operators**, you will see 1.3 is fuly installed within a few seconds. Do not upgrade it.
 
 The Open Data Hub Operator version 1.3 is now installed. 
@@ -129,7 +131,7 @@ On the web console, select your *ml-workshop* and navigate to **Operators > Inst
 For this we have an openshift manifest. Run the following
 ```
 oc project ml-workshop 
-oc apply -f $REPO_HOME/src/deploy/kfdef/workshop-kfdef-kafka-and-populator-ONLY.yaml
+oc apply -f $REPO_HOME/src/deploy/kfdef/workshop-kfdef-kafka-and-populator-only.yaml
 ```
 
 To verify jobs completed, Navigate to **Workloads > Jobs**. You should see two jobs, which about 3-5 minutes later should show as successfuly completed as follows:
@@ -403,6 +405,14 @@ Superset displays the Save As dialog box.
 ### Install Front End Inferencing web page
 
 Install the application that workshop participants will use to test their models.
+
+Before beginning, create a new project as a developer. Example below:
+
+```
+$ oc new-project a-churn-frontend
+```
+
+The project name is a suggestion
 
 1. Change to the **Developer Perspective.**
 2. Click **+Add**
