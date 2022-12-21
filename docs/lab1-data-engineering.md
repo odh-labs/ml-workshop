@@ -385,7 +385,7 @@ Switch to JupyterLab in browser **Tab 3**
     Note: For convenience we have provided the Git repository. You would generally use your own.
     * Type ```main``` in the **GitHub DAG Reposiory Branch** text box.
     * Paste the _Personal Access Token_ into the **GitHub Personal Access Token** text box.  
-    **Note:** Your workshop facilitator will give you this during the workshop.  
+    **Note:** Your workshop facilitator will give you this during the workshop. If you are running this individually, make sure that you generate a Personal Access Token with *push* permissions to your chosen DAG repository.  
     * Type ```http://minio-ml-workshop:9000``` in the Cloud Object Storage Endpoint** text box.
     * Type ```minio``` in the **Cloud Object Storage Username** text box
     * Type ```minio123``` in the **Cloud Object Storage Password** text box
@@ -481,10 +481,10 @@ Repeate the above steps for Merge_Data:
 
 25. Save your work by clicking on the **Save** button ![alt_text](images/lab1-data-engineering/image31.png) 
 
-26. Finally, do the same with stop-spark-cluster - which has fewer still values\
+26. Finally, do the same with stop-spark-cluster - which has fewer still values
    <img src="images/lab1-data-engineering/image10.png" alt="image10.png">
 
--   Save your work by clicking on the **Save** button\
+-   Save your work by clicking on the **Save** button
    <img src="images/lab1-data-engineering/image31.png" alt="image31.png">
 
 **Run Pipeline**
