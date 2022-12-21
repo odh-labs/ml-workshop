@@ -477,7 +477,7 @@ Repeate the above steps for Merge_Data:
   - WORKER_NODES=2
   - S3_ENDPOINT_URL=```http://minio-ml-workshop:9000```
 
-   <img src="images/lab1-data-engineering/image29_alt.png" alt="image29_alt.png">
+   <img src="images/lab1-data-engineering/image29.png" alt="image29.png">
 
 25. Save your work by clicking on the **Save** button ![alt_text](images/lab1-data-engineering/image31.png) 
 
