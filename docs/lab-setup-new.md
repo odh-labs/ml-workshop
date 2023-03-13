@@ -150,7 +150,7 @@ You need to make one change to it.
 Now run the following:
 ```
 oc project ml-workshop 
-oc apply -f $REPO_HOME/src/deploy/kfdef/workshop-kfdef-WITHOUT-kafka-and-populator.yaml
+oc apply -f $REPO_HOME/src/deploy/kfdef/workshop-kfdef-NO-KAFKA-No-SPARK.yaml
 ```
 Note: This installation will take several minutes to complete.
 
