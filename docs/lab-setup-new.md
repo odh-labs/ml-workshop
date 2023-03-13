@@ -137,7 +137,7 @@ To verify jobs completed, Navigate to **Workloads > Jobs**. You should see two j
 <img src="./images/setup/install-23.png" alt="drawing" width="600"/>
 
 # Install ODH based workshop tools
-In a text editor or IDE, open the file ***$REPO_HOME/src/deploy/kfdef/workshop-kfdef-WITHOUT-kafka-and-populator.yaml***
+In a text editor or IDE, open the file ***$REPO_HOME/src/deploy/kfdef/workshop-kfdef-NO-KAFKA-No-SPARK.yaml***
 You need to make one change to it. 
 - Locate the **airflow2** overlay in the code  
    <img src="./images/setup/install-9.png" alt="drawing" width="600"/>  
