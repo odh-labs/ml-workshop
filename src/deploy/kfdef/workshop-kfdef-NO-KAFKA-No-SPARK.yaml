@@ -52,7 +52,7 @@ spec:
           # Change the line below to match your cluster URI. 
           # Using the URI from your OpenShift console in your bowser, copy everything (including) from 
           # ".apps" to ".com" and replace the value below.
-            value: .apps.rosa-4pm4b.2e7j.p1.openshiftapps.com
+            value: .apps.cluster-h69np.h69np.sandbox2451.opentlc.com
         repoRef:
           name: manifests
           path: ml-workshop-airflow2
